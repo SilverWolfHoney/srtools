@@ -803,9 +803,10 @@
           const tag = mode === 'anomalyArbitration'
             ? `第 ${f.floor} 关`
             : `第 ${f.floor} 层`;
+          const pname = period.name ? ` · ${period.name}` : '';
           options.push({
             value: `${period.period}:${fi}`,
-            label: `第 ${period.period} 期 · ${tag}${f.name ? ` · ${f.name}` : ''}`,
+            label: `第 ${period.period} 期${pname} · ${tag}${f.name ? ` · ${f.name}` : ''}`,
           });
         }
       }
