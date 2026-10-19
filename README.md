@@ -52,6 +52,9 @@ python serve.py --port 21101
 | 中文名 | `SilverWolfHoney/dump_4.6.53/TextMap.json` |
 | 角色头像 | `https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/<id>.webp`（下载到 `web/avatars/`，缺失的角色显示文字占位） |
 
+> 头像资源（游戏版权）不随仓库分发：克隆后运行 `python fetch_avatars.py` 即可下载到
+> `web/avatars/`；缺失的角色会自动显示文字占位，不影响编辑功能。
+
 客户端更新或换目录后重新生成：
 
 ```bat
