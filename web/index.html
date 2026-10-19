@@ -213,15 +213,18 @@
     <div class="enemy-picker">
       <div class="ep-content">
         <div class="ep-panel">
-          <div class="ep-row">
-            <label>Pick Challenge</label>
-            <select id="ep-challenge"></select>
+          <div class="ep-row ep-split">
+            <label>期数</label>
+            <select id="ep-period"></select>
+            <label>层数</label>
+            <select id="ep-floor"></select>
           </div>
           <div class="ep-row" id="ep-side-row">
             <label>Side</label>
             <select id="ep-side">
               <option value="1">第一节点</option>
               <option value="2">第二节点</option>
+              <option value="3" id="ep-side-tierce" hidden>第三节点（星启）</option>
             </select>
           </div>
           <div class="ep-row ep-checks">

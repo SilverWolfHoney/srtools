@@ -17,7 +17,8 @@
     traceTree: null,     // 当前行迹树数据（节点 + 布局）
     traceEditing: null,  // 正在编辑的行迹节点
     battleMode: 'moC',   // 战斗配置：当前玩法
-    battleChallenge: '', // 战斗配置：当前挑战
+    battlePeriod: 0,     // 战斗配置：当前期数
+    battleFloor: 0,      // 战斗配置：当前层索引
   };
   const $ = (id) => document.getElementById(id);
   const PART_ORDER = ['HEAD', 'HAND', 'BODY', 'FOOT'];
@@ -783,6 +784,10 @@
   }
 
   /** 战斗配置页：4 玩法（混沌/虚构/末日/异相仲裁）+ 自定义怪。 */
+  function renderBattle() {
+    renderBattlePicker();
+  }
+
   function renderBattlePicker() {
     const presets = S.cata.battle_presets || {};
     const mode = S.battleMode || 'moC';
@@ -792,36 +797,61 @@
     const custom = mode === 'custom';
     $('ep-side-row').hidden = custom;
     $('ep-custom-row').hidden = !custom;
-    $('ep-challenge').disabled = custom;
-    const preset = presets[mode];
-    const sel = $('ep-challenge');
-    const options = [];
-    if (!custom && preset) {
-      for (const period of preset.periods) {
-        for (let fi = 0; fi < period.floors.length; fi += 1) {
-          const f = period.floors[fi];
-          const tag = mode === 'anomalyArbitration'
-            ? `第 ${f.floor} 关`
-            : `第 ${f.floor} 层`;
-          const pname = period.name ? ` · ${period.name}` : '';
-          options.push({
-            value: `${period.period}:${fi}`,
-            label: `第 ${period.period} 期${pname} · ${tag}${f.name ? ` · ${f.name}` : ''}`,
-          });
-        }
-      }
-    }
-    sel.innerHTML = options.map((o) =>
-      `<option value="${o.value}">${escapeHtml(o.label)}</option>`).join('')
+    $('ep-period').disabled = custom;
+    $('ep-floor').disabled = custom;
+    const periods = ((presets[mode] || {}).periods) || [];
+    const psel = $('ep-period');
+    psel.innerHTML = periods.map((p) =>
+      `<option value="${p.period}">第 ${p.period} 期${p.name ? ` · ${p.name}` : ''}</option>`).join('')
       || '<option value="">（没有数据）</option>';
-    if (S.battleChallenge && options.some((o) => o.value === S.battleChallenge)) {
-      sel.value = S.battleChallenge;
+    if (S.battlePeriod && periods.some((p) => p.period === S.battlePeriod)) {
+      psel.value = S.battlePeriod;
+    } else {
+      S.battlePeriod = periods.length ? periods[periods.length - 1].period : 0;
     }
-    renderBattleMonsters();
+    renderBattleFloor();
     renderBattleCurrent();
   }
 
-  /** 当前挑战（期/层/节点）的怪物列表。 */
+  /** 层数下拉：跟期数走。 */
+  function renderBattleFloor() {
+    const mode = S.battleMode || 'moC';
+    const preset = (S.cata.battle_presets || {})[mode];
+    const fsel = $('ep-floor');
+    if (mode === 'custom' || !preset) { fsel.innerHTML = '<option value="">-</option>'; return; }
+    const per = preset.periods.find((p) => p.period === Number($('ep-period').value));
+    const floors = (per && per.floors) || [];
+    fsel.innerHTML = floors.map((f, i) => {
+      const tag = mode === 'anomalyArbitration' ? `第 ${f.floor} 关` : `第 ${f.floor} 层`;
+      return `<option value="${i}">${tag}${f.name ? ` · ${f.name}` : ''}</option>`;
+    }).join('') || '<option value="">-</option>';
+    if (S.battleFloor !== null && S.battleFloor < floors.length) fsel.value = S.battleFloor;
+    else S.battleFloor = 0;
+    renderBattleSide();
+  }
+
+  /** 当前层：有星启时 Side 才出现「第三节点」。 */
+  function renderBattleSide() {
+    const f = currentFloor();
+    const tierce = (f && f.tierce) || [];
+    const opt = $('ep-side-tierce');
+    opt.hidden = !tierce.length;
+    const sel = $('ep-side');
+    if (!tierce.length && sel.value === '3') sel.value = '1';
+    renderBattleMonsters();
+  }
+
+  /** 当前选中的层对象。 */
+  function currentFloor() {
+    const mode = S.battleMode || 'moC';
+    const preset = (S.cata.battle_presets || {})[mode];
+    if (!preset) return null;
+    const per = preset.periods.find((p) => p.period === Number($('ep-period').value));
+    if (!per) return null;
+    return per.floors[Number($('ep-floor').value)] || null;
+  }
+
+  /** 当前挑战（期/层/节点）的怪物波次。 */
   function renderBattleMonsters() {
     const mode = S.battleMode || 'moC';
     const box = $('ep-monsters');
@@ -829,35 +859,19 @@
       box.innerHTML = '<div class="side-hint">输入怪物 ID（逗号分隔），点「应用为战斗配置」作为一波。</div>';
       return;
     }
-    const preset = (S.cata.battle_presets || {})[mode];
-    const val = $('ep-challenge').value;
-    if (!preset || !val) { box.innerHTML = '<div class="side-hint">没有挑战数据。</div>'; return; }
-    if (mode === 'anomalyArbitration') {
-      const per = preset.periods.find((x) => String(x.period) === val);
-      box.innerHTML = per
-        ? `<div class="side-hint">该玩法客户端表没有怪物 ID（只有关卡与目标 ${(per.targets || []).join(' / ')}）。</div>`
-        : '';
-      return;
-    }
-    const [period, fi] = val.split(':').map(Number);
-    const per = preset.periods.find((x) => x.period === period);
-    const f = per && per.floors[fi];
-    if (!f) { box.innerHTML = '<div class="side-hint">这一层没有怪物数据。</div>'; return; }
+    const f = currentFloor();
+    if (!f) { box.innerHTML = '<div class="side-hint">没有挑战数据。</div>'; return; }
     const side = $('ep-side').value;
-    const waveChips = (waves) => (waves || []).map((wave, wi) =>
+    let waves;
+    if (mode === 'anomalyArbitration') waves = f.waves || [];
+    else if (side === '3') waves = f.tierce || [];
+    else if (side === '2') waves = f.bot || [];
+    else waves = f.top || [];
+    const html = (waves || []).map((wave, wi) =>
       `<div class="ep-wave-line"><b>第 ${wi + 1} 波</b>` +
       wave.filter((x) => x > 0)
         .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
-    let html = '';
-    if (mode === 'anomalyArbitration') {
-      html = waveChips(f.waves);
-    } else {
-      html = waveChips(side === '2' ? f.bot : f.top);
-      if ((f.tierce || []).length) {
-        html += `<div class="ep-tierce">星启模式（额外一路）：</div>` + waveChips(f.tierce);
-      }
-    }
     box.innerHTML = html || '<div class="side-hint">这一层没有怪物数据。</div>';
   }
 
@@ -903,19 +917,15 @@
       if (!ids.length) { toast('请输入怪物 ID', 'warn'); return; }
       waves.push(toWave(ids));
     } else {
-      const preset = (S.cata.battle_presets || {})[mode];
-      const val = $('ep-challenge').value;
-      if (!preset || !val) { toast('没有可用的挑战数据', 'warn'); return; }
-      const [period, fi] = val.split(':').map(Number);
-      const per = preset.periods.find((x) => x.period === period);
-      const f = per && per.floors[fi];
-      if (!f) { toast('这一层没有数据', 'warn'); return; }
+      const f = currentFloor();
+      if (!f) { toast('没有可用的挑战数据', 'warn'); return; }
       const side = $('ep-side').value;
-      const base = mode === 'anomalyArbitration' ? (f.waves || []) : (side === '2' ? f.bot : f.top) || [];
+      let base;
+      if (mode === 'anomalyArbitration') base = f.waves || [];
+      else if (side === '3') base = f.tierce || [];
+      else if (side === '2') base = f.bot || [];
+      else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      if (mode !== 'anomalyArbitration' && (f.tierce || []).length) {
-        for (const w of f.tierce) waves.push(toWave(w));   // 星启：额外一路
-      }
       if (turbulence && f.buffs && f.buffs.length) bc.blessings = f.buffs.map((id) => ({ id, level: 1 }));
       else if (turbulence && f.turbulence) bc.blessings = [{ id: f.turbulence, level: 1 }];
       else if (!turbulence) bc.blessings = [];
@@ -991,13 +1001,19 @@
     for (const t of document.querySelectorAll('.ep-tab')) {
       t.addEventListener('click', () => {
         S.battleMode = t.dataset.mode;
-        S.battleChallenge = '';
+        S.battlePeriod = 0;
+        S.battleFloor = 0;
         renderBattle();
       });
     }
-    $('ep-challenge').addEventListener('change', () => {
-      S.battleChallenge = $('ep-challenge').value;
-      renderBattleMonsters();
+    $('ep-period').addEventListener('change', () => {
+      S.battlePeriod = Number($('ep-period').value) || 0;
+      S.battleFloor = 0;
+      renderBattleFloor();
+    });
+    $('ep-floor').addEventListener('change', () => {
+      S.battleFloor = Number($('ep-floor').value) || 0;
+      renderBattleSide();
     });
     $('ep-side').addEventListener('change', () => renderBattleMonsters());
     $('ep-apply').addEventListener('click', applyBattlePick);

@@ -362,6 +362,8 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
   display: flex; flex-direction: column; gap: 12px;
 }
 .ep-row { display: flex; align-items: center; gap: 12px; }
+.ep-row.ep-split > label { min-width: auto; }
+.ep-row.ep-split > select { flex: 1 1 0; }
 .ep-row > label { min-width: 110px; color: var(--muted); font-size: 13px; }
 .ep-row select, .ep-row input[type="text"] {
   flex: 1; min-width: 0; background: var(--panel2); color: var(--text);
