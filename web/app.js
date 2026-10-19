@@ -10,6 +10,7 @@
     search: '',
     filterPath: '',
     filterElement: '',
+    enhancedMode: false,   // 行迹页显示加强形态（仅 10 个加强角色可用）
     dirty: false,
     idx: {},
     conn: null,   // 已连接的私服：{ url, provider, endpoint }
@@ -296,6 +297,7 @@
 
   function selectAvatar(id) {
     S.avatarId = Number(id);
+    S.enhancedMode = false;   // 切换角色时回到普通形态
     ensureAvatar(S.avatarId);
     renderAvatarList();
     renderAvatarEditor();
@@ -369,15 +371,25 @@
 
   function renderTraces(cfg, item) {
     const box = $('trace-grid');
+    const wrap = $('trace-enhanced-wrap');
+    const toggle = $('trace-enhanced');
     if (!cfg || !(cfg.skill_points || []).length) {
       box.innerHTML = '<div class="side-hint">该角色在 4.6.53 客户端技能树表里没有行迹数据（联动/活动角色常见）。</div>';
       $('trace-hint').textContent = '';
+      wrap.hidden = true;
       return;
     }
+    // 加强角色（10 个）有两套行迹：普通 18 点 + 加强 18 点
+    const hasEnhanced = cfg.skill_points.some((p) => p.enhanced);
+    if (!hasEnhanced) S.enhancedMode = false;
+    wrap.hidden = !hasEnhanced;
+    toggle.checked = S.enhancedMode;
+    const points = cfg.skill_points.filter((p) => !!p.enhanced === S.enhancedMode);
     const skills = item.data.skills || (item.data.skills = {});
     const anchors = item.data.skills_by_anchor_type || (item.data.skills_by_anchor_type = {});
-    $('trace-hint').textContent = `${cfg.skill_points.length} 个行迹点`;
-    box.innerHTML = cfg.skill_points.map((p) => {
+    $('trace-hint').textContent = `${points.length} 个行迹点` +
+      (hasEnhanced ? (S.enhancedMode ? '（加强形态）' : '（普通形态）') : '');
+    box.innerHTML = points.map((p) => {
       const val = Number(skills[String(p.point_id)] ?? 0);
       const label = p.anchor ? `锚点 ${p.anchor}` : '行迹';
       return `<label class="trace" title="PointID ${p.point_id}">
@@ -395,7 +407,8 @@
         let val = Number(input.value) || 0;
         val = Math.max(0, Math.min(max, val));
         skills[point] = val;
-        if (anchor && Number(anchor) > 0) anchors[anchor] = val;
+        // skills_by_anchor_type 只记录普通形态（服务端靠它建技能树，避免两套锚点互相覆盖）
+        if (!S.enhancedMode && anchor && Number(anchor) > 0) anchors[anchor] = val;
         markDirty();
       });
       input.addEventListener('change', () => {
@@ -724,12 +737,20 @@
         .filter((x) => x > 0);
     });
 
+    $('trace-enhanced').addEventListener('change', () => {
+      S.enhancedMode = $('trace-enhanced').checked;
+      renderTraces(avatarCfg(S.avatarId), ensureAvatar(S.avatarId));
+    });
     $('btn-trace-max').addEventListener('click', () => {
       const cfg = avatarCfg(S.avatarId);
       const item = ensureAvatar(S.avatarId);
-      for (const p of cfg?.skill_points || []) {
+      const points = (cfg?.skill_points || []).filter((p) => !!p.enhanced === S.enhancedMode);
+      for (const p of points) {
         item.data.skills[String(p.point_id)] = p.max_level;
-        if (p.anchor) item.data.skills_by_anchor_type[String(p.anchor)] = p.max_level;
+        // 普通形态才写锚点表（服务端 create_skill_tree 用；加强点不覆盖普通锚点）
+        if (!S.enhancedMode && p.anchor) {
+          item.data.skills_by_anchor_type[String(p.anchor)] = p.max_level;
+        }
       }
       markDirty();
       renderAvatarEditor();

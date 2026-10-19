@@ -148,6 +148,9 @@ class Builder:
                 "icon": str(row.get("IconPath") or ""),
                 "name": str(row.get("PointName") or ""),
                 "desc": str(row.get("PointDesc") or ""),
+                # 加强角色的行迹有两套：普通点 7 位（1212001），
+                # 强化点为普通 +10,000,000（11212001）。10 个加强角色才有强化点。
+                "enhanced": point_id >= 10_000_000,
             })
             item["max_level"] = max(item["max_level"], _int(row.get("MaxLevel"), 1))
             if not item["icon"]:

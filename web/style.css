@@ -134,6 +134,13 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .trace-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
 }
+/* 行迹「加强形态」开关（仅 10 个加强角色显示） */
+.enh-switch {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--muted); cursor: pointer;
+  margin-left: auto; margin-right: 8px;
+}
+.enh-switch input { accent-color: var(--accent2); }
 /* 角色列表筛选（命途 / 元素） */
 .filterbar { display: flex; gap: 8px; margin-top: 8px; }
 .filterbar select {
