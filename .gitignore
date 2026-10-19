@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+
+# 本地备份 / 临时产物
+*.bak
+*.bak-*
+data/catalog.json.tmp
+
+# 头像资源（来自米哈游客户端资源，公开仓库建议排除；用 fetch_avatars.py 重建）
+web/avatars/

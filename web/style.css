@@ -1,0 +1,257 @@
+:root {
+  --bg: #0f1116;
+  --panel: #171a21;
+  --panel2: #1e222b;
+  --line: #2a303c;
+  --text: #e6e9ef;
+  --muted: #8b93a7;
+  --accent: #6ea8fe;
+  --accent2: #8f7bff;
+  --ok: #3ddc97;
+  --warn: #ffb454;
+  --danger: #ff6b6b;
+  --radius: 10px;
+}
+* { box-sizing: border-box; }
+/* 显式保证 hidden 生效：本文件里 .section-title / .ex-rank-box 设了 display:flex，
+   作者样式的优先级高于浏览器对 [hidden] 的 display:none */
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.5 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+}
+h1, h2, h3 { margin: 0; font-weight: 600; }
+h1 { font-size: 18px; }
+h1 small { color: var(--muted); font-weight: 400; font-size: 13px; }
+h2 { font-size: 20px; }
+h3 { font-size: 15px; }
+a { color: var(--accent); }
+code { background: #0b0d11; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+
+/* ---------------- header ---------------- */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 12px 18px;
+  background: linear-gradient(180deg, #1a1e27, #14171d);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.logo {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #0b0d11; font-weight: 800; letter-spacing: .5px;
+}
+.meta { color: var(--muted); font-size: 12px; margin: 2px 0 0; }
+.actions { display: flex; align-items: center; gap: 8px; }
+button {
+  font: inherit; color: var(--text); background: var(--panel2);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 7px 12px; cursor: pointer; transition: .15s;
+}
+button:hover { border-color: var(--accent); }
+button.primary { background: #2b5fd9; border-color: #2b5fd9; }
+button.accent { background: #6a4fd8; border-color: #6a4fd8; }
+button.danger { color: var(--danger); }
+button.ghost { background: transparent; }
+button.mini { padding: 2px 8px; font-size: 12px; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+.dirty { color: var(--warn); font-size: 12px; }
+
+/* ---------------- layout ---------------- */
+.layout { display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 63px); }
+.sidebar {
+  border-right: 1px solid var(--line);
+  background: var(--panel);
+  display: flex; flex-direction: column; min-height: 0;
+}
+.tabs { display: flex; border-bottom: 1px solid var(--line); }
+.tab {
+  flex: 1; border: 0; border-radius: 0; background: transparent;
+  padding: 10px 4px; color: var(--muted);
+}
+.tab.active { color: var(--text); box-shadow: inset 0 -2px 0 var(--accent); }
+.pane { display: none; flex-direction: column; min-height: 0; flex: 1; }
+.pane.active { display: flex; }
+
+.searchbar { display: flex; gap: 6px; padding: 10px; }
+.searchbar input { flex: 1; min-width: 0; }
+input, select {
+  font: inherit; color: var(--text); background: #0e1015;
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px;
+}
+input:focus, select:focus { outline: none; border-color: var(--accent); }
+.avatar-list { overflow: auto; padding: 0 8px 12px; flex: 1; }
+.avatar-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 9px; border-radius: 8px; cursor: pointer;
+  border: 1px solid transparent;
+}
+.avatar-item:hover { background: var(--panel2); }
+.avatar-item.active { background: #222a3a; border-color: var(--accent); }
+.avatar-item .id { color: var(--muted); font-size: 11px; width: 38px; text-align: right; }
+.avatar-item .nm { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.avatar-item .lv { color: var(--ok); font-size: 11px; }
+.avatar-item .r5 { color: #e6b422; font-size: 11px; }
+
+.content { padding: 20px 24px 48px; overflow: auto; min-height: 0; }
+.view { max-width: 1180px; }
+.empty { color: var(--muted); padding: 60px 0; text-align: center; }
+
+/* ---------------- editor ---------------- */
+.avatar-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px; margin-bottom: 14px;
+}
+.tags { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
+.tags b { color: var(--text); }
+.badge {
+  display: inline-block; padding: 1px 8px; margin-right: 6px;
+  border-radius: 999px; background: var(--panel2); border: 1px solid var(--line);
+  font-size: 12px;
+}
+.badge.rarity5 { color: #f0c04a; border-color: #6a5a22; }
+.badge.rarity4 { color: #c38cf0; border-color: #4b3566; }
+.grid-3 {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 8px;
+}
+.field { display: flex; flex-direction: column; gap: 5px; color: var(--muted); font-size: 12px; }
+.field.wide { grid-column: span 2; }
+.field input, .field select { color: var(--text); font-size: 14px; }
+.section-title {
+  display: flex; align-items: center; gap: 10px;
+  margin: 22px 0 10px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.section-title .hint { color: var(--muted); font-size: 12px; font-weight: 400; }
+.section-title button { margin-left: auto; }
+
+.trace-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
+}
+/* 角色列表筛选（命途 / 元素） */
+.filterbar { display: flex; gap: 8px; margin-top: 8px; }
+.filterbar select {
+  flex: 1; min-width: 0;
+  background: var(--panel2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px;
+  padding: 7px 8px; font-size: 13px; cursor: pointer;
+}
+.avatar-item { display: flex; align-items: center; gap: 9px; }
+.avatar-icon {
+  width: 30px; height: 30px; border-radius: 7px; flex: none;
+  object-fit: cover; background: var(--panel2);
+}
+
+/* 连接私服对话框 */
+.modal {
+  position: fixed; inset: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8, 10, 16, 0.72); backdrop-filter: blur(3px);
+}
+.modal-box {
+  position: relative;
+  width: min(440px, 92vw);
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 24px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.modal-box.wide { width: min(520px, 94vw); }
+.modal-close {
+  position: absolute; top: 12px; right: 14px;
+  width: 30px; height: 30px; line-height: 1;
+  background: transparent; border: 0; color: var(--muted);
+  font-size: 16px; cursor: pointer; border-radius: 8px;
+}
+.modal-close:hover { background: var(--line); color: var(--text); }
+.modal-box h3 { margin: 0 0 18px; padding-right: 36px; }
+.modal-box .field { margin-top: 14px; }
+.modal-actions {
+  display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;
+}
+.modal-actions .primary { min-width: 110px; }
+.conn-status {
+  margin: 0 0 8px; color: var(--ok); font-weight: 600; word-break: break-all;
+}
+.ex-rank-box {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  background: linear-gradient(135deg, #221a2e, #1a1e27);
+  border: 1px solid #4a3a63; border-radius: var(--radius); padding: 12px;
+}
+.ex-rank {
+  display: flex; align-items: center; gap: 8px;
+  background: #241c33; border: 1px solid #4a3a63; border-radius: 999px;
+  padding: 6px 14px; cursor: pointer;
+}
+.ex-rank input { accent-color: var(--accent2); }
+.ex-rank .ex-name { color: #d9c9ff; font-weight: 600; }
+.ex-rank .ex-tag {
+  font-size: 11px; color: var(--muted); border-left: 1px solid #4a3a63; padding-left: 8px;
+}.trace {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 8px 10px;
+}
+.trace .tname { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trace input { width: 62px; text-align: center; }
+.trace .max { color: var(--muted); font-size: 11px; }
+
+.relic-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;
+}
+.relic-card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 12px;
+}
+.relic-card .rc-head {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.relic-card .rc-head b { font-size: 13px; }
+.relic-card .rc-body { display: flex; flex-direction: column; gap: 7px; }
+.relic-card select, .relic-card input { width: 100%; font-size: 13px; }
+.relic-card .affix-row { display: flex; gap: 6px; align-items: center; }
+.relic-card .affix-row select { flex: 1; }
+.relic-card .affix-row input { width: 54px; text-align: center; }
+.relic-card .sub-label { color: var(--muted); font-size: 11px; }
+
+.wave-list { display: flex; flex-direction: column; gap: 10px; }
+.wave {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 10px;
+}
+.wave .wave-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.wave .wave-head b { flex: 1; }
+.monster-row { display: grid; grid-template-columns: 1fr 80px 80px 70px; gap: 6px; margin-bottom: 6px; }
+.buff-list { display: flex; flex-direction: column; gap: 6px; max-width: 560px; }
+.buff-row { display: grid; grid-template-columns: 1fr 90px 70px; gap: 6px; }
+
+.tool-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.file-label {
+  display: inline-flex; align-items: center; padding: 7px 12px;
+  border: 1px solid var(--line); border-radius: 8px; cursor: pointer;
+}
+.file-label input { display: none; }
+.code {
+  background: #0b0d11; border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px; overflow: auto; font-size: 12px; color: var(--muted);
+  white-space: pre-wrap;
+}
+.side-hint { padding: 12px; color: var(--muted); font-size: 12px; }
+.side-hint p { margin: 0 0 10px; }
+.hint { color: var(--muted); font-size: 12px; }
+
+/* toast */
+.toast {
+  position: fixed; right: 18px; bottom: 18px; z-index: 100;
+  max-width: 520px; padding: 12px 16px; border-radius: 10px;
+  background: var(--panel2); border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,.45); white-space: pre-wrap;
+}
+.toast.ok { border-color: var(--ok); }
+.toast.err { border-color: var(--danger); }
+.toast.warn { border-color: var(--warn); }

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SRTools 4.6.53 · 私服配置编辑器</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo">SR</span>
+    <div>
+      <h1>SRTools <small>4.6.53</small></h1>
+      <p id="meta" class="meta">加载中…</p>
+    </div>
+  </div>
+  <div class="actions">
+    <span id="dirty" class="dirty" hidden>● 未保存</span>
+    <button id="btn-upload" class="ghost" title="选择本地 freesr-data.json 载入到工具">上传 freesr-data.json</button>
+    <button id="btn-download" class="primary" title="把当前编辑后的存档下载为 freesr-data.json（可选择保存位置）">下载 freesr-data.json</button>
+    <button id="btn-connect" class="accent" title="连接私服并推送当前配置（等价 srtools 网站的 Connect PS）">同步到私服</button>
+  </div>
+</header>
+
+<input id="upload-file" type="file" accept="application/json,.json" hidden>
+
+<div id="connect-modal" class="modal" hidden>
+  <div class="modal-box wide">
+    <button id="conn-close" class="modal-close" title="关闭">✕</button>
+    <h3>连接私服</h3>
+
+    <!-- 未连接 -->
+    <div id="conn-form">
+      <label class="field">服务端类型
+        <select id="conn-provider">
+          <option value="SilverWolfHoney">SilverWolfHoney</option>
+          <option value="custom">自定义</option>
+        </select>
+      </label>
+      <label class="field">服务器地址
+        <input id="conn-url" type="text" placeholder="http://127.0.0.1:21000">
+      </label>
+      <p class="hint">账号密码取 <code>server_config.json</code> 的 <code>srtools</code>
+        段（空则留空）。</p>
+      <div class="modal-actions">
+        <button id="conn-submit" class="primary">连接</button>
+      </div>
+    </div>
+
+    <!-- 已连接 -->
+    <div id="conn-connected" hidden>
+      <p class="conn-status">● 已连接 <span id="conn-endpoint"></span></p>
+      <p class="hint">编辑完成后点「同步」，把当前编辑的配置推送给私服。</p>
+      <div class="modal-actions">
+        <button id="conn-disconnect" class="ghost">断开连接</button>
+        <button id="conn-sync" class="primary">同步</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" hidden></div>
+
+<main class="layout">
+  <nav class="sidebar">
+    <div class="tabs">
+      <button data-tab="avatar" class="tab active">角色</button>
+      <button data-tab="battle" class="tab">战斗配置</button>
+      <button data-tab="tools" class="tab">工具</button>
+      <button data-tab="help" class="tab">说明</button>
+    </div>
+
+    <section id="pane-avatar" class="pane active">
+      <div class="searchbar">
+        <input id="search" type="search" placeholder="搜索角色名 / ID…">
+      </div>
+      <div class="filterbar">
+        <select id="filter-path" title="按命途筛选">
+          <option value="">全部命途</option>
+        </select>
+        <select id="filter-element" title="按元素筛选">
+          <option value="">全部元素</option>
+        </select>
+      </div>
+      <div id="avatar-list" class="avatar-list"></div>
+    </section>
+
+    <section id="pane-battle" class="pane">
+      <div class="side-hint">战斗配置面向「模拟宇宙 / 自定义战斗」入口，修改后保存即可。</div>
+    </section>
+
+    <section id="pane-tools" class="pane">
+      <div class="side-hint">
+        <p>存档来自 srtools 同构的 <code>freesr-data.json</code>，私服启动/热重载时读取。</p>
+        <p>数据目录由本机 4.6.53 客户端生成，不含任何联网请求。</p>
+      </div>
+    </section>
+
+    <section id="pane-help" class="pane">
+      <div class="side-hint">
+        <p><b>SRTools 4.6.53</b> 是 <a href="https://srtools.neonteam.dev/" target="_blank"
+          rel="noreferrer">srtools.neonteam.dev</a> 的本地替代：数据表直接取自
+          4.6.53 客户端，因此新角色 / 新光锥 / 新遗器都会自动出现在下拉框里。</p>
+        <p>编辑完点顶部「下载 freesr-data.json」把存档导出到任意位置（可再放回私服的
+          <code>freesr-data.json</code>，私服的配置监视线程会自动热重载并推送；也可在
+          游戏里 <code>/sync</code>）。</p>
+        <p>「连接私服」等价 srtools 网站的 Connect PS：填私服 dispatch 地址
+          （默认 <code>http://127.0.0.1:21000</code>）和 <code>server_config.json</code>
+          里 <code>srtools.username/password</code> 凭据，连接成功会同时推送当前配置。</p>
+      </div>
+    </section>
+  </nav>
+
+  <section class="content">
+    <!-- 角色编辑 -->
+    <div id="view-avatar" class="view">
+      <div id="avatar-empty" class="empty">从左侧选择或添加一个角色</div>
+      <div id="avatar-editor" hidden>
+        <div class="avatar-head">
+          <div>
+            <h2 id="av-name">—</h2>
+            <p id="av-tags" class="tags"></p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <label class="field">等级
+            <input id="av-level" type="number" min="1" max="80">
+          </label>
+          <label class="field">晋阶
+            <input id="av-promotion" type="number" min="0" max="6">
+          </label>
+          <label class="field">星魂
+            <input id="av-rank" type="number" min="0" max="6">
+          </label>
+          <label class="field">能量初始值
+            <input id="av-sp-value" type="number" min="0" max="500">
+          </label>
+          <label class="field">能量上限
+            <input id="av-sp-max" type="number" min="0" max="500">
+          </label>
+          <label class="field">秘技 id（逗号分隔，可空）
+            <input id="av-techniques" type="text" placeholder="例如 1007,1008">
+          </label>
+        </div>
+
+        <h3 class="section-title" id="ex-rank-title" hidden>特殊星魂（EX）
+          <span class="hint">独立于普通 6 个星魂；仅景元 / 丹恒·饮月 / 黄泉在 4.6.53 有</span>
+        </h3>
+        <div id="ex-rank-box" class="ex-rank-box" hidden></div>
+
+        <h3 class="section-title">行迹 / 技能等级
+          <span class="hint" id="trace-hint"></span>
+          <button id="btn-trace-max" class="ghost mini">全部满级</button>
+        </h3>
+        <div id="trace-grid" class="trace-grid"></div>
+
+        <h3 class="section-title">光锥
+          <button id="btn-lc-clear" class="ghost mini">卸下</button>
+        </h3>
+        <div class="grid-3">
+          <label class="field wide">光锥
+            <select id="lc-select"></select>
+          </label>
+          <label class="field">等级
+            <input id="lc-level" type="number" min="1" max="80">
+          </label>
+          <label class="field">叠影
+            <input id="lc-rank" type="number" min="1" max="5">
+          </label>
+          <label class="field">晋阶
+            <input id="lc-promotion" type="number" min="0" max="6">
+          </label>
+        </div>
+
+        <h3 class="section-title">遗器
+          <button id="btn-relic-auto" class="ghost mini" title="按所选套装自动补齐 4 个部位">自动补齐 4 件</button>
+        </h3>
+        <div id="relic-grid" class="relic-grid"></div>
+      </div>
+    </div>
+
+    <!-- 战斗配置 -->
+    <div id="view-battle" class="view" hidden>
+      <h2>战斗配置</h2>
+      <p class="tags">对应 <code>freesr-data.json</code> 的 <code>battle_config</code>：
+        回合数、关卡 ID、怪物波次、祝福（buff）。</p>
+      <div class="grid-3">
+        <label class="field">回合数
+          <input id="bc-cycles" type="number" min="1" max="999">
+        </label>
+        <label class="field">关卡 ID（stage_id）
+          <input id="bc-stage" type="number" min="0">
+        </label>
+        <label class="field">战斗类型
+          <input id="bc-type" type="text" placeholder="DEFAULT">
+        </label>
+      </div>
+
+      <h3 class="section-title">怪物波次
+        <button id="btn-wave-add" class="ghost mini">＋ 一波</button>
+      </h3>
+      <div id="wave-list" class="wave-list"></div>
+
+      <h3 class="section-title">祝福 / Buff
+        <button id="btn-buff-add" class="ghost mini">＋ 一条</button>
+      </h3>
+      <p class="hint">srtools 的 blessings 结构是 <code>{id, level}</code>；旧数据里的 id
+        会原样保留，也可以从 4.6.53 的模拟宇宙祝福表里挑。</p>
+      <div id="buff-list" class="buff-list"></div>
+    </div>
+
+    <!-- 工具 -->
+    <div id="view-tools" class="view" hidden>
+      <h2>工具</h2>
+      <h3 class="section-title">批量操作</h3>
+      <div class="tool-row">
+        <button id="btn-bulk-max" class="ghost">全部角色满级 / 满行迹 / 满星魂</button>
+        <button id="btn-bulk-lc" class="ghost">给没有光锥的角色配一条同命途光锥</button>
+        <button id="btn-bulk-relic" class="ghost">给没有遗器的角色补齐 4 件</button>
+      </div>
+      <h3 class="section-title">存档信息</h3>
+      <p class="hint">文件管理在顶栏：「上传 freesr-data.json」把本地存档载入工具，
+        「下载 freesr-data.json」把当前编辑结果导出（可选保存位置）。</p>
+      <pre id="profile-info" class="code"></pre>
+    </div>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
