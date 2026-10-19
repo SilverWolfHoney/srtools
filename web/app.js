@@ -435,8 +435,12 @@
         const style = Object.entries(pos.style || {}).map(([k, v]) => `${k}:${v}`).join(';');
         const big = String(pos.class || '').includes('main-trace');
         const lv = Number(skills[pid] ?? 0);
-        return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}"
-             data-max="${node.max}" style="${style}" title="锚点 ${node.anchor}">
+        const anchorNum = Number(String(node.anchor || '').replace(/\D/g, '')) || 0;
+        const sp = (cfg.skill_points || []).find((x) =>
+          Number(x.anchor) === anchorNum && !!x.enhanced === !!S.enhancedMode);
+        const label = (sp && sp.name_text) || `锚点 ${node.anchor}`;
+        return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}" data-anchor="${node.anchor}"
+             data-max="${node.max}" data-name="${escapeHtml(label)}" style="${style}" title="${escapeHtml(label)}">
           <img src="/trace-icons/${node.icon}" alt="">
           <span class="tlv">${lv}/${node.max}</span>
         </div>`;
@@ -493,7 +497,7 @@
     const item = ensureAvatar(S.avatarId);
     const skills = item.data.skills || (item.data.skills = {});
     S.traceEditing = { pid, node, el };
-    $('te-title').textContent = `锚点 ${node.anchor || ''}`;
+    $('te-title').textContent = el.dataset.name || `锚点 ${node.anchor || ''}`;
     $('te-max').textContent = `/${max}`;
     $('te-level').max = max;
     $('te-level').value = Number(skills[pid] ?? 0);

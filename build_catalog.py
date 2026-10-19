@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import struct
 import sys
 import time
 from datetime import datetime
@@ -35,6 +36,74 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_SWH = Path(r"E:\HSRBetaPS\SilverWolfHoney")
 DEFAULT_CLIENT = Path(r"F:\StarRail_4.6.53")
 GAMECORE = "ExcelOutputGameCore/"
+
+# ---------------------------------------------------------------- xxh64
+# 客户端 TextMap 的 Hash64 = xxh64(key)，用于把 SkillPointName_* 翻译成中文
+
+_MASK = 0xFFFFFFFFFFFFFFFF
+_P1 = 0x9E3779B185EBCA87
+_P2 = 0xC2B2AE3D27D4EB4F
+_P3 = 0x165667B19E3779F9
+_P4 = 0x85EBCA77C2B2AE63
+_P5 = 0x27D4EB2F165667C5
+
+# 技能点（锚点 1-5）没有 PointName，按类型给固定名字
+ANCHOR_NAME = {1: "普通攻击", 2: "战技", 3: "终结技", 4: "天赋", 5: "秘技"}
+
+
+def _rotl(x: int, r: int) -> int:
+    return ((x << r) | (x >> (64 - r))) & _MASK
+
+
+def _round(acc: int, inp: int) -> int:
+    return (_rotl((acc + inp * _P2) & _MASK, 31) * _P1) & _MASK
+
+
+def _merge(acc: int, val: int) -> int:
+    acc ^= _round(0, val)
+    return (acc * _P1 + _P4) & _MASK
+
+
+def xxh64(data: bytes, seed: int = 0) -> int:
+    n = len(data)
+    pos = 0
+    if n >= 32:
+        v1 = (seed + _P1 + _P2) & _MASK
+        v2 = (seed + _P2) & _MASK
+        v3 = seed & _MASK
+        v4 = (seed - _P1) & _MASK
+        while pos + 32 <= n:
+            v1 = _round(v1, struct.unpack_from("<Q", data, pos)[0]); pos += 8
+            v2 = _round(v2, struct.unpack_from("<Q", data, pos)[0]); pos += 8
+            v3 = _round(v3, struct.unpack_from("<Q", data, pos)[0]); pos += 8
+            v4 = _round(v4, struct.unpack_from("<Q", data, pos)[0]); pos += 8
+        h = (_rotl(v1, 1) + _rotl(v2, 7) + _rotl(v3, 12) + _rotl(v4, 18)) & _MASK
+        for v in (v1, v2, v3, v4):
+            h = _merge(h, v)
+    else:
+        h = (seed + _P5) & _MASK
+
+    h = (h + n) & _MASK
+    while pos + 8 <= n:
+        h ^= _round(0, struct.unpack_from("<Q", data, pos)[0])
+        h = (_rotl(h, 27) * _P1 + _P4) & _MASK
+        pos += 8
+    if pos + 4 <= n:
+        h ^= (struct.unpack_from("<I", data, pos)[0] * _P1) & _MASK
+        h = (_rotl(h, 23) * _P2 + _P3) & _MASK
+        pos += 4
+    while pos < n:
+        h ^= (data[pos] * _P5) & _MASK
+        h = (_rotl(h, 11) * _P1) & _MASK
+        pos += 1
+
+    h ^= h >> 33
+    h = (h * _P2) & _MASK
+    h ^= h >> 29
+    h = (h * _P3) & _MASK
+    h ^= h >> 32
+    return h
+
 EXCEL = "ExcelOutput/"
 
 
@@ -162,6 +231,12 @@ class Builder:
                 item = dict(points[point_id])
                 anchor = item["anchor_type"]
                 item["anchor"] = int(anchor[-2:]) if anchor[-2:].isdigit() else 0
+                raw_name = item.get("name") or ""
+                if raw_name:
+                    # PointName 是 TextMap key（如 SkillPointName_1001201），xxh64 后查表
+                    item["name_text"] = self.text(xxh64(raw_name.encode())) or ""
+                else:
+                    item["name_text"] = ANCHOR_NAME.get(item["anchor"], "")
                 items.append(item)
             out[str(avatar_id)] = items
         return out
