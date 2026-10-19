@@ -258,9 +258,17 @@
         name,
         level: item.level,
         rank: item.data?.rank,
+        rarity: cfg ? Number(cfg.rarity) || 4 : 4,
       });
     }
-    rows.sort((a, b) => a.id - b.id);
+    // 排序：8000 之后的编号沉底 → 五星在前、四星在后 → 编号从大到小
+    rows.sort((a, b) => {
+      const aLate = a.id >= 8000 ? 1 : 0;
+      const bLate = b.id >= 8000 ? 1 : 0;
+      if (aLate !== bLate) return aLate - bLate;
+      if (a.rarity !== b.rarity) return b.rarity - a.rarity;
+      return b.id - a.id;
+    });
     box.innerHTML = rows.map((r) => `
       <div class="avatar-item ${S.avatarId === r.id ? 'active' : ''}" data-id="${r.id}">
         <img class="avatar-icon" src="/avatars/${r.id}.webp" alt=""
