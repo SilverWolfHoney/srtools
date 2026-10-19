@@ -16,7 +16,7 @@
 /* 显式保证 hidden 生效：本文件里 .section-title / .ex-rank-box 设了 display:flex，
    作者样式的优先级高于浏览器对 [hidden] 的 display:none */
 [hidden] { display: none !important; }
-html, body { height: 100%; }
+html, body { height: 100%; overflow: hidden; }
 body {
   margin: 0;
   background: var(--bg);
@@ -63,11 +63,12 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .dirty { color: var(--warn); font-size: 12px; }
 
 /* ---------------- layout ---------------- */
-.layout { display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 63px); }
+.layout { display: grid; grid-template-columns: 300px 1fr; height: calc(100vh - 63px); }
 .sidebar {
   border-right: 1px solid var(--line);
   background: var(--panel);
   display: flex; flex-direction: column; min-height: 0;
+  overflow-y: auto;
 }
 .tabs { display: flex; border-bottom: 1px solid var(--line); }
 .tab {
@@ -99,6 +100,16 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .avatar-item .r5 { color: #e6b422; font-size: 11px; }
 
 .content { padding: 20px 24px 48px; overflow: auto; min-height: 0; }
+/* 细滚动条（左栏 / 右侧内容区各自滚动） */
+.sidebar::-webkit-scrollbar, .content::-webkit-scrollbar { width: 8px; height: 8px; }
+.sidebar::-webkit-scrollbar-track, .content::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb, .content::-webkit-scrollbar-thumb {
+  background: var(--line); border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover, .content::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
 .view { max-width: 1180px; }
 .empty { color: var(--muted); padding: 60px 0; text-align: center; }
 
