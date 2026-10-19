@@ -860,9 +860,6 @@
       $('trace-editor').hidden = true;
       S.traceEditing = null;
     });
-    $('te-full').addEventListener('click', () => {
-      if (S.traceEditing) setTraceLevel(S.traceEditing.node.max);
-    });
     $('btn-trace-max').addEventListener('click', () => {
       const cfg = avatarCfg(S.avatarId);
       const item = ensureAvatar(S.avatarId);
