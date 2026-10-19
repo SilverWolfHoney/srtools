@@ -438,7 +438,13 @@
         const anchorNum = Number(String(node.anchor || '').replace(/\D/g, '')) || 0;
         const sp = (cfg.skill_points || []).find((x) =>
           Number(x.anchor) === anchorNum && !!x.enhanced === !!S.enhancedMode);
-        const label = (sp && sp.name_text) || `锚点 ${node.anchor}`;
+        let label = `锚点 ${node.anchor}`;
+        if (sp && sp.name_text) {
+          // 锚点 6-8 是额外能力（point_type=3），显示成「额外能力 (名字)」
+          label = Number(sp.point_type) === 3
+            ? `额外能力 (${sp.name_text})`
+            : sp.name_text;
+        }
         return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}" data-anchor="${node.anchor}"
              data-max="${node.max}" data-name="${escapeHtml(label)}" style="${style}" title="${escapeHtml(label)}">
           <img src="/trace-icons/${node.icon}" alt="">
