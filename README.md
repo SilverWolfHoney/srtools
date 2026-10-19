@@ -34,7 +34,7 @@ python serve.py --port 21101
 
 | 页 | 能做什么 |
 |---|---|
-| **角色** | 角色列表带**头像缩略图**（来自 srtools 网站 CDN，100 个角色），支持按**命途 / 元素**下拉筛选；等级 / 晋阶 / 星魂 / 能量；**特殊星魂（EX）**（4.6.53 的景元 / 丹恒·饮月 / 黄泉各一个，独立于普通 6 星魂，勾选后写入 `data.ex_rank_id_list`）；行迹（每个锚点独立等级，可一键满级；**10 个加强角色**——瓦尔特/卡芙卡/银狼/希儿/刃/镜流/藿藿/花火/黑天鹅/流萤——有「加强形态」开关，切换普通/加强两套各 18 个行迹点）；光锥（按命途分组选择、等级/叠影/晋阶）；遗器（4 部位、主词条、4 条副词条 + 档位/强化次数、一键自动补齐 4 件） |
+| **角色** | 角色列表带**头像缩略图**（来自 srtools 网站 CDN，100 个角色），支持按**命途 / 元素**下拉筛选；等级 / 晋阶 / 星魂 / 能量；**特殊星魂（EX）**（4.6.53 的景元 / 丹恒·饮月 / 黄泉各一个，独立于普通 6 星魂，勾选后写入 `data.ex_rank_id_list`）；**游戏风格行迹树**（按命途底图 + 图标 + 点击节点编辑等级，可一键满级；**10 个加强角色**——瓦尔特/卡芙卡/银狼/希儿/刃/镜流/藿藿/花火/黑天鹅/流萤——有「加强形态」开关，切换普通/加强两套各 18 个行迹点）；光锥（按命途分组选择、等级/叠影/晋阶）；遗器（4 部位、主词条、4 条副词条 + 档位/强化次数、一键自动补齐 4 件） |
 | **战斗配置** | 回合数、关卡 ID、怪物波次（4.6.53 怪物 2779 只）、祝福 buff（沿用旧 id，也可从模拟宇宙祝福表挑选） |
 | **工具** | 批量满级 / 补光锥 / 补遗器；存档信息 |
 | **上传 / 下载 / 同步** | 顶栏三个按钮：**上传 freesr-data.json**（选择本地存档载入工具）、**下载 freesr-data.json**（当前编辑结果导出，弹出系统保存位置对话框）、**同步到私服**（弹出 Connect 弹窗：Provider + Server URL + Connect，验证后把当前配置推送到私服） |
@@ -51,9 +51,11 @@ python serve.py --port 21101
 | **特殊星魂（EX）** | 客户端 `AvatarSkillConfig.RelatedExRankIDList`（只有景元 1204 / 丹恒·饮月 1213 / 黄泉 1308 的被动技能有值） |
 | 中文名 | `SilverWolfHoney/dump_4.6.53/TextMap.json` |
 | 角色头像 | `https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/<id>.webp`（下载到 `web/avatars/`，缺失的角色显示文字占位） |
+| 行迹树 | 布局/树结构来自 srtools 站点（`data/trace_layout.json`、`data/trace_trees.json`，随仓库分发）；命途底图 `https://srtools.neonteam.dev/traces/<Path>.svg`、行迹图标 `cdn.neonteam.dev/.../skillicons|ui/avatar/icon/*.webp`（下载到 `web/traces/`、`web/trace-icons/`） |
 
-> 头像资源（游戏版权）不随仓库分发：克隆后运行 `python fetch_avatars.py` 即可下载到
-> `web/avatars/`；缺失的角色会自动显示文字占位，不影响编辑功能。
+> 头像与行迹底图/图标（游戏版权）不随仓库分发：克隆后运行
+> `python fetch_avatars.py` 和 `python fetch_trace_assets.py` 重建即可；
+> 缺失资源会自动显示占位，不影响编辑功能。
 
 客户端更新或换目录后重新生成：
 

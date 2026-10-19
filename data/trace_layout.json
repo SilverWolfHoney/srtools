@@ -1,0 +1,1198 @@
+{
+  "Priest": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(53% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(34% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(24% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "right": "calc(18.5% - var(--size-big) / 2)",
+        "bottom": "calc(18% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "left": "calc(18.5% - var(--size-big) / 2)",
+        "bottom": "calc(18% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(4% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "right": "calc(38.5% - var(--size-small) / 2)",
+        "bottom": "calc(4% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc(38.5% - var(--size-small) / 2)",
+        "bottom": "calc(4% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc(5% - var(--size-small) / 2)",
+        "bottom": "calc(32% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc((6% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(46% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "left": "calc(12% - var(--size-small) / 2)",
+        "top": "calc(36% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc(5% - var(--size-small) / 2)",
+        "bottom": "calc(32% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc((6% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(46% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(12% - var(--size-small) / 2)",
+        "top": "calc(36% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(23% - var(--size-small) / 2)",
+        "top": "calc(6% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(23% - var(--size-small) / 2)",
+        "top": "calc(6% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Warrior": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(53% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(36% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(24% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(25% - var(--size-big) / 2)",
+        "bottom": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(25% - var(--size-big) / 2)",
+        "bottom": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(22% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "bottom": "calc(4% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(30% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc((6% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(42% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc(10% - var(--size-small) / 2)",
+        "top": "calc(36% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(30% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc((6% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(42% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(10% - var(--size-small) / 2)",
+        "top": "calc(36% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "top": "calc(8% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(11% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(11% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Mage": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(30% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(30% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(34% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(8% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(13% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(13% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(9% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "left": "calc(28% - var(--size-small) / 2)",
+        "bottom": "calc(10% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc((5% - var(--size-small) / 2) * -1)",
+        "top": "calc(55% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc((2% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(24% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc((2% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(56% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc((5% - var(--size-small) / 2) * -1)",
+        "top": "calc(55% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc((2% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(24% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc((2% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(56% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "left": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(10% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "right": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(10% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(28% - var(--size-small) / 2)",
+        "bottom": "calc(10% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Shaman": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(34% - var(--size-big) / 2)",
+        "top": "calc(45% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(23% - var(--size-big) / 2)",
+        "top": "calc(45% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(43.5% - var(--size-big) / 2)",
+        "bottom": "calc(36% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(43.5% - var(--size-big) / 2)",
+        "top": "calc(42% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(43.5% - var(--size-big) / 2)",
+        "bottom": "calc(18% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(8% - var(--size-big) / 2)",
+        "bottom": "calc(43% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc((8% - var(--size-big) / 2) * -1)",
+        "bottom": "calc(39% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(43.5% - var(--size-big) / 2)",
+        "top": "calc(20% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "right": "calc(42.5% - var(--size-small) / 2)",
+        "bottom": "calc(1% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc((7% - var(--size-small) / 2) * -1)",
+        "top": "calc(40% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc(14% - var(--size-small) / 2)",
+        "top": "calc(31% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc(31% - var(--size-small) / 2)",
+        "bottom": "calc(6% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc(6% - var(--size-small) / 2)",
+        "bottom": "calc(24% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc(20% - var(--size-small) / 2)",
+        "bottom": "calc(30% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(21% - var(--size-small) / 2)",
+        "bottom": "calc(6% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(42.5% - var(--size-small) / 2)",
+        "top": "calc(1% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(29% - var(--size-small) / 2)",
+        "top": "calc(6% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(19% - var(--size-small) / 2)",
+        "top": "calc(6% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Rogue": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(46% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(46% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(36% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(24% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(26.5% - var(--size-big) / 2)",
+        "bottom": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(26.5% - var(--size-big) / 2)",
+        "bottom": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(19% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "bottom": "calc(4% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(35% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc((9% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(49% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc(10% - var(--size-small) / 2)",
+        "top": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(35% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc((9% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(49% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(10% - var(--size-small) / 2)",
+        "top": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "top": "calc(4% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(8% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(8% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Warlock": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(45% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(45% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(49% - var(--size-big) / 2)",
+        "top": "calc(44% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(49% - var(--size-big) / 2)",
+        "top": "calc(27% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(49% - var(--size-big) / 2)",
+        "bottom": "calc(36% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(12% - var(--size-big) / 2)",
+        "top": "calc(38% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(12% - var(--size-big) / 2)",
+        "top": "calc(38% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "left": "calc(49% - var(--size-big) / 2)",
+        "top": "calc(10% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "left": "calc(48% - var(--size-small) / 2)",
+        "bottom": "calc(20% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc((7% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(42% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(26% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc(23% - var(--size-small) / 2)",
+        "bottom": "calc(11% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc((7% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(42% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc(10% - var(--size-small) / 2)",
+        "bottom": "calc(26% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(23% - var(--size-small) / 2)",
+        "bottom": "calc(11% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "left": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(12% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "right": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(12% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "left": "calc(48% - var(--size-small) / 2)",
+        "bottom": "calc(5% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Knight": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(53% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(34% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(24% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "left": "calc(27% - var(--size-big) / 2)",
+        "bottom": "calc(10% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(27% - var(--size-big) / 2)",
+        "bottom": "calc(10% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "bottom": "calc(8% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc(9% - var(--size-small) / 2)",
+        "bottom": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc((8% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(43% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "left": "calc(12% - var(--size-small) / 2)",
+        "top": "calc(37% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc(9% - var(--size-small) / 2)",
+        "bottom": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "right": "calc((8% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(43% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(12% - var(--size-small) / 2)",
+        "top": "calc(37% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(47.5% - var(--size-small) / 2)",
+        "top": "calc(6% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(10% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(24% - var(--size-small) / 2)",
+        "top": "calc(10% - var(--size-small) / 2)"
+      }
+    }
+  },
+  "Memory": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(31% - var(--size-big) / 2)",
+        "bottom": "calc(28% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(29% - var(--size-big) / 2)",
+        "bottom": "calc(28% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(47.5% - var(--size-big) / 2)",
+        "bottom": "calc(22% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(18% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(20% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "right": "calc((10% - var(--size-big) / 2) * -1)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "right": "calc(47.5% - var(--size-big) / 2)",
+        "bottom": "calc(5% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "left": "calc(30% - var(--size-big) / 2)",
+        "top": "calc(28% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "left": "calc((6% - var(--size-small) / 2) * -1)",
+        "top": "calc(49% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "left": "calc((1% - var(--size-small) / 2) * -1)",
+        "top": "calc(30% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc((1% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "right": "calc((1% - var(--size-small) / 2) * -1)",
+        "top": "calc(30% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "right": "calc((1% - var(--size-small) / 2) * -1)",
+        "bottom": "calc(28% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "left": "calc(30% - var(--size-small) / 2)",
+        "bottom": "calc(7% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "right": "calc(28% - var(--size-small) / 2)",
+        "bottom": "calc(7% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "left": "calc(21% - var(--size-small) / 2)",
+        "top": "calc(12% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "left": "calc(38% - var(--size-small) / 2)",
+        "top": "calc(5% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(36% - var(--size-small) / 2)",
+        "top": "calc(5% - var(--size-small) / 2)"
+      }
+    },
+    "Point19": {
+      "class": "point",
+      "style": {
+        "right": "calc(47.5% - var(--size-big) / 2)",
+        "top": "calc(50% - var(--size-big) / 2)"
+      }
+    },
+    "Point20": {
+      "class": "point",
+      "style": {
+        "right": "calc(47.5% - var(--size-big) / 2)",
+        "top": "calc(22% - var(--size-big) / 2)"
+      }
+    },
+    "Point21": {
+      "class": "point",
+      "style": {
+        "right": "calc(27.5% - var(--size-big) / 2)",
+        "top": "calc(32% - var(--size-big) / 2)"
+      }
+    }
+  },
+  "Elation": {
+    "Point01": {
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(7% - var(--size-big) / 2)"
+      }
+    },
+    "Point02": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(28% - var(--size-big) / 2)",
+        "top": "calc(7% - var(--size-big) / 2)"
+      }
+    },
+    "Point03": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(24% - var(--size-big) / 2)"
+      },
+      "text": "3"
+    },
+    "Point04": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(48% - var(--size-big) / 2)"
+      }
+    },
+    "Point05": {
+      "class": "point main-trace",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(31% - var(--size-big) / 2)"
+      }
+    },
+    "Point06": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "bottom": "calc(7% - var(--size-big) / 2)"
+      }
+    },
+    "Point07": {
+      "class": "point",
+      "style": {
+        "left": "calc(7% - var(--size-big) / 2)",
+        "top": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point08": {
+      "class": "point",
+      "style": {
+        "right": "calc(7% - var(--size-big) / 2)",
+        "top": "calc(21% - var(--size-big) / 2)"
+      }
+    },
+    "Point09": {
+      "class": "point small",
+      "style": {
+        "left": "calc(30% - var(--size-small) / 2)",
+        "bottom": "calc(34% - var(--size-small) / 2)"
+      }
+    },
+    "Point10": {
+      "class": "point small",
+      "style": {
+        "right": "calc(30% - var(--size-small) / 2)",
+        "bottom": "calc(34% - var(--size-small) / 2)"
+      }
+    },
+    "Point11": {
+      "class": "point small",
+      "style": {
+        "left": "calc(31% - var(--size-small) / 2)",
+        "bottom": "calc(5% - var(--size-small) / 2)"
+      }
+    },
+    "Point12": {
+      "class": "point small",
+      "style": {
+        "right": "calc(31% - var(--size-small) / 2)",
+        "bottom": "calc(5% - var(--size-small) / 2)"
+      }
+    },
+    "Point13": {
+      "class": "point small",
+      "style": {
+        "left": "calc(-2% - var(--size-small) / 2)",
+        "top": "calc(40% - var(--size-small) / 2)"
+      }
+    },
+    "Point14": {
+      "class": "point small",
+      "style": {
+        "left": "calc(2% - var(--size-small) / 2)",
+        "bottom": "calc(39% - var(--size-small) / 2)"
+      }
+    },
+    "Point15": {
+      "class": "point small",
+      "style": {
+        "left": "calc(14% - var(--size-small) / 2)",
+        "top": "calc(49% - var(--size-small) / 2)"
+      }
+    },
+    "Point16": {
+      "class": "point small",
+      "style": {
+        "right": "calc(-2% - var(--size-small) / 2)",
+        "top": "calc(40% - var(--size-small) / 2)"
+      }
+    },
+    "Point17": {
+      "class": "point small",
+      "style": {
+        "right": "calc(2% - var(--size-small) / 2)",
+        "bottom": "calc(39% - var(--size-small) / 2)"
+      }
+    },
+    "Point18": {
+      "class": "point small",
+      "style": {
+        "right": "calc(14% - var(--size-small) / 2)",
+        "top": "calc(49% - var(--size-small) / 2)"
+      }
+    },
+    "Point22": {
+      "class": "point",
+      "style": {
+        "right": "calc(48.5% - var(--size-big) / 2)",
+        "top": "calc(2% - var(--size-big) / 2)"
+      }
+    },
+    "Point23": {
+      "class": "point",
+      "style": {
+        "left": "calc(28.5% - var(--size-big) / 2)",
+        "top": "calc(35% - var(--size-big) / 2)"
+      }
+    }
+  }
+}

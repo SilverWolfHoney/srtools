@@ -14,6 +14,8 @@
     dirty: false,
     idx: {},
     conn: null,   // 已连接的私服：{ url, provider, endpoint }
+    traceTree: null,     // 当前行迹树数据（节点 + 布局）
+    traceEditing: null,  // 正在编辑的行迹节点
   };
   const $ = (id) => document.getElementById(id);
   const PART_ORDER = ['HEAD', 'HAND', 'BODY', 'FOOT'];
@@ -369,27 +371,93 @@
     }
   }
 
+  /** 属性加成中文名（行迹节点悬停/编辑面板用）。 */
+  const STAT_NAME = {
+    HPDelta: '生命值', HPRatio: '生命值%', HPAddedRatio: '生命值%',
+    AttackDelta: '攻击力', AttackAddedRatio: '攻击力%',
+    DefenceDelta: '防御力', DefenceAddedRatio: '防御力%',
+    SpeedDelta: '速度', CriticalChanceBase: '暴击率', CriticalDamageBase: '暴击伤害',
+    StatusProbabilityBase: '效果命中', StatusResistanceBase: '效果抵抗',
+    BreakDamageAddedRatioBase: '击破特攻', HealRatioBase: '治疗量加成',
+    SPRatioBase: '能量恢复效率', PhysicalAddedRatio: '物理伤害提高',
+    FireAddedRatio: '火伤害提高', IceAddedRatio: '冰伤害提高',
+    ThunderAddedRatio: '雷伤害提高', WindAddedRatio: '风伤害提高',
+    QuantumAddedRatio: '量子伤害提高', ImaginaryAddedRatio: '虚数伤害提高',
+    ElationDamageAddedRatioBase: '欢愉伤害提高',
+  };
+  function statText(type, value) {
+    const name = STAT_NAME[type] || type || '';
+    const num = Number(value) || 0;
+    if (String(type || '').includes('Ratio') || String(type || '').includes('Chance')) {
+      return `${name} +${(num * 100).toFixed(1)}%`;
+    }
+    return `${name} +${Number.isInteger(num) ? num : num.toFixed(1)}`;
+  }
+
+  /** 行迹：优先渲染游戏风格行迹树（网站布局 + 图标），无树数据时退回数字网格。 */
   function renderTraces(cfg, item) {
-    const box = $('trace-grid');
-    const wrap = $('trace-enhanced-wrap');
+    const grid = $('trace-grid');
+    const wrap = $('trace-tree-wrap');
+    const box = $('trace-nodes');
+    const enhWrap = $('trace-enhanced-wrap');
     const toggle = $('trace-enhanced');
+    const treeData = S.cata.trace_trees?.avatars?.[String(item.avatar_id)];
+    const layout = S.cata.trace_trees?.layout?.[cfg?.path];
+
     if (!cfg || !(cfg.skill_points || []).length) {
-      box.innerHTML = '<div class="side-hint">该角色在 4.6.53 客户端技能树表里没有行迹数据（联动/活动角色常见）。</div>';
-      $('trace-hint').textContent = '';
+      grid.innerHTML = '<div class="side-hint">该角色在 4.6.53 客户端技能树表里没有行迹数据（联动/活动角色常见）。</div>';
+      grid.hidden = false;
       wrap.hidden = true;
+      $('trace-hint').textContent = '';
+      enhWrap.hidden = true;
       return;
     }
     // 加强角色（10 个）有两套行迹：普通 18 点 + 加强 18 点
     const hasEnhanced = cfg.skill_points.some((p) => p.enhanced);
     if (!hasEnhanced) S.enhancedMode = false;
-    wrap.hidden = !hasEnhanced;
+    enhWrap.hidden = !hasEnhanced;
     toggle.checked = S.enhancedMode;
-    const points = cfg.skill_points.filter((p) => !!p.enhanced === S.enhancedMode);
     const skills = item.data.skills || (item.data.skills = {});
     const anchors = item.data.skills_by_anchor_type || (item.data.skills_by_anchor_type = {});
+    const mode = S.enhancedMode ? 'tree_enhanced' : 'tree';
+    const nodes = treeData?.[mode];
+
+    if (nodes && layout) {
+      // —— 游戏风格行迹树 ——
+      $('trace-editor').hidden = true;
+      S.traceEditing = null;
+      grid.hidden = true;
+      wrap.hidden = false;
+      S.traceTree = { nodes, layout };
+      const list = Object.entries(nodes).sort((a, b) => Number(a[0]) - Number(b[0]));
+      box.innerHTML = list.map(([pid, node]) => {
+        const pos = layout[node.anchor] || {};
+        const style = Object.entries(pos.style || {}).map(([k, v]) => `${k}:${v}`).join(';');
+        const big = String(pos.class || '').includes('main-trace');
+        const lv = Number(skills[pid] ?? 0);
+        return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}"
+             data-max="${node.max}" style="${style}" title="锚点 ${node.anchor}">
+          <img src="/trace-icons/${node.icon}" alt="">
+          <span class="tlv">${lv}/${node.max}</span>
+        </div>`;
+      }).join('');
+      $('trace-hint').textContent = `${list.length} 个行迹点` +
+        (hasEnhanced ? (S.enhancedMode ? '（加强形态）' : '（普通形态）') : '');
+      for (const el of box.querySelectorAll('.trace-node')) {
+        el.addEventListener('click', () => openTraceEditor(el));
+      }
+      // 连线画在命途底图 traces/<Path>.svg 里
+      $('trace-tree').style.backgroundImage = `url(/traces/${cfg.path || 'Knight'}.svg)`;
+      return;
+    }
+
+    // —— 无树数据：退回数字网格 ——
+    wrap.hidden = true;
+    grid.hidden = false;
+    const points = cfg.skill_points.filter((p) => !!p.enhanced === S.enhancedMode);
     $('trace-hint').textContent = `${points.length} 个行迹点` +
       (hasEnhanced ? (S.enhancedMode ? '（加强形态）' : '（普通形态）') : '');
-    box.innerHTML = points.map((p) => {
+    grid.innerHTML = points.map((p) => {
       const val = Number(skills[String(p.point_id)] ?? 0);
       const label = p.anchor ? `锚点 ${p.anchor}` : '行迹';
       return `<label class="trace" title="PointID ${p.point_id}">
@@ -399,15 +467,13 @@
         <span class="max">/${p.max_level}</span>
       </label>`;
     }).join('');
-    for (const input of box.querySelectorAll('input')) {
+    for (const input of grid.querySelectorAll('input')) {
       input.addEventListener('input', () => {
         const point = input.dataset.point;
         const anchor = input.dataset.anchor;
         const max = Number(input.dataset.max) || 1;
-        let val = Number(input.value) || 0;
-        val = Math.max(0, Math.min(max, val));
+        const val = Math.max(0, Math.min(max, Number(input.value) || 0));
         skills[point] = val;
-        // skills_by_anchor_type 只记录普通形态（服务端靠它建技能树，避免两套锚点互相覆盖）
         if (!S.enhancedMode && anchor && Number(anchor) > 0) anchors[anchor] = val;
         markDirty();
       });
@@ -416,6 +482,48 @@
         input.value = Math.max(0, Math.min(max, Number(input.value) || 0));
       });
     }
+  }
+
+  /** 点开行迹节点编辑器（等级 +/-、满级、属性加成）。 */
+  function openTraceEditor(el) {
+    const pid = el.dataset.point;
+    const node = S.traceTree?.nodes?.[pid];
+    if (!node) return;
+    const max = Number(node.max) || 1;
+    const item = ensureAvatar(S.avatarId);
+    const skills = item.data.skills || (item.data.skills = {});
+    S.traceEditing = { pid, node, el };
+    $('te-title').textContent = `锚点 ${node.anchor || ''}`;
+    $('te-max').textContent = `/${max}`;
+    $('te-level').max = max;
+    $('te-level').value = Number(skills[pid] ?? 0);
+    $('te-adds').innerHTML = (node.adds || []).map((a) =>
+      `<span>${statText(a.type, a.value)}</span>`).join('');
+    const ed = $('trace-editor');
+    const wrapEl = $('trace-tree-wrap');
+    ed.hidden = false;
+    const left = Math.min(el.offsetLeft + el.offsetWidth + 12, wrapEl.clientWidth - 240);
+    const top = Math.min(el.offsetTop, Math.max(8, wrapEl.clientHeight - 200));
+    ed.style.left = `${Math.max(8, left)}px`;
+    ed.style.top = `${top}px`;
+  }
+
+  /** 设置当前编辑节点的等级（同步 skills / 锚点表 / 节点文本）。 */
+  function setTraceLevel(val) {
+    const st = S.traceEditing;
+    if (!st) return;
+    const max = Number(st.node.max) || 1;
+    const v = Math.max(0, Math.min(max, Number(val) || 0));
+    const item = ensureAvatar(S.avatarId);
+    const skills = item.data.skills || (item.data.skills = {});
+    const anchors = item.data.skills_by_anchor_type || (item.data.skills_by_anchor_type = {});
+    skills[st.pid] = v;
+    const anchor = Number(String(st.node.anchor || '').replace(/\D/g, '')) || 0;
+    if (!S.enhancedMode && anchor > 0) anchors[anchor] = v;
+    const lv = st.el.querySelector('.tlv');
+    if (lv) lv.textContent = `${v}/${max}`;
+    $('te-level').value = v;
+    markDirty();
   }
 
   function renderLightconeEditor(cfg, item) {
@@ -740,6 +848,20 @@
     $('trace-enhanced').addEventListener('change', () => {
       S.enhancedMode = $('trace-enhanced').checked;
       renderTraces(avatarCfg(S.avatarId), ensureAvatar(S.avatarId));
+    });
+    $('te-minus').addEventListener('click', () => {
+      setTraceLevel((Number($('te-level').value) || 0) - 1);
+    });
+    $('te-plus').addEventListener('click', () => {
+      setTraceLevel((Number($('te-level').value) || 0) + 1);
+    });
+    $('te-level').addEventListener('change', () => setTraceLevel($('te-level').value));
+    $('te-close').addEventListener('click', () => {
+      $('trace-editor').hidden = true;
+      S.traceEditing = null;
+    });
+    $('te-full').addEventListener('click', () => {
+      if (S.traceEditing) setTraceLevel(S.traceEditing.node.max);
     });
     $('btn-trace-max').addEventListener('click', () => {
       const cfg = avatarCfg(S.avatarId);

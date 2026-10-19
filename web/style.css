@@ -134,6 +134,65 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .trace-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px;
 }
+
+/* ============ 游戏风格行迹树 ============ */
+.trace-tree-wrap {
+  position: relative; margin-top: 10px; padding: 6px;
+  border-radius: var(--radius); border: 1px solid var(--line);
+  background: #0b0e14 url('/trace-bg.jpg') center / cover no-repeat;
+}
+.trace-tree {
+  position: relative; width: min(100%, 660px); aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  background-repeat: no-repeat; background-position: center; background-size: contain;
+  --size-big: 66px; --size-small: 48px;
+}
+.trace-nodes { position: absolute; inset: 0; }
+.trace-node {
+  position: absolute; display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; cursor: pointer; user-select: none;
+  background: rgba(13, 17, 26, 0.82);
+  border: 2px solid #4a5163;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.trace-node.big { width: var(--size-big); height: var(--size-big); }
+.trace-node.small { width: var(--size-small); height: var(--size-small); }
+.trace-node:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(110, 168, 254, 0.55);
+  transform: scale(1.06);
+}
+.trace-node img { width: 74%; height: 74%; object-fit: contain; pointer-events: none; }
+.trace-node .tlv {
+  position: absolute; left: 50%; bottom: -19px; transform: translateX(-50%);
+  font-size: 11px; line-height: 1; white-space: nowrap; color: #dbe3f5;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+.trace-editor {
+  position: absolute; z-index: 6; width: 224px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 10px; padding: 10px 12px;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+.te-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; }
+.te-close { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 14px; }
+.te-row { display: flex; align-items: center; gap: 6px; }
+.te-row input { width: 58px; text-align: center; }
+.te-btn {
+  width: 30px; height: 28px; background: var(--panel2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 7px; cursor: pointer;
+}
+.te-btn:hover { border-color: var(--accent); }
+.te-full {
+  flex: 1; height: 28px; background: var(--panel2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 7px; cursor: pointer; font-size: 12px;
+}
+.te-full:hover { border-color: var(--accent); }
+.te-max { color: var(--muted); font-size: 12px; }
+.te-adds {
+  margin-top: 8px; font-size: 11px; color: var(--muted);
+  display: flex; flex-direction: column; gap: 2px;
+}
 /* 行迹「加强形态」开关（仅 10 个加强角色显示） */
 .enh-switch {
   display: inline-flex; align-items: center; gap: 6px;

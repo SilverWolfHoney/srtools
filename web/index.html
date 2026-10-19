@@ -157,6 +157,27 @@
           </label>
           <button id="btn-trace-max" class="ghost mini">全部满级</button>
         </h3>
+        <div id="trace-tree-wrap" class="trace-tree-wrap" hidden>
+          <div id="trace-tree" class="trace-tree">
+            <div id="trace-nodes" class="trace-nodes"></div>
+          </div>
+          <div id="trace-editor" class="trace-editor" hidden>
+            <div class="te-head">
+              <span id="te-title">锚点</span>
+              <button id="te-close" class="te-close" title="关闭">✕</button>
+            </div>
+            <div class="te-row">
+              <button id="te-minus" class="te-btn">−</button>
+              <input id="te-level" type="number" min="0" value="0">
+              <button id="te-plus" class="te-btn">＋</button>
+              <span id="te-max" class="te-max">/10</span>
+            </div>
+            <div class="te-row" style="margin-top:8px">
+              <button id="te-full" class="te-full">全部满级</button>
+            </div>
+            <div id="te-adds" class="te-adds"></div>
+          </div>
+        </div>
         <div id="trace-grid" class="trace-grid"></div>
 
         <h3 class="section-title">光锥

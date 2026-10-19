@@ -381,6 +381,11 @@ def main() -> int:
     catalog["avatars_by_id"] = {str(a["id"]): a for a in avatars}
     catalog["skill_points"] = skills
 
+    # 行迹树（命途布局 + 每角色节点/连线/图标），由 fetch_trace_assets.py 生成
+    trace_file = ROOT / "data" / "trace_trees.json"
+    if trace_file.is_file():
+        catalog["trace_trees"] = json.loads(trace_file.read_text(encoding="utf-8"))
+
     catalog["lightcones"] = b.lightcones()
     catalog["relic_sets"] = b.relic_sets()
     catalog["relics"] = b.relics()
