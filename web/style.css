@@ -337,3 +337,53 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .toast.ok { border-color: var(--ok); }
 .toast.err { border-color: var(--danger); }
 .toast.warn { border-color: var(--warn); }
+
+/* ============ 战斗配置（Enemy Picker） ============ */
+.enemy-picker { display: flex; flex-direction: row; gap: 16px; align-items: flex-start; max-width: 980px; }
+.ep-nav {
+  display: flex; flex-direction: column; gap: 6px;
+  width: 140px; flex: none;
+}
+.ep-content {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ep-tab {
+  padding: 9px 14px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--text); cursor: pointer; font-size: 13px;
+  text-align: left;
+}
+.ep-tab:hover { border-color: var(--accent); }
+.ep-tab.active {
+  background: var(--accent); color: #06101f; border-color: var(--accent); font-weight: 600;
+}
+.ep-panel {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ep-row { display: flex; align-items: center; gap: 12px; }
+.ep-row > label { min-width: 110px; color: var(--muted); font-size: 13px; }
+.ep-row select, .ep-row input[type="text"] {
+  flex: 1; min-width: 0; background: var(--panel2); color: var(--text);
+  border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px;
+}
+.ep-row select:disabled { opacity: 0.5; }
+.ep-checks { gap: 22px; flex-wrap: wrap; }
+.ep-checks label {
+  display: inline-flex; align-items: center; gap: 6px; color: var(--text); min-width: 0;
+}
+.ep-monsters { display: flex; flex-wrap: wrap; gap: 8px; min-height: 30px; }
+.ep-chip {
+  padding: 4px 10px; border-radius: 999px; font-size: 12px;
+  background: rgba(110, 168, 254, 0.16); border: 1px solid rgba(110, 168, 254, 0.4);
+}
+.ep-actions { display: flex; gap: 10px; }
+.ep-actions .primary { width: auto; padding: 9px 18px; }
+.ep-current {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 18px; display: flex; flex-direction: column; gap: 6px;
+}
+.ep-current-title { font-weight: 600; margin-bottom: 2px; }
+.ep-wave { font-size: 13px; color: var(--text); display: flex; gap: 8px; flex-wrap: wrap; }
+.ep-wave b { color: var(--accent2); font-weight: 500; }

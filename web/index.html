@@ -86,9 +86,7 @@
       <div id="avatar-list" class="avatar-list"></div>
     </section>
 
-    <section id="pane-battle" class="pane">
-      <div class="side-hint">战斗配置面向「模拟宇宙 / 自定义战斗」入口，修改后保存即可。</div>
-    </section>
+    <section id="pane-battle" class="pane"></section>
 
     <section id="pane-tools" class="pane">
       <div class="side-hint">
@@ -204,7 +202,43 @@
 
     <!-- 战斗配置 -->
     <div id="view-battle" class="view" hidden>
-      <h2>战斗配置</h2>
+    <div class="enemy-picker">
+      <div class="ep-nav">
+        <button class="ep-tab active" data-mode="moC">混沌回忆</button>
+        <button class="ep-tab" data-mode="pureFiction">虚构叙事</button>
+        <button class="ep-tab" data-mode="apocalypticShadow">末日幻影</button>
+        <button class="ep-tab" data-mode="anomalyArbitration">异相仲裁</button>
+        <button class="ep-tab" data-mode="custom">自定义怪</button>
+      </div>
+      <div class="ep-content">
+        <div class="ep-panel">
+          <div class="ep-row">
+            <label>Pick Challenge</label>
+            <select id="ep-challenge"></select>
+          </div>
+          <div class="ep-row" id="ep-side-row">
+            <label>Side</label>
+            <select id="ep-side">
+              <option value="1">第一节点</option>
+              <option value="2">第二节点</option>
+            </select>
+          </div>
+          <div class="ep-row ep-checks">
+            <label><input type="checkbox" id="ep-cycle" checked> Use cycle count</label>
+            <label><input type="checkbox" id="ep-turbulence" checked> Use turbulence buff</label>
+          </div>
+          <div class="ep-row" id="ep-custom-row" hidden>
+            <label>怪物 ID</label>
+            <input id="ep-custom-ids" type="text" placeholder="例如 1003010,2013010（逗号分隔）">
+          </div>
+          <div id="ep-monsters" class="ep-monsters"></div>
+          <div class="ep-actions">
+            <button id="ep-apply" class="primary">应用为战斗配置</button>
+          </div>
+        </div>
+        <div id="ep-current" class="ep-current"></div>
+        <div class="ep-config">
+<h2>战斗配置</h2>
       <p class="tags">对应 <code>freesr-data.json</code> 的 <code>battle_config</code>：
         回合数、关卡 ID、怪物波次、祝福（buff）。</p>
       <div class="grid-3">
@@ -233,7 +267,12 @@
     </div>
 
     <!-- 工具 -->
-    <div id="view-tools" class="view" hidden>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-tools" class="view" hidden>
       <h2>工具</h2>
       <h3 class="section-title">批量操作</h3>
       <div class="tool-row">

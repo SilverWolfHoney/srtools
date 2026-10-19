@@ -16,6 +16,8 @@
     conn: null,   // 已连接的私服：{ url, provider, endpoint }
     traceTree: null,     // 当前行迹树数据（节点 + 布局）
     traceEditing: null,  // 正在编辑的行迹节点
+    battleMode: 'moC',   // 战斗配置：当前玩法
+    battleChallenge: '', // 战斗配置：当前挑战
   };
   const $ = (id) => document.getElementById(id);
   const PART_ORDER = ['HEAD', 'HAND', 'BODY', 'FOOT'];
@@ -694,7 +696,14 @@
   }
 
   // ---------------------------------------------------------------- 战斗配置
+  // ---------------------------------------------------------------- 战斗配置
+  /** 战斗配置页：旧版手动编辑（回合/关卡/波次/祝福）+ Enemy Picker 预置选择。 */
   function renderBattle() {
+    renderBattleConfig();
+    renderBattlePicker();
+  }
+
+  function renderBattleConfig() {
     const bc = S.profile.battle_config || (S.profile.battle_config = {});
     $('bc-cycles').value = bc.cycle_count ?? 30;
     $('bc-stage').value = bc.stage_id ?? 0;
@@ -767,6 +776,144 @@
     $('bc-type').oninput = () => { bc.battle_type = $('bc-type').value; markDirty(); };
   }
 
+
+  // ---------------------------------------------------------------- 战斗配置（Enemy Picker）
+  function monsterName(id) {
+    const m = (S.cata.monsters || []).find((x) => Number(x.id) === Number(id));
+    return m ? `${m.name} (${id})` : `怪物 ${id}`;
+  }
+
+  /** 战斗配置页：4 玩法（混沌/虚构/末日/异相仲裁）+ 自定义怪。 */
+  function renderBattlePicker() {
+    const presets = S.cata.battle_presets || {};
+    const mode = S.battleMode || 'moC';
+    for (const t of document.querySelectorAll('.ep-tab')) {
+      t.classList.toggle('active', t.dataset.mode === mode);
+    }
+    const custom = mode === 'custom';
+    $('ep-side-row').hidden = custom;
+    $('ep-custom-row').hidden = !custom;
+    $('ep-challenge').disabled = custom;
+    const preset = presets[mode];
+    const sel = $('ep-challenge');
+    const options = [];
+    if (!custom && preset) {
+      for (const period of preset.periods) {
+        if (mode === 'anomalyArbitration') {
+          options.push({ value: String(period.period),
+            label: `第 ${period.period} 关 · ${period.title || ''}` });
+        } else {
+          for (const f of period.floors) {
+            options.push({ value: `${period.period}:${f.floor}`,
+              label: `第 ${period.period} 期 · 第 ${f.floor} 层` });
+          }
+        }
+      }
+    }
+    sel.innerHTML = options.map((o) =>
+      `<option value="${o.value}">${escapeHtml(o.label)}</option>`).join('')
+      || '<option value="">（没有数据）</option>';
+    if (S.battleChallenge && options.some((o) => o.value === S.battleChallenge)) {
+      sel.value = S.battleChallenge;
+    }
+    renderBattleMonsters();
+    renderBattleCurrent();
+  }
+
+  /** 当前挑战（期/层/节点）的怪物列表。 */
+  function renderBattleMonsters() {
+    const mode = S.battleMode || 'moC';
+    const box = $('ep-monsters');
+    if (mode === 'custom') {
+      box.innerHTML = '<div class="side-hint">输入怪物 ID（逗号分隔），点「应用为战斗配置」作为一波。</div>';
+      return;
+    }
+    const preset = (S.cata.battle_presets || {})[mode];
+    const val = $('ep-challenge').value;
+    if (!preset || !val) { box.innerHTML = '<div class="side-hint">没有挑战数据。</div>'; return; }
+    if (mode === 'anomalyArbitration') {
+      const per = preset.periods.find((x) => String(x.period) === val);
+      box.innerHTML = per
+        ? `<div class="side-hint">该玩法客户端表没有怪物 ID（只有关卡与目标 ${(per.targets || []).join(' / ')}）。</div>`
+        : '';
+      return;
+    }
+    const [period, floor] = val.split(':').map(Number);
+    const per = preset.periods.find((x) => x.period === period);
+    const f = per && per.floors.find((x) => x.floor === floor);
+    const side = $('ep-side').value;
+    const ids = f ? (side === '2' ? f.monsters2 : f.monsters1) : [];
+    box.innerHTML = ids.length
+      ? ids.map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('')
+      : '<div class="side-hint">这一层没有怪物数据。</div>';
+  }
+
+  /** 显示当前 battle_config（波次 / 祝福 / 回合）。 */
+  function renderBattleCurrent() {
+    const bc = S.profile.battle_config || {};
+    const waves = bc.monsters || [];
+    const box = $('ep-current');
+    if (!waves.length && !(bc.blessings || []).length) {
+      box.innerHTML = '<div class="side-hint">当前战斗配置为空。</div>';
+      return;
+    }
+    const rows = waves.map((wave, wi) => {
+      const names = (wave || []).map((m) => {
+        const cnt = Number(m.amount) > 1 ? ` ×${m.amount}` : '';
+        return escapeHtml(monsterName(m.monster_id)) + cnt;
+      }).join('、');
+      return `<div class="ep-wave"><b>第 ${wi + 1} 波</b>${names || '（空）'}</div>`;
+    }).join('');
+    const bl = (bc.blessings || []).map((b) => b.id).join(', ') || '无';
+    box.innerHTML = `<div class="ep-current-title">当前战斗配置</div>${rows}
+      <div class="ep-wave">祝福: ${bl} · 回合数: ${bc.cycle_count ?? 30}</div>
+      <button id="ep-clear" class="ghost mini danger">清空战斗配置</button>`;
+    const btn = $('ep-clear');
+    if (btn) btn.addEventListener('click', () => {
+      S.profile.battle_config = {};
+      markDirty();
+      renderBattle();
+    });
+  }
+
+  /** 把当前选择应用为战斗配置（一波怪物 + 可选祝福）。 */
+  function applyBattlePick() {
+    const mode = S.battleMode || 'moC';
+    const bc = S.profile.battle_config || (S.profile.battle_config = {});
+    const cycle = $('ep-cycle').checked;
+    const turbulence = $('ep-turbulence').checked;
+    const monsters = [];
+    if (mode === 'custom') {
+      const ids = ($('ep-custom-ids').value || '').split(/[\s,，]+/).filter(Boolean).map(Number);
+      if (!ids.length) { toast('请输入怪物 ID', 'warn'); return; }
+      for (const id of ids) if (id > 0) monsters.push({ monster_id: id, amount: 1, level: 80 });
+    } else {
+      const preset = (S.cata.battle_presets || {})[mode];
+      const val = $('ep-challenge').value;
+      if (!preset || !val) { toast('没有可用的挑战数据', 'warn'); return; }
+      if (mode === 'anomalyArbitration') {
+        bc.group_id = Number(val);
+        markDirty();
+        toast('异相仲裁没有怪物 ID，已记录关卡', 'warn');
+        renderBattle();
+        return;
+      }
+      const [period, floor] = val.split(':').map(Number);
+      const per = preset.periods.find((x) => x.period === period);
+      const f = per && per.floors.find((x) => x.floor === floor);
+      const side = $('ep-side').value;
+      const ids = f ? (side === '2' ? f.monsters2 : f.monsters1) : [];
+      for (const id of ids) monsters.push({ monster_id: id, amount: 1, level: 80 });
+      if (turbulence && f && f.buff) bc.blessings = [{ id: f.buff, level: 1 }];
+      else if (!turbulence) bc.blessings = [];
+    }
+    bc.monsters = [monsters];
+    if (cycle) bc.cycle_count = bc.cycle_count || 30;
+    markDirty();
+    toast(`已应用 ${monsters.length} 个怪物为第 1 波`, 'ok');
+    renderBattle();
+  }
+
   function monsterOptions(selected) {
     const sorted = [...S.cata.monsters].sort((a, b) => (a.name || '').localeCompare(b.name || '', 'zh'));
     let html = '';
@@ -827,6 +974,33 @@
         if (S.tab === 'help') $('view-avatar').hidden = true;
       });
     }
+    for (const t of document.querySelectorAll('.ep-tab')) {
+      t.addEventListener('click', () => {
+        S.battleMode = t.dataset.mode;
+        S.battleChallenge = '';
+        renderBattle();
+      });
+    }
+    $('ep-challenge').addEventListener('change', () => {
+      S.battleChallenge = $('ep-challenge').value;
+      renderBattleMonsters();
+    });
+    $('ep-side').addEventListener('change', () => renderBattleMonsters());
+    $('ep-apply').addEventListener('click', applyBattlePick);
+    $('btn-wave-add').addEventListener('click', () => {
+      const bc = S.profile.battle_config || (S.profile.battle_config = {});
+      const waves = bc.monsters || (bc.monsters = []);
+      waves.push([{ monster_id: (S.cata.monsters[0] || {}).id || 0, level: 80, amount: 1 }]);
+      markDirty();
+      renderBattle();
+    });
+    $('btn-buff-add').addEventListener('click', () => {
+      const bc = S.profile.battle_config || (S.profile.battle_config = {});
+      const buffs = bc.blessings || (bc.blessings = []);
+      buffs.push({ id: (S.cata.rogue_buffs[0] || {}).id || 0, level: 1 });
+      markDirty();
+      renderBattle();
+    });
     $('search').addEventListener('input', () => { S.search = $('search').value; renderAvatarList(); });
     $('filter-path').addEventListener('change', () => {
       S.filterPath = $('filter-path').value;

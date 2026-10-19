@@ -338,6 +338,56 @@ class Builder:
             "step_num": _int(row.get("StepNum")),
         } for row in rows]
 
+    def battle_presets(self) -> dict:
+        """4 玩法最近 4 期的怪物（末日/虚构/混沌/异相仲裁）。
+
+        混沌/虚构/末日取 ChallengeMazeConfig 系列的 NpcMonsterIDList1/2
+        （客户端挑战表的真实怪物 ID）；异相仲裁的客户端表只有关卡与目标，
+        没有怪物 ID，因此只给关卡标题（monsters 为空，前端标注）。
+        """
+        specs = [
+            ("moC", "混沌回忆", "ExcelOutput/ChallengeMazeConfig.bytes"),
+            ("pureFiction", "虚构叙事", "ExcelOutput/ChallengeStoryMazeConfig.bytes"),
+            ("apocalypticShadow", "末日幻影", "ExcelOutput/ChallengeBossMazeConfig.bytes"),
+        ]
+        out = {}
+        for key, label, path in specs:
+            rows = self.table(path, "RPG.GameCore.ChallengeMazeConfigRow")
+            by_group: dict[int, list] = {}
+            for r in rows:
+                g = _int(r.get("GroupID"))
+                if g:
+                    by_group.setdefault(g, []).append(r)
+            periods = []
+            for g in sorted(by_group)[-4:]:
+                floors = []
+                for r in sorted(by_group[g], key=lambda x: (_int(x.get("Floor")),
+                                                           _int(x.get("ID")))):
+                    floors.append({
+                        "floor": _int(r.get("Floor")),
+                        "monsters1": [int(x) for x in (r.get("NpcMonsterIDList1") or []) if x],
+                        "monsters2": [int(x) for x in (r.get("NpcMonsterIDList2") or []) if x],
+                        "buff": _int(r.get("MazeBuffID")),
+                    })
+                periods.append({"period": g, "floors": floors})
+            out[key] = {"name": label, "periods": periods}
+
+        peaks = self.table("ExcelOutput/ChallengePeakConfig.bytes",
+                           "RPG.GameCore.ChallengePeakConfigRow")
+        peaks = [r for r in peaks if _int(r.get("ID"))]
+        peaks.sort(key=lambda r: _int(r.get("ID")))
+        out["anomalyArbitration"] = {
+            "name": "异相仲裁",
+            "periods": [
+                {"period": _int(r.get("ID")),
+                 "title": self.text(r.get("Title")),
+                 "targets": [int(x) for x in (r.get("NormalTargetList") or [])],
+                 "monsters": []}
+                for r in peaks[-4:]
+            ],
+        }
+        return out
+
     def monsters(self) -> list:
         rows = self.table(GAMECORE + "MonsterConfig.bytes",
                           "RPG.GameCore.MonsterRow")
@@ -467,6 +517,7 @@ def main() -> int:
     catalog["relic_main_affixes"] = b.relic_main_affixes()
     catalog["relic_sub_affixes"] = b.relic_sub_affixes()
     catalog["monsters"] = b.monsters()
+    catalog["battle_presets"] = b.battle_presets()
     catalog["rogue_buffs"] = b.rogue_buffs()
     catalog["ex_ranks"] = b.ex_ranks()
 
