@@ -699,7 +699,6 @@
   // ---------------------------------------------------------------- 战斗配置
   /** 战斗配置页：旧版手动编辑（回合/关卡/波次/祝福）+ Enemy Picker 预置选择。 */
   function renderBattle() {
-    renderBattleConfig();
     renderBattlePicker();
   }
 
@@ -799,14 +798,15 @@
     const options = [];
     if (!custom && preset) {
       for (const period of preset.periods) {
-        if (mode === 'anomalyArbitration') {
-          options.push({ value: String(period.period),
-            label: `第 ${period.period} 关 · ${period.title || ''}` });
-        } else {
-          for (const f of period.floors) {
-            options.push({ value: `${period.period}:${f.floor}`,
-              label: `第 ${period.period} 期 · 第 ${f.floor} 层` });
-          }
+        for (let fi = 0; fi < period.floors.length; fi += 1) {
+          const f = period.floors[fi];
+          const tag = mode === 'anomalyArbitration'
+            ? `第 ${f.floor} 关`
+            : `第 ${f.floor} 层`;
+          options.push({
+            value: `${period.period}:${fi}`,
+            label: `第 ${period.period} 期 · ${tag}${f.name ? ` · ${f.name}` : ''}`,
+          });
         }
       }
     }
@@ -838,14 +838,26 @@
         : '';
       return;
     }
-    const [period, floor] = val.split(':').map(Number);
+    const [period, fi] = val.split(':').map(Number);
     const per = preset.periods.find((x) => x.period === period);
-    const f = per && per.floors.find((x) => x.floor === floor);
+    const f = per && per.floors[fi];
+    if (!f) { box.innerHTML = '<div class="side-hint">这一层没有怪物数据。</div>'; return; }
     const side = $('ep-side').value;
-    const ids = f ? (side === '2' ? f.monsters2 : f.monsters1) : [];
-    box.innerHTML = ids.length
-      ? ids.map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('')
-      : '<div class="side-hint">这一层没有怪物数据。</div>';
+    const waveChips = (waves) => (waves || []).map((wave, wi) =>
+      `<div class="ep-wave-line"><b>第 ${wi + 1} 波</b>` +
+      wave.filter((x) => x > 0)
+        .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
+      '</div>').join('');
+    let html = '';
+    if (mode === 'anomalyArbitration') {
+      html = waveChips(f.waves);
+    } else {
+      html = waveChips(side === '2' ? f.bot : f.top);
+      if ((f.tierce || []).length) {
+        html += `<div class="ep-tierce">星启模式（额外一路）：</div>` + waveChips(f.tierce);
+      }
+    }
+    box.innerHTML = html || '<div class="side-hint">这一层没有怪物数据。</div>';
   }
 
   /** 显示当前 battle_config（波次 / 祝福 / 回合）。 */
@@ -882,32 +894,33 @@
     const bc = S.profile.battle_config || (S.profile.battle_config = {});
     const cycle = $('ep-cycle').checked;
     const turbulence = $('ep-turbulence').checked;
-    const monsters = [];
+    const waves = [];
+    const toWave = (ids) => ids.filter((x) => x > 0)
+      .map((id) => ({ monster_id: id, amount: 1, level: 80 }));
     if (mode === 'custom') {
       const ids = ($('ep-custom-ids').value || '').split(/[\s,，]+/).filter(Boolean).map(Number);
       if (!ids.length) { toast('请输入怪物 ID', 'warn'); return; }
-      for (const id of ids) if (id > 0) monsters.push({ monster_id: id, amount: 1, level: 80 });
+      waves.push(toWave(ids));
     } else {
       const preset = (S.cata.battle_presets || {})[mode];
       const val = $('ep-challenge').value;
       if (!preset || !val) { toast('没有可用的挑战数据', 'warn'); return; }
-      if (mode === 'anomalyArbitration') {
-        bc.group_id = Number(val);
-        markDirty();
-        toast('异相仲裁没有怪物 ID，已记录关卡', 'warn');
-        renderBattle();
-        return;
-      }
-      const [period, floor] = val.split(':').map(Number);
+      const [period, fi] = val.split(':').map(Number);
       const per = preset.periods.find((x) => x.period === period);
-      const f = per && per.floors.find((x) => x.floor === floor);
+      const f = per && per.floors[fi];
+      if (!f) { toast('这一层没有数据', 'warn'); return; }
       const side = $('ep-side').value;
-      const ids = f ? (side === '2' ? f.monsters2 : f.monsters1) : [];
-      for (const id of ids) monsters.push({ monster_id: id, amount: 1, level: 80 });
-      if (turbulence && f && f.buff) bc.blessings = [{ id: f.buff, level: 1 }];
+      const base = mode === 'anomalyArbitration' ? (f.waves || []) : (side === '2' ? f.bot : f.top) || [];
+      for (const w of base) waves.push(toWave(w));
+      if (mode !== 'anomalyArbitration' && (f.tierce || []).length) {
+        for (const w of f.tierce) waves.push(toWave(w));   // 星启：额外一路
+      }
+      if (turbulence && f.buffs && f.buffs.length) bc.blessings = f.buffs.map((id) => ({ id, level: 1 }));
+      else if (turbulence && f.turbulence) bc.blessings = [{ id: f.turbulence, level: 1 }];
       else if (!turbulence) bc.blessings = [];
+      if (cycle && f.cycle) bc.cycle_count = f.cycle;
     }
-    bc.monsters = [monsters];
+    bc.monsters = waves.filter((w) => w.length);
     if (cycle) bc.cycle_count = bc.cycle_count || 30;
     markDirty();
     toast(`已应用 ${monsters.length} 个怪物为第 1 波`, 'ok');
@@ -987,20 +1000,7 @@
     });
     $('ep-side').addEventListener('change', () => renderBattleMonsters());
     $('ep-apply').addEventListener('click', applyBattlePick);
-    $('btn-wave-add').addEventListener('click', () => {
-      const bc = S.profile.battle_config || (S.profile.battle_config = {});
-      const waves = bc.monsters || (bc.monsters = []);
-      waves.push([{ monster_id: (S.cata.monsters[0] || {}).id || 0, level: 80, amount: 1 }]);
-      markDirty();
-      renderBattle();
-    });
-    $('btn-buff-add').addEventListener('click', () => {
-      const bc = S.profile.battle_config || (S.profile.battle_config = {});
-      const buffs = bc.blessings || (bc.blessings = []);
-      buffs.push({ id: (S.cata.rogue_buffs[0] || {}).id || 0, level: 1 });
-      markDirty();
-      renderBattle();
-    });
+
     $('search').addEventListener('input', () => { S.search = $('search').value; renderAvatarList(); });
     $('filter-path').addEventListener('change', () => {
       S.filterPath = $('filter-path').value;

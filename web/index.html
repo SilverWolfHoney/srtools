@@ -238,37 +238,6 @@
           </div>
         </div>
         <div id="ep-current" class="ep-current"></div>
-        <div class="ep-config">
-<h2>战斗配置</h2>
-      <p class="tags">对应 <code>freesr-data.json</code> 的 <code>battle_config</code>：
-        回合数、关卡 ID、怪物波次、祝福（buff）。</p>
-      <div class="grid-3">
-        <label class="field">回合数
-          <input id="bc-cycles" type="number" min="1" max="999">
-        </label>
-        <label class="field">关卡 ID（stage_id）
-          <input id="bc-stage" type="number" min="0">
-        </label>
-        <label class="field">战斗类型
-          <input id="bc-type" type="text" placeholder="DEFAULT">
-        </label>
-      </div>
-
-      <h3 class="section-title">怪物波次
-        <button id="btn-wave-add" class="ghost mini">＋ 一波</button>
-      </h3>
-      <div id="wave-list" class="wave-list"></div>
-
-      <h3 class="section-title">祝福 / Buff
-        <button id="btn-buff-add" class="ghost mini">＋ 一条</button>
-      </h3>
-      <p class="hint">srtools 的 blessings 结构是 <code>{id, level}</code>；旧数据里的 id
-        会原样保留，也可以从 4.6.53 的模拟宇宙祝福表里挑。</p>
-      <div id="buff-list" class="buff-list"></div>
-    </div>
-
-    <!-- 工具 -->
-        </div>
       </div>
     </div>
   </div>

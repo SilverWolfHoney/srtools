@@ -126,6 +126,12 @@ def _fixed(value) -> float:
         return 0.0
 
 
+def _clean_text(text: str) -> str:
+    """去掉客户端富文本标签（<unbreak>、<color=...> 等）。"""
+    import re as _re
+    return _re.sub(r"<[^>]+>", "", text or "")
+
+
 def _int(value, default=0) -> int:
     if isinstance(value, dict):
         value = value.get("Value", value.get("ID", default))
@@ -151,6 +157,9 @@ class Builder:
             h64 = ident.get("Hash64")
             if h64 is not None:
                 self.text_map[int(h64)] = row.get("Text") or ""
+            h32 = ident.get("Hash")
+            if h32 is not None:
+                self.text_map[int(h32)] = row.get("Text") or ""
         print(f"TextMap: {len(self.text_map)} 条，{time.time() - t:.1f}s")
 
     # ---------------------------------------------------------------- 工具
@@ -163,8 +172,8 @@ class Builder:
                     return self.text_map[int(h)]
             return ""
         if isinstance(value, int) and value in self.text_map:
-            return self.text_map[value]
-        return str(value or "")
+            return _clean_text(self.text_map[value])
+        return _clean_text(str(value or ""))
 
     def table(self, path: str, row_type: str) -> list:
         t = time.time()
@@ -339,53 +348,71 @@ class Builder:
         } for row in rows]
 
     def battle_presets(self) -> dict:
-        """4 玩法最近 4 期的怪物（末日/虚构/混沌/异相仲裁）。
+        """4 玩法最近 4 期（网站 srtools 数据，含星启模式 monster_ids_tierce）。
 
-        混沌/虚构/末日取 ChallengeMazeConfig 系列的 NpcMonsterIDList1/2
-        （客户端挑战表的真实怪物 ID）；异相仲裁的客户端表只有关卡与目标，
-        没有怪物 ID，因此只给关卡标题（monsters 为空，前端标注）。
+        数据来自 data/site/{moc,pure-fictions,ap-shadows,challenge-peak}.json
+        （由 fetch_battle_presets.py 从 cdn.neonteam.dev 下载）。客户端 4.6.53
+        表里没有星启模式字段，因此统一用网站数据；每层怪物按波次给出：
+        top = 第一节点、bot = 第二节点、tierce = 星启模式的额外一路。
         """
+        site = ROOT / "data" / "site"
         specs = [
-            ("moC", "混沌回忆", "ExcelOutput/ChallengeMazeConfig.bytes"),
-            ("pureFiction", "虚构叙事", "ExcelOutput/ChallengeStoryMazeConfig.bytes"),
-            ("apocalypticShadow", "末日幻影", "ExcelOutput/ChallengeBossMazeConfig.bytes"),
+            ("moC", "混沌回忆", "moc.json"),
+            ("pureFiction", "虚构叙事", "pure-fictions.json"),
+            ("apocalypticShadow", "末日幻影", "ap-shadows.json"),
         ]
         out = {}
-        for key, label, path in specs:
-            rows = self.table(path, "RPG.GameCore.ChallengeMazeConfigRow")
-            by_group: dict[int, list] = {}
-            for r in rows:
-                g = _int(r.get("GroupID"))
-                if g:
-                    by_group.setdefault(g, []).append(r)
-            periods = []
-            for g in sorted(by_group)[-4:]:
+        for key, label, fname in specs:
+            path = site / fname
+            item = {"name": label, "periods": []}
+            out[key] = item
+            if not path.is_file():
+                continue
+            data = json.loads(path.read_text(encoding="utf-8"))
+            ids = sorted(int(k) for k in data.keys())[-4:]
+            for pid in ids:
+                entry = data[str(pid)]
                 floors = []
-                for r in sorted(by_group[g], key=lambda x: (_int(x.get("Floor")),
-                                                           _int(x.get("ID")))):
+                for f in entry.get("floors") or []:
                     floors.append({
-                        "floor": _int(r.get("Floor")),
-                        "monsters1": [int(x) for x in (r.get("NpcMonsterIDList1") or []) if x],
-                        "monsters2": [int(x) for x in (r.get("NpcMonsterIDList2") or []) if x],
-                        "buff": _int(r.get("MazeBuffID")),
+                        "floor": int(f.get("floor") or 0),
+                        "name": self.text(f.get("name")),
+                        "has_tierce": bool(f.get("has_tierce_mode")),
+                        "top": [[int(x) for x in w] for w in (f.get("monster_ids_top") or [])],
+                        "bot": [[int(x) for x in w] for w in (f.get("monster_ids_bot") or [])],
+                        "tierce": [[int(x) for x in w] for w in (f.get("monster_ids_tierce") or [])],
+                        "cycle": int(f.get("cycle_count") or 0),
                     })
-                periods.append({"period": g, "floors": floors})
-            out[key] = {"name": label, "periods": periods}
+                item["periods"].append({
+                    "period": pid,
+                    "name": self.text(entry.get("name")),
+                    "floors": floors,
+                })
 
-        peaks = self.table("ExcelOutput/ChallengePeakConfig.bytes",
-                           "RPG.GameCore.ChallengePeakConfigRow")
-        peaks = [r for r in peaks if _int(r.get("ID"))]
-        peaks.sort(key=lambda r: _int(r.get("ID")))
-        out["anomalyArbitration"] = {
-            "name": "异相仲裁",
-            "periods": [
-                {"period": _int(r.get("ID")),
-                 "title": self.text(r.get("Title")),
-                 "targets": [int(x) for x in (r.get("NormalTargetList") or [])],
-                 "monsters": []}
-                for r in peaks[-4:]
-            ],
-        }
+        peak_path = site / "challenge-peak.json"
+        periods = []
+        if peak_path.is_file():
+            data = json.loads(peak_path.read_text(encoding="utf-8"))
+            ids = sorted(int(k) for k in data.keys())[-4:]
+            for pid in ids:
+                entry = data[str(pid)]
+                floors = []
+                for p in entry.get("peaks") or []:
+                    floors.append({
+                        "floor": int(p.get("peak_id") or 0),
+                        "name": self.text(p.get("name")),
+                        "is_boss": bool(p.get("is_boss")),
+                        "level": int(p.get("monster_level") or 0),
+                        "waves": [[int(x) for x in w] for w in (p.get("monster_ids") or [])],
+                        "buffs": [int(b.get("id")) for b in (p.get("monster_tag_maze_buffs") or [])
+                                  if b.get("id")],
+                    })
+                periods.append({
+                    "period": pid,
+                    "name": self.text(entry.get("name")),
+                    "floors": floors,
+                })
+        out["anomalyArbitration"] = {"name": "异相仲裁", "periods": periods}
         return out
 
     def monsters(self) -> list:
