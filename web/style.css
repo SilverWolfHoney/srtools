@@ -142,19 +142,16 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
   background: #0b0e14 url('/trace-bg.jpg') center / cover no-repeat;
 }
 .trace-tree {
-  /* 与命途底图 traces/<Path>.svg 同比例（viewBox 201.11581 x 166.53984），
-     节点百分比坐标也基于这个画布，这样图标和底图线条才能对齐 */
-  position: relative; width: min(100%, 88vh); aspect-ratio: 201.11581 / 166.53984;
+  position: relative; width: min(100%, 78vh); aspect-ratio: 1 / 1;
   margin: 0 auto;
   background-repeat: no-repeat; background-position: center; background-size: contain;
-  /* 节点直径用容器百分比，随树容器缩放 */
-  --size-big: 6.6%;
-  --size-small: 4.8%;
+  /* 节点直径用容器百分比，随树容器缩放；calc(31% - var(--size-big)/2) 自适应 */
+  --size-big: 8%;
+  --size-small: 5.8%;
 }
 .trace-nodes { position: absolute; inset: 0; }
 .trace-node {
   position: absolute; display: flex; align-items: center; justify-content: center;
-  transform: translate(-50%, -50%);
   border-radius: 50%; cursor: pointer; user-select: none;
   background: rgba(13, 17, 26, 0.82);
   border: 2px solid #4a5163;
@@ -165,20 +162,8 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .trace-node:hover {
   border-color: var(--accent);
   box-shadow: 0 0 14px rgba(110, 168, 254, 0.55);
-  transform: translate(-50%, -50%) scale(1.06);
+  transform: scale(1.06);
 }
-/* 调整布局（拖拽）模式 */
-.trace-tree.drag-mode .trace-node { cursor: move; }
-.trace-tree.drag-mode .trace-node:hover {
-  transform: translate(-50%, -50%) scale(1.04);
-  box-shadow: 0 0 18px rgba(110, 168, 254, 0.7);
-}
-.trace-node.dragging {
-  border-color: var(--accent);
-  box-shadow: 0 0 18px rgba(110, 168, 254, 0.7);
-  z-index: 4;
-}
-.ghost.mini.accent { border-color: var(--accent); color: var(--accent2); }
 .trace-node img { width: 74%; height: 74%; object-fit: contain; pointer-events: none; }
 .trace-node .tlv {
   position: absolute; left: 50%; bottom: -19px; transform: translateX(-50%);

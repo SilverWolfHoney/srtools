@@ -775,8 +775,11 @@
   },
   "Knight": {
     "Point01": {
-      "cx": 31.0,
-      "cy": 55.0
+      "class": "point main-trace",
+      "style": {
+        "left": "calc(31% - var(--size-big) / 2)",
+        "top": "calc(55% - var(--size-big) / 2)"
+      }
     },
     "Point02": {
       "class": "point main-trace",

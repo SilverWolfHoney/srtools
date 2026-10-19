@@ -52,52 +52,11 @@ class App:
         self.swh = swh
         self.profile = profile or (swh / "freesr-data.json")
         self.catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
-        self.layout_file = ROOT / "data" / "trace_layout.json"
         self._known = {
             "avatars": {int(a["id"]) for a in self.catalog["avatars"]},
             "lightcones": {int(x["id"]) for x in self.catalog["lightcones"]},
             "relics": {int(x["id"]) for x in self.catalog["relics"]},
         }
-
-    def catalog_live(self) -> dict:
-        """catalog，行迹树布局以 data/trace_layout.json 为准（支持手动调整后热更新）。"""
-        if self.layout_file.is_file() and isinstance(self.catalog.get("trace_trees"), dict):
-            try:
-                self.catalog["trace_trees"]["layout"] = json.loads(
-                    self.layout_file.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                pass
-        return self.catalog
-
-    def save_trace_layout(self, payload: dict) -> dict:
-        """保存手动调整的行迹节点位置：{path: {"Point01": {"cx": 31, "cy": 55}}}。"""
-        path = str(payload.get("path") or "").strip()
-        points = payload.get("points") or {}
-        if not path or not isinstance(points, dict):
-            raise ValueError("缺少 path / points")
-        layout: dict = {}
-        if self.layout_file.is_file():
-            try:
-                layout = json.loads(self.layout_file.read_text(encoding="utf-8"))
-            except (OSError, json.JSONDecodeError):
-                layout = {}
-        cur = layout.setdefault(path, {})
-        saved = 0
-        for anchor, pos in points.items():
-            if not isinstance(pos, dict):
-                continue
-            try:
-                cx = round(float(pos.get("cx")), 2)
-                cy = round(float(pos.get("cy")), 2)
-            except (TypeError, ValueError):
-                continue
-            cur[str(anchor)] = {"cx": cx, "cy": cy}
-            saved += 1
-        self.layout_file.write_text(
-            json.dumps(layout, ensure_ascii=False, indent=2), encoding="utf-8")
-        return {"ok": True, "path": path, "saved": saved,
-                "file": str(self.layout_file)}
-
 
     # ---------------------------------------------------------------- 读
     def profile_raw(self) -> dict:
@@ -339,7 +298,7 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/state":
                 return self._json(200, APP.state())
             if path == "/api/catalog":
-                return self._json(200, APP.catalog_live())
+                return self._json(200, APP.catalog)
             if path == "/api/profile":
                 return self._json(200, {"ok": True, "data": APP.profile_raw(),
                                         "path": str(APP.profile)})
@@ -371,9 +330,6 @@ class Handler(BaseHTTPRequestHandler):
             if path == "/api/connect":
                 body = self._body()
                 return self._json(200, APP.connect(body))
-            if path == "/api/trace-layout":
-                body = self._body()
-                return self._json(200, APP.save_trace_layout(body))
             return self._json(404, {"ok": False, "message": "not found"})
         except ValueError as exc:
             return self._json(400, {"ok": False, "message": str(exc)})

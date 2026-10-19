@@ -430,30 +430,24 @@
       wrap.hidden = false;
       S.traceTree = { nodes, layout };
       const list = Object.entries(nodes).sort((a, b) => Number(a[0]) - Number(b[0]));
-      const treeEl = $('trace-tree');
-      treeEl.classList.toggle('drag-mode', !!S.traceEditMode);
       box.innerHTML = list.map(([pid, node]) => {
         const pos = layout[node.anchor] || {};
+        const style = Object.entries(pos.style || {}).map(([k, v]) => `${k}:${v}`).join(';');
         const big = String(pos.class || '').includes('main-trace');
-        const { cx, cy } = layoutCenter(pos, big);
-        const x = cx == null ? 50 : cx;
-        const y = cy == null ? 50 : cy;
         const lv = Number(skills[pid] ?? 0);
-        return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}" data-anchor="${node.anchor}"
-             data-max="${node.max}" style="left:${x}%;top:${y}%;" title="锚点 ${node.anchor}">
+        return `<div class="trace-node ${big ? 'big' : 'small'}" data-point="${pid}"
+             data-max="${node.max}" style="${style}" title="锚点 ${node.anchor}">
           <img src="/trace-icons/${node.icon}" alt="">
           <span class="tlv">${lv}/${node.max}</span>
         </div>`;
       }).join('');
       $('trace-hint').textContent = `${list.length} 个行迹点` +
-        (hasEnhanced ? (S.enhancedMode ? '（加强形态）' : '（普通形态）') : '') +
-        (S.traceEditMode ? ' · 拖动节点调整位置' : '');
+        (hasEnhanced ? (S.enhancedMode ? '（加强形态）' : '（普通形态）') : '');
       for (const el of box.querySelectorAll('.trace-node')) {
-        el.addEventListener('click', () => { if (!S.traceEditMode) openTraceEditor(el); });
-        el.addEventListener('pointerdown', (ev) => startTraceDrag(ev, el));
+        el.addEventListener('click', () => openTraceEditor(el));
       }
       // 连线画在命途底图 traces/<Path>.svg 里
-      treeEl.style.backgroundImage = `url(/traces/${cfg.path || 'Knight'}.svg)`;
+      $('trace-tree').style.backgroundImage = `url(/traces/${cfg.path || 'Knight'}.svg)`;
       return;
     }
 
@@ -487,97 +481,6 @@
         const max = Number(input.dataset.max) || 1;
         input.value = Math.max(0, Math.min(max, Number(input.value) || 0));
       });
-    }
-  }
-
-  /** 布局项 → 节点中心百分比 {cx, cy}：兼容手动调整后的 {cx,cy} 和网站原始 style（calc）。 */
-  const TRACE_SIZE = { big: 6.6, small: 4.8 };  // 与 CSS --size-big/--size-small 一致
-  function layoutCenter(pos, big) {
-    if (pos && pos.cx != null && pos.cy != null) {
-      return { cx: Number(pos.cx), cy: Number(pos.cy) };
-    }
-    const st = (pos && pos.style) || {};
-    const size = big ? TRACE_SIZE.big : TRACE_SIZE.small;
-    const pct = (v) => {
-      const m = /(-?[\d.]+)%/.exec(String(v || ''));
-      if (!m) return null;
-      const n = parseFloat(m[1]);
-      return String(v).includes('* -1') ? -n : n;
-    };
-    // 正常：left/top 的百分比 = 节点中心（calc 里减掉的 size/2 由节点自身尺寸补回）；
-    // 负值（* -1）：边缘在 -A% + size/2，中心再 + size/2 → -A% + size。
-    let cx = null;
-    let cy = null;
-    if (st.left != null) {
-      const v = pct(st.left);
-      if (v != null) cx = v < 0 ? v + size : v;
-    } else if (st.right != null) {
-      const v = pct(st.right);
-      if (v != null) cx = v < 0 ? 100 + v - size : 100 - v;
-    }
-    if (st.top != null) {
-      const v = pct(st.top);
-      if (v != null) cy = v < 0 ? v + size : v;
-    } else if (st.bottom != null) {
-      const v = pct(st.bottom);
-      if (v != null) cy = v < 0 ? 100 + v - size : 100 - v;
-    }
-    return { cx, cy };
-  }
-
-  /** 调整布局模式：按住节点拖动，记录中心百分比。 */
-  function startTraceDrag(ev, el) {
-    if (!S.traceEditMode) return;
-    ev.preventDefault();
-    const tree = $('trace-tree');
-    const rect = tree.getBoundingClientRect();
-    el.classList.add('dragging');
-    if (el.setPointerCapture) el.setPointerCapture(ev.pointerId);
-    const move = (e2) => {
-      const cx = Math.max(-20, Math.min(120, ((e2.clientX - rect.left) / rect.width) * 100));
-      const cy = Math.max(-20, Math.min(120, ((e2.clientY - rect.top) / rect.height) * 100));
-      el.style.left = `${cx}%`;
-      el.style.top = `${cy}%`;
-      S.traceDrag = { anchor: el.dataset.anchor, cx, cy };
-    };
-    const up = () => {
-      el.removeEventListener('pointermove', move);
-      el.removeEventListener('pointerup', up);
-      el.classList.remove('dragging');
-      if (S.traceDrag) {
-        S.traceEdits[S.traceDrag.anchor] = {
-          cx: Number(S.traceDrag.cx.toFixed(2)),
-          cy: Number(S.traceDrag.cy.toFixed(2)),
-        };
-        S.traceDrag = null;
-      }
-    };
-    el.addEventListener('pointermove', move);
-    el.addEventListener('pointerup', up);
-  }
-
-  /** 保存当前角色的行迹布局调整（写回 data/trace_layout.json）。 */
-  async function saveTraceLayout() {
-    const cfg = avatarCfg(S.avatarId);
-    const path = cfg ? cfg.path : '';
-    if (!path) { toast('未选中角色', 'warn'); return; }
-    const points = S.traceEdits || {};
-    if (!Object.keys(points).length) { toast('还没有调整节点位置', 'warn'); return; }
-    try {
-      const r = await fetch('/api/trace-layout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ path, points }),
-      });
-      const j = await r.json();
-      if (!r.ok || !j.ok) throw new Error(j.message || `HTTP ${r.status}`);
-      S.traceEdits = {};
-      toast(`已保存 ${j.saved} 个节点（${path}），之后一直生效`, 'ok');
-      const c = await fetch('/api/catalog');
-      S.cata = await c.json();
-      renderAvatarEditor();
-    } catch (err) {
-      toast(`保存布局失败: ${err.message}`, 'err');
     }
   }
 
@@ -946,14 +849,6 @@
       S.enhancedMode = $('trace-enhanced').checked;
       renderTraces(avatarCfg(S.avatarId), ensureAvatar(S.avatarId));
     });
-    $('btn-trace-edit').addEventListener('click', () => {
-      S.traceEditMode = !S.traceEditMode;
-      $('btn-trace-save').hidden = !S.traceEditMode;
-      $('btn-trace-edit').textContent = S.traceEditMode ? '退出调整' : '调整布局';
-      renderTraces(avatarCfg(S.avatarId), ensureAvatar(S.avatarId));
-      if (S.traceEditMode) toast('拖动节点调整位置，调好后点「保存布局」', 'ok');
-    });
-    $('btn-trace-save').addEventListener('click', saveTraceLayout);
     $('te-minus').addEventListener('click', () => {
       setTraceLevel((Number($('te-level').value) || 0) - 1);
     });
