@@ -859,6 +859,15 @@
       S.enhancedMode = $('trace-enhanced').checked;
       renderTraces(avatarCfg(S.avatarId), ensureAvatar(S.avatarId));
     });
+    // 点击弹窗 / 行迹节点以外的区域关闭节点编辑器
+    document.addEventListener('click', (ev) => {
+      const ed = $('trace-editor');
+      if (!ed || ed.hidden) return;
+      if (ed.contains(ev.target)) return;
+      if (ev.target.closest && ev.target.closest('.trace-node')) return;
+      ed.hidden = true;
+      S.traceEditing = null;
+    });
     $('te-minus').addEventListener('click', () => {
       setTraceLevel((Number($('te-level').value) || 0) - 1);
     });
