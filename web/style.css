@@ -179,9 +179,12 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .te-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 13px; }
 .te-close { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 14px; }
 .te-row { display: flex; align-items: center; gap: 6px; }
-.te-row input { width: 58px; text-align: center; }
+.te-row input { width: 58px; height: 28px; text-align: center; }
 .te-btn {
-  width: 30px; height: 28px; background: var(--panel2); color: var(--text);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 28px; padding: 0;
+  font-size: 16px; line-height: 1;
+  background: var(--panel2); color: var(--text);
   border: 1px solid var(--line); border-radius: 7px; cursor: pointer;
 }
 .te-btn:hover { border-color: var(--accent); }
