@@ -992,8 +992,8 @@
     const cycle = $('ep-cycle').checked;
     const turbulence = $('ep-turbulence').checked;
     const waves = [];
-    const toWave = (ids) => ids.filter((x) => x > 0)
-      .map((id) => ({ monster_id: id, amount: 1, level: 80 }));
+    const toWave = (ids, lv = 80) => ids.filter((x) => x > 0)
+      .map((id) => ({ monster_id: id, amount: 1, level: lv }));
     if (mode === 'custom') {
       const ids = ($('ep-custom-ids').value || '').split(/[\s,，]+/).filter(Boolean).map(Number);
       if (!ids.length) { if (!pickSilent) toast('请输入怪物 ID', 'warn'); return; }
@@ -1007,7 +1007,8 @@
       else if (side === '3') base = f.tierce || [];
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
-      for (const w of base) waves.push(toWave(w));
+      const floorLv = Number(f.level) || 80;
+      for (const w of base) waves.push(toWave(w, floorLv));
       // 污染（invasion）按节点独立
       const curInv = (mode === 'anomalyArbitration'
         ? f.invasion
@@ -1019,6 +1020,13 @@
         ? (f.stage || 0)
         : (side === '3' ? (f.stage_tierce || 0)
           : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
+      // 对齐原网站导出的 battle_config 字段
+      bc.battle_type = ({ moC: 'MOC', pureFiction: 'PF', apocalypticShadow: 'AS',
+                         anomalyArbitration: 'DEFAULT' })[mode] || 'DEFAULT';
+      bc.custom_stats = [];
+      bc.path_resonance_id = 0;
+      // 虚构是 4 轮（原网站 PF 固定 4），其余按关卡回合数
+      bc.cycle_count = mode === 'pureFiction' ? 4 : ((cycle && f.cycle) ? f.cycle : 30);
       {
         const ids = [];
         const add = (id) => {
@@ -1027,8 +1035,10 @@
         };
         // 虚构的「关卡 Buff」是显示用的附加 buff（获得笑点/战熄潮平/战意汹涌），
         // 真正的机制由关卡基础 ability buff 驱动（原网站下发的是它而不是这三个），
-        // 直接下发这三个会导致战斗卡住，所以虚构跳过它们
-        if (mode !== 'pureFiction') {
+        // 直接下发这三个会导致战斗卡住，所以虚构只下发基础 buff
+        if (mode === 'pureFiction') {
+          if (f.base_buff) add(f.base_buff);   // 关卡基础机制 buff（3031220）
+        } else {
           for (const b of f.stage_buffs || []) add(b.id);  // 关卡 Buff
         }
         for (const b of f.tag_buffs || []) add(b.id);      // 敌人词条
@@ -1039,7 +1049,6 @@
         if (seasonSel && seasonSel.value) add(seasonSel.value);   // 赛季效果（三选一）
         bc.blessings = ids.map((id) => ({ id, level: 1 }));
       }
-      if (cycle && f.cycle) bc.cycle_count = f.cycle;
     }
     bc.monsters = waves.filter((w) => w.length);
     if (cycle) bc.cycle_count = bc.cycle_count || 30;

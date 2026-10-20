@@ -505,6 +505,7 @@ class Builder:
             return {
                 "floor": lid,
                 "name": _clean_text(str(lv.get("name") or "")),
+                "level": _int(ev3.get("level")) or _int(ev1.get("level")) or 80,
                 "top": top_w,
                 "bot": bot_w,
                 "tierce": wave_from_infinite(lv.get("infinite_list")) if use_infinite else []
@@ -613,9 +614,14 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": floors_of(data.get("level") or [], season, stage_extra,
-                                        season_groups=season_groups,
-                                        use_infinite=False),   # 波次用关卡 event 的 monster_list 原样（infinite_list 是刷怪池，会带出花萼加载不了的怪）
+                    "floors": [
+                        # 虚构关卡的基础机制 buff（FantasticStory_BaseAbility_2200）：
+                        # 原网站导出配置里带它（3031220）战斗才正常，不带会卡
+                        dict(fl, base_buff=3031220) if dname == "story" else fl
+                        for fl in floors_of(data.get("level") or [], season, stage_extra,
+                                            season_groups=season_groups,
+                                            use_infinite=False)   # 波次用关卡 event 的 monster_list 原样
+                    ],
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
