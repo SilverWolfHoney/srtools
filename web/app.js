@@ -873,10 +873,16 @@
     else if (side === '3') waves = f.tierce || [];
     else if (side === '2') waves = f.bot || [];
     else waves = f.top || [];
+    const curInvForMark = (mode === 'anomalyArbitration'
+      ? f.invasion
+      : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top));
+    const pollutedIds = new Set((curInvForMark && curInvForMark.monsters) || []);
     const wavesHtml = (waves || []).map((wave, wi) =>
       `<div class="ep-wave-line"><b>第 ${wi + 1} 波</b>` +
       wave.filter((x) => x > 0)
-        .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
+        .map((id) => pollutedIds.has(id)
+          ? `<span class="ep-chip ep-chip-polluted">${escapeHtml(monsterName(id))}（污染）</span>`
+          : `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
     const groups = [];
     const group = (title, body) =>
@@ -920,8 +926,7 @@
     const showInvasion = !!curInv;
     if (showInvasion) {
       groups.push(group(`贪饕污染 Lv.${curInv.level}`,
-        (curInv.monsters || []).map((id) =>
-          `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('')));
+        '<span class="ep-desc">该节点的部分怪物被污染（波次里已标注「污染」）。</span>'));
     }
     const body = `<div class="ep-waves">${wavesHtml}</div>` + groups.join('');
     box.innerHTML = body || '<div class="side-hint">这一层没有怪物数据。</div>';
@@ -989,16 +994,11 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      // 污染（invasion）按节点独立：每个 Side 有自己的入侵（末日第一节点也可能有污染）
+      // 污染（invasion）按节点独立：污染怪本来就在波次里，只加污染 buff，不再额外造波
       const curInv = (mode === 'anomalyArbitration'
         ? f.invasion
         : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top));
       const useInvasion = !!curInv;
-      if (useInvasion && (curInv.monsters || []).length) {
-        const invWave = toWave(curInv.monsters);
-        if (waves.length) waves[0].push(...invWave);   // 污染怪并进第一波，不单独成波
-        else waves.push(invWave);
-      }
       // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
       bc.stage_id = mode === 'anomalyArbitration'
         ? (f.stage || 0)

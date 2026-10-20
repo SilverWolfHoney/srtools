@@ -398,3 +398,5 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .ep-desc { color: var(--muted); font-size: 12px; line-height: 1.5; flex-basis: 100%; }
 
 #ep-season { width: 180px; flex: none; }
+
+.ep-chip-polluted { background: rgba(255, 80, 80, 0.18); border-color: rgba(255, 80, 80, 0.55); }
