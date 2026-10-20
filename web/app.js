@@ -996,9 +996,8 @@
       const useInvasion = !!curInv;
       if (useInvasion && (curInv.monsters || []).length) {
         const invWave = toWave(curInv.monsters);
-        const first = waves[0];
-        if (first && first.length + invWave.length <= 5) first.push(...invWave);
-        else waves.unshift(invWave);
+        if (waves.length) waves[0].push(...invWave);   // 污染怪并进第一波，不单独成波
+        else waves.push(invWave);
       }
       // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
       bc.stage_id = mode === 'anomalyArbitration'
