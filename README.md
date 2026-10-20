@@ -53,6 +53,7 @@ python serve.py --port 21101
 | 角色头像 | `https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/<id>.webp`（下载到 `web/avatars/`，缺失的角色显示文字占位） |
 | 行迹树 | 布局/树结构来自 srtools 站点（`data/trace_layout.json`、`data/trace_trees.json`，随仓库分发）；命途底图 `https://srtools.neonteam.dev/traces/<Path>.svg`、行迹图标 `cdn.neonteam.dev/.../skillicons|ui/avatar/icon/*.webp`（下载到 `web/traces/`、`web/trace-icons/`） |
 | 战斗配置挑战数据（4 玩法） | `https://static.nanoka.cc/hsr/4.6.53/zh/{maze,story,boss,peak}/<期>.json`（下载到 `data/site/nanoka/`，随仓库分发；含星启第三节点与入侵 invasion）。nanoka.cc 每次版本更新都会跟进，客户端 Excel 里没有星启/入侵字段，因此挑战数据以它为准 |
+| 战斗配置关卡参数（等级/回合/关卡基础机制 buff） | `https://cdn.neonteam.dev/neonteam/<版本>/{moc,pure-fictions,ap-shadows,challenge-peak}.json`（下载到 `data/site/neonteam/`，随仓库分发）。nanoka 没有这三个字段，而原网站导出给私服的配置里带它们（虚构缺 `turbulence_maze_buff_id` 会卡加载），所以从原网站同源 CDN 取 |
 
 > 头像与行迹底图/图标（游戏版权）不随仓库分发：克隆后运行
 > `python fetch_avatars.py` 和 `python fetch_trace_assets.py` 重建即可；

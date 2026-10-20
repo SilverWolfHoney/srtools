@@ -561,6 +561,37 @@ class Builder:
 
         out = {}
 
+        # neonteam 数据（原网站同源）：比 nanoka 多 关卡等级 / 回合数 / 关卡基础机制 buff
+        def _load_nt(name: str) -> dict:
+            p = site.parent / "neonteam" / f"{name}.json"
+            if not p.is_file():
+                return {}
+            try:
+                return json.loads(p.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                return {}
+
+        def _attach_nt(floors: list, nt_period, with_buff: bool = False) -> list:
+            """按层序用 neonteam 数据补 level / cycle_count（可选关卡基础机制 buff）。"""
+            if not nt_period:
+                return floors
+            meta = {int(x.get("floor") or 0): x for x in (nt_period.get("floors") or [])}
+            for idx, fl in enumerate(floors):
+                m = meta.get(idx + 1)
+                if not m:
+                    continue
+                if m.get("level"):
+                    fl["level"] = int(m["level"])
+                if m.get("cycle_count"):
+                    fl["cycle"] = int(m["cycle_count"])
+                if with_buff and m.get("turbulence_maze_buff_id"):
+                    fl["base_buff"] = int(m["turbulence_maze_buff_id"])
+            return floors
+
+        nt_moc = _load_nt("moc")
+        nt_as = _load_nt("ap-shadows")
+        nf_all = _load_nt("pure-fictions")
+
         # 混沌（maze：list of 层）
         moc = {"name": "混沌回忆", "periods": []}
         out["moC"] = moc
@@ -571,33 +602,12 @@ class Builder:
                 if not pname:
                     pname = _clean_text(str(lv.get("group_name") or ""))
             moc["periods"].append({"period": int(f.stem), "name": pname,
-                                   "floors": floors_of(data, use_twist=True)})
-
-        # neonteam 的虚构数据（比 nanoka 多 level / cycle_count / 关卡基础机制 buff）
-        nf_all: dict = {}
-        nf_path = site.parent / "neonteam" / "pure-fictions.json"
-        if nf_path.is_file():
-            try:
-                nf_all = json.loads(nf_path.read_text(encoding="utf-8"))
-            except (OSError, ValueError):
-                nf_all = {}
+                                   "floors": _attach_nt(floors_of(data, use_twist=True),
+                                                        nt_moc.get(str(int(f.stem))))})
 
         def _attach_pf_meta(floors: list, nf_period) -> list:
-            """用 neonteam 的虚构数据补 level / 回合数 / 关卡基础机制 buff（每期不同）。"""
-            if not nf_period:
-                return floors
-            meta = {int(x.get("floor") or 0): x for x in (nf_period.get("floors") or [])}
-            for idx, fl in enumerate(floors):
-                m = meta.get(idx + 1)
-                if not m:
-                    continue
-                if m.get("level"):
-                    fl["level"] = int(m["level"])
-                if m.get("cycle_count"):
-                    fl["cycle"] = int(m["cycle_count"])
-                if m.get("turbulence_maze_buff_id"):
-                    fl["base_buff"] = int(m["turbulence_maze_buff_id"])
-            return floors
+            """虚构：额外补关卡基础机制 buff（每期不同，缺了会卡加载）。"""
+            return _attach_nt(floors, nf_period, with_buff=True)
 
         # 虚构（story）/ 末日（boss）：dict.level
         for key, label, dname in (("pureFiction", "虚构叙事", "story"),
@@ -640,11 +650,12 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": _attach_pf_meta(
+                    "floors": _attach_nt(
                         floors_of(data.get("level") or [], season, stage_extra,
                                   season_groups=season_groups,
                                   use_infinite=False),   # 波次用关卡 event 的 monster_list 原样
-                        nf_all.get(str(int(f.stem))) if dname == "story" else None),
+                        (nf_all if dname == "story" else nt_as).get(str(int(f.stem))),
+                        with_buff=(dname == "story")),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
