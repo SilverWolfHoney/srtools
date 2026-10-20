@@ -886,7 +886,7 @@
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
     }
     if (mode === 'moC' && (f.buff_ids || []).length) {
-      groups.push(group('关卡湍流：',
+      groups.push(group('混沌 Buff：',
         f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('')));
     }
     let seasonList = f.season_buffs || [];
