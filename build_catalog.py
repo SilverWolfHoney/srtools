@@ -431,7 +431,8 @@ class Builder:
                              if m.get("monster_id")],
             }
 
-        def floor_of(lv, mode: str, season=None, stage_extra=None, use_twist=False) -> dict:
+        def floor_of(lv, mode: str, season=None, stage_extra=None, use_twist=False,
+                     season_groups=None) -> dict:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
@@ -463,10 +464,12 @@ class Builder:
                 "buff_ids": buff_ids,
                 "stage_buffs": stage_buffs,
                 "season_buffs": season or [],
+                "season_groups": season_groups or [],
                 "cycle": int(lv.get("countdown") or 0) or 30,
             }
 
-        def floors_of(levels, season=None, stage_extra=None, use_twist=False) -> list:
+        def floors_of(levels, season=None, stage_extra=None, use_twist=False,
+                     season_groups=None) -> list:
             """把 pre_id 节点3 层（如 5613=其十二的节点3）合并进前置层的 tierce/invasion。"""
             extra: dict[int, dict] = {}
             ordered = []
@@ -478,7 +481,7 @@ class Builder:
                     ordered.append(lv)
             out = []
             for lv in ordered:
-                f = floor_of(lv, "maze", season, stage_extra, use_twist)
+                f = floor_of(lv, "maze", season, stage_extra, use_twist, season_groups)
                 node3 = extra.get(f["floor"])
                 if node3:
                     ev3 = event_of(node3.get("event_id_list"))
@@ -530,13 +533,16 @@ class Builder:
                     return out
 
                 if dname == "story":
-                    # 虚构：option = Buff（可携带），sub_option = Stage Buff（关卡）
+                    # 虚构：option = 玩家可选 Buff，sub_option = 固定关卡效果
                     season = norm(data.get("option"))
                     stage_extra = norm(data.get("sub_option"))
+                    season_groups = []
                 else:
-                    # 末日：buff_list1/2/3 = Buff（候选），buff = Stage Buff（关卡机制）
-                    season = (norm(data.get("buff_list1")) + norm(data.get("buff_list2"))
-                              + norm(data.get("buff_list3")))
+                    # 末日：buff_list1/2/3 = 三路（节点1/2/3）各自的三选一；buff = 关卡效果
+                    season_groups = [norm(data.get("buff_list1")),
+                                     norm(data.get("buff_list2")),
+                                     norm(data.get("buff_list3"))]
+                    season = [b for g in season_groups for b in g]
                     stage_extra = norm([buff]) if buff.get("name") else []
                 item["periods"].append({
                     "period": int(f.stem),
@@ -546,7 +552,8 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": floors_of(data.get("level") or [], season, stage_extra),
+                    "floors": floors_of(data.get("level") or [], season, stage_extra,
+                                        season_groups=season_groups),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
@@ -555,6 +562,15 @@ class Builder:
             data = json.loads(f.read_text(encoding="utf-8"))
             levels = list(data.get("pre_level") or [])
             boss_id = 0
+            boss_buffs = []
+            if data.get("boss_config"):
+                boss_buffs = [
+                    {"id": int(b.get("id") or 0),
+                     "name": _clean_text(str(b.get("name") or "")),
+                     "desc": _clean_text(str(b.get("desc") or "")),
+                     "param": b.get("param") or []}
+                    for b in (data["boss_config"].get("buff_list") or []) if b.get("name")
+                ]
             if data.get("boss_level"):
                 levels.append(data["boss_level"])
                 boss_id = int(data["boss_level"].get("id") or 0)
@@ -579,13 +595,9 @@ class Builder:
                          "param": t.get("param") or []}
                         for t in (lv.get("tag_list") or []) if t.get("id")
                     ],
-                    "season_buffs": [
-                        {"id": int(b.get("id") or 0),
-                         "name": _clean_text(str(b.get("name") or "")),
-                         "desc": _clean_text(str(b.get("desc") or "")),
-                         "param": b.get("param") or []}
-                        for b in (lv.get("buff_list") or []) if b.get("name")
-                    ],
+                    "season_buffs": (boss_buffs
+                                     if (str(lv.get("name") or "").startswith("将杀王棋")
+                                         or lv.get("hard_name")) else []),
                     "invasion": invasion_of(ev.get("invasion")),
                     "stage": int(ev.get("stage_id") or 0),
                 })

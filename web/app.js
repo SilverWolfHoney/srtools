@@ -886,9 +886,14 @@
       html += '<div class="ep-tierce">关卡湍流：</div>' +
         f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
     }
-    if ((f.season_buffs || []).length) {
+    let seasonList = f.season_buffs || [];
+    if ((f.season_groups || []).length) {
+      const sideIdx = (Number($('ep-side').value) || 1) - 1;
+      seasonList = f.season_groups[sideIdx] || seasonList;
+    }
+    if (seasonList.length) {
       html += '<div class="ep-tierce">赛季效果（三选一）：</div>' +
-        f.season_buffs.map((b, i) =>
+        seasonList.map((b, i) =>
           `<label class="ep-option"><input type="radio" name="ep-season" value="${b.id || ''}" ${i === 0 ? 'checked' : ''}> <span title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span></label>`).join('');
     }
     if ((f.stage_buffs || []).length) {
