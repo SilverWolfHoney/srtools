@@ -939,8 +939,11 @@
       seasonSel.addEventListener('change', () => {
         const el = $('ep-season-desc');
         if (el) el.textContent = descOf(seasonSel.value);
+        applyBattlePick(true);      // 换赛季效果会改祝福，立刻同步到当前配置
       });
     }
+    // 切模式 / 期数 / 层 / 节点后，下面「当前战斗配置」实时跟随预览（清空按钮期间除外）
+    if (!autoPickMuted) applyBattlePick(true);
   }
 
   /** 显示当前 battle_config（波次 / 祝福 / 回合）。 */
@@ -961,20 +964,31 @@
     }).join('');
     const bl = (bc.blessings || []).map((b) => b.id).join(', ') || '无';
     box.innerHTML = `<div class="ep-current-title">当前战斗配置</div>${rows}
-      <div class="ep-wave">祝福: ${bl} · 回合数: ${bc.cycle_count ?? 30}</div>
+      <div class="ep-wave">祝福: ${bl} · 回合数: ${bc.cycle_count ?? 30} · stage_id: ${bc.stage_id || 0}</div>
       <button id="ep-clear" class="ghost mini danger">清空战斗配置</button>`;
     const btn = $('ep-clear');
     if (btn) btn.addEventListener('click', () => {
+      autoPickMuted = true;
       S.profile.battle_config = {};
       markDirty();
       renderBattle();
+      autoPickMuted = false;
     });
   }
 
-  /** 把当前选择应用为战斗配置（一波怪物 + 可选祝福）。 */
-  function applyBattlePick() {
+  /**
+   * 把当前选择应用为战斗配置（波次 + 祝福 + stage_id）。
+   * pickSilent=true 时静默同步：不弹 toast、不重建整页，只刷新「当前战斗配置」。
+   */
+  let autoPickMuted = false;   // 「清空战斗配置」时临时禁止自动同步
+  function applyBattlePick(pickSilent = false) {
     const mode = S.battleMode || 'moC';
     const bc = S.profile.battle_config || (S.profile.battle_config = {});
+    const snapshot = () => JSON.stringify({
+      m: bc.monsters || [], b: bc.blessings || [],
+      s: bc.stage_id ?? null, c: bc.cycle_count ?? null,
+    });
+    const before = snapshot();
     const cycle = $('ep-cycle').checked;
     const turbulence = $('ep-turbulence').checked;
     const waves = [];
@@ -982,11 +996,11 @@
       .map((id) => ({ monster_id: id, amount: 1, level: 80 }));
     if (mode === 'custom') {
       const ids = ($('ep-custom-ids').value || '').split(/[\s,，]+/).filter(Boolean).map(Number);
-      if (!ids.length) { toast('请输入怪物 ID', 'warn'); return; }
+      if (!ids.length) { if (!pickSilent) toast('请输入怪物 ID', 'warn'); return; }
       waves.push(toWave(ids));
     } else {
       const f = currentFloor();
-      if (!f) { toast('没有可用的挑战数据', 'warn'); return; }
+      if (!f) { if (!pickSilent) toast('没有可用的挑战数据', 'warn'); return; }
       const side = $('ep-side').value;
       let base;
       if (mode === 'anomalyArbitration') base = f.waves || [];
@@ -1006,20 +1020,27 @@
         : (side === '3' ? (f.stage_tierce || 0)
           : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
       {
-        const bl = [];
-        for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
-        for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
-        if (useInvasion && curInv.buff) bl.push({ id: curInv.buff, level: 1 });
-        if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
+        const ids = [];
+        const add = (id) => {
+          const v = Number(id);
+          if (v && !ids.includes(v)) ids.push(v);   // 去重，顺序即预览显示顺序
+        };
+        for (const b of f.tag_buffs || []) add(b.id);      // 敌人词条
+        for (const b of f.stage_buffs || []) add(b.id);    // 关卡 Buff（预览里「关卡 Buff」那一组）
+        for (const id of f.buff_ids || []) add(id);        // 混沌关卡 Buff（记忆紊流等）
+        if (useInvasion && curInv.buff) add(curInv.buff);  // 贪饕污染
+        if (f.turbulence) add(f.turbulence);
         const seasonSel = $('ep-season');
-        if (seasonSel && seasonSel.value) bl.push({ id: Number(seasonSel.value), level: 1 });
-        bc.blessings = bl;
+        if (seasonSel && seasonSel.value) add(seasonSel.value);   // 赛季效果（三选一）
+        bc.blessings = ids.map((id) => ({ id, level: 1 }));
       }
       if (cycle && f.cycle) bc.cycle_count = f.cycle;
     }
     bc.monsters = waves.filter((w) => w.length);
     if (cycle) bc.cycle_count = bc.cycle_count || 30;
+    if (pickSilent && snapshot() === before) return;   // 内容没变就不折腾界面/不标脏
     markDirty();
+    if (pickSilent) { renderBattleCurrent(); return; }  // 静默同步只刷下面面板
     toast(`已应用 ${bc.monsters.reduce((n, w) => n + w.length, 0)} 个怪物、stage_id=${bc.stage_id || 0}`, 'ok');
     renderBattle();
   }
@@ -1102,7 +1123,11 @@
       renderBattleSide();
     });
     $('ep-side').addEventListener('change', () => renderBattleMonsters());
-    $('ep-apply').addEventListener('click', applyBattlePick);
+    $('ep-apply').addEventListener('click', () => applyBattlePick());
+    // 勾选项 / 自定义怪变化时也立刻同步到「当前战斗配置」
+    $('ep-cycle').addEventListener('change', () => applyBattlePick(true));
+    $('ep-turbulence').addEventListener('change', () => applyBattlePick(true));
+    if ($('ep-custom-ids')) $('ep-custom-ids').addEventListener('input', () => applyBattlePick(true));
 
     $('search').addEventListener('input', () => { S.search = $('search').value; renderAvatarList(); });
     $('filter-path').addEventListener('change', () => {
