@@ -886,7 +886,7 @@
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
     }
     if (mode === 'moC' && (f.buff_infos || []).length) {
-      groups.push(group('混沌 Buff：',
+      groups.push(group('关卡 Buff：',
         f.buff_infos.map((b) =>
           `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>` +
           `<span class="ep-desc">${escapeHtml(b.desc || '')}</span>`).join('')));
@@ -904,7 +904,7 @@
         `<span class="ep-desc" id="ep-season-desc">${escapeHtml(seasonList[0].desc || '')}</span>`));
     }
     if ((f.stage_buffs || []).length) {
-      groups.push(group('Stage Buff：',
+      groups.push(group('关卡 Buff：',
         f.stage_buffs.map((b) =>
           `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>` +
           `<span class="ep-desc">${escapeHtml(b.desc || '')}</span>`).join('')));
