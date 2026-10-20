@@ -582,8 +582,8 @@ class Builder:
                     continue
                 if m.get("level"):
                     fl["level"] = int(m["level"])
-                if m.get("cycle_count"):
-                    fl["cycle"] = int(m["cycle_count"])
+                if m.get("cycle_count") is not None:
+                    fl["cycle"] = int(m["cycle_count"])   # 末日这里是 0（靠行动值，没有回合限制）
                 if with_buff and m.get("turbulence_maze_buff_id"):
                     fl["base_buff"] = int(m["turbulence_maze_buff_id"])
             return floors

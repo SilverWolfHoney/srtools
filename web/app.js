@@ -1025,8 +1025,9 @@
                          anomalyArbitration: 'DEFAULT' })[mode] || 'DEFAULT';
       bc.custom_stats = [];
       bc.path_resonance_id = 0;
-      // 回合数：虚构是 4 轮（catalog 里已按 neonteam 数据填好），其余按关卡回合数
-      bc.cycle_count = Number(f.cycle) || (mode === 'pureFiction' ? 4 : 30);
+      // 回合数：按关卡数据；末日幻影是 0（靠行动值，没有回合限制）
+      const cyc = f.cycle;
+      bc.cycle_count = (cyc === 0 || cyc) ? Number(cyc) : (mode === 'pureFiction' ? 4 : 30);
       {
         const ids = [];
         const add = (id) => {
