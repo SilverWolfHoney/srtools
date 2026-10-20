@@ -994,11 +994,21 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      // 污染（invasion）按节点独立：污染怪本来就在波次里，只加污染 buff，不再额外造波
+      // 污染（invasion）按节点独立
       const curInv = (mode === 'anomalyArbitration'
         ? f.invasion
         : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top));
       const useInvasion = !!curInv;
+      if (useInvasion && (curInv.monsters || []).length) {
+        // 虚构/混沌的污染怪本来就在波次里（只标记）；末日/异相仲裁的「额外污染目标」不在波次，并入第 1 波
+        const inWaves = new Set(waves.reduce((acc, w) => acc.concat(w.map((m) => m.monster_id)), []));
+        const extra = (curInv.monsters || []).filter((id) => id && !inWaves.has(id));
+        if (extra.length) {
+          const extraWave = toWave(extra);
+          if (waves.length) waves[0].push(...extraWave);
+          else waves.push(extraWave);
+        }
+      }
       // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
       bc.stage_id = mode === 'anomalyArbitration'
         ? (f.stage || 0)
