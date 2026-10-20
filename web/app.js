@@ -966,7 +966,11 @@
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
       if (f.invasion && (f.invasion.monsters || []).length) {
-        waves.push(toWave(f.invasion.monsters));   // 贪饕污染：额外一波污染怪
+        // 贪饕污染是同一场战斗里的「额外污染目标」，尽量并入最后一波（每波最多 5 个）
+        const invWave = toWave(f.invasion.monsters);
+        const last = waves[waves.length - 1];
+        if (last && last.length + invWave.length <= 5) last.push(...invWave);
+        else waves.push(invWave);
       }
       // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
       bc.stage_id = mode === 'anomalyArbitration'
