@@ -1,0 +1,1817 @@
+{
+  "id": 3022,
+  "name": "领航冥茫",
+  "buff": {
+    "name": "末法余烬",
+    "desc": "拥有<color=#f29e38ff>【坚防守备】</color>的敌方目标被<color=#f29e38ff>弱点击破</color>时，使我方全体目标解除控制状态并激活终结技。\\n敌方全体目标受到的战技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，欢愉伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+    "param": [
+      0.25,
+      0.15
+    ]
+  },
+  "buff_list1": [
+    {
+      "name": "魔法时间",
+      "desc": "战斗开始时，我方队伍中存在1/2/3/4名欢愉命途的角色时，我方全体目标欢愉度提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#3[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#4[i]%</unbreak></color>。",
+      "param": [
+        0.1,
+        0.2,
+        0.3,
+        0.6
+      ]
+    },
+    {
+      "name": "金钱帝国",
+      "desc": "编队中的第1位角色施放欢愉技时增笑<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>并获得<color=#f29e38ff><unbreak>#2[i]</unbreak></color>个笑点。",
+      "param": [
+        0.2,
+        10
+      ]
+    },
+    {
+      "name": "魔城陷落",
+      "desc": "我方全体角色造成的战技和终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，施放终结技时获得<color=#f29e38ff><unbreak>#2[i]</unbreak></color>个笑点。",
+      "param": [
+        0.5,
+        10
+      ]
+    }
+  ],
+  "buff_list2": [
+    {
+      "name": "攻无不克",
+      "desc": "忆灵造成伤害时无视目标<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的防御力。",
+      "param": [
+        0.2
+      ]
+    },
+    {
+      "name": "生机焕发",
+      "desc": "我方全体造成的战技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，回合开始时，若当前生命值百分比等于或低于<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，则回复生命上限<color=#f29e38ff><unbreak>#3[i]%</unbreak></color>的生命值。",
+      "param": [
+        0.3,
+        0.01,
+        0.15
+      ]
+    },
+    {
+      "name": "破竹之势",
+      "desc": "角色施放终结技时，使自身的弱点击破效率提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，暴击伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+      "param": [
+        1,
+        0.4,
+        3
+      ]
+    }
+  ],
+  "buff_list3": [
+    {
+      "name": "膏腴之地",
+      "desc": "我方全体造成的战技和终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，编队中的第1位角色造成的战技和终结技伤害额外提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+      "param": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "name": "才藻富赡",
+      "desc": "敌方全体的风属性抗性和雷属性抗性降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。",
+      "param": [
+        0.4
+      ]
+    },
+    {
+      "name": "喜上眉梢",
+      "desc": "敌方全体受到的欢愉伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。我方队伍中存在欢愉命途的角色时，我方全体的弱点击破效率提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+      "param": [
+        0.3,
+        0.5
+      ]
+    }
+  ],
+  "begin_time": "2026-09-27 04:00:02",
+  "end_time": "2026-10-27 04:00:00",
+  "level": [
+    {
+      "id": 30221,
+      "name": "领航冥茫·难度<unbreak>01</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Quantum",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Ice",
+        "Wind",
+        "Quantum",
+        "Imaginary"
+      ],
+      "maze_group_id1": 7,
+      "maze_group_id2": 9,
+      "boss_monster_id1": 501402401,
+      "boss_monster_id2": 401403601,
+      "boss_monster_id1_skill_list": [
+        501402401,
+        501402403,
+        501402402,
+        501402404,
+        501402405,
+        501402406,
+        501402408,
+        501402409,
+        501402411,
+        501402415,
+        501402414
+      ],
+      "boss_monster_id2_skill_list": [
+        401403601,
+        401403602,
+        401403603,
+        401403604,
+        401403605,
+        401403606,
+        401403607,
+        401403608,
+        401403609,
+        401403610,
+        401403611,
+        401403612,
+        401403613,
+        401403614,
+        401403615,
+        401403616
+      ],
+      "boss_monster_config1": {
+        "difficulty": 1,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "至臻友情",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "不动如山",
+            "desc": "【破晓战队】退出【破晓力场】所需的攻击次数提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚不可摧",
+            "desc": "【破晓战队】处于【破晓力场】状态时，受到的伤害大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "任意【破晓战队】成员被我方目标消灭时，我方「合金保姆」立即获得1个可施放强化普攻的额外回合。我方「合金保姆」对首领幻影施放强化普攻时，可<color=#f29e38ff>无视其【弱点无效】</color>效果，强制削减韧性。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "<color=#f29e38ff>获得笑点</color>可加速充能我方「合金保姆」，我方「合金保姆」的强化普攻可解除首领幻影的伤害减免效果，并削减首领幻影的韧性。",
+          "造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+          "消灭任意<color=#f29e38ff>【破晓战队】</color>成员可使我方「合金保姆」立即获得1个可施放强化普攻的额外回合。"
+        ],
+        "phase_list": [
+          {
+            "name": "含辛茹苦的列车长",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "answer": "应对策略：造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101811,
+              101812
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 1,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "朽株枯木",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "摧刚为柔",
+            "desc": "【哀悯长臂】的韧性上限提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚韧之志",
+            "desc": "敌方全体受到的伤害降低。但每拥有1个<color=#f29e38ff>弱点属性</color>，受到的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影和其召唤物受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "本场战斗中我方目标的生命值最多降至1点，同时将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "我方目标生命值降低时，处于【死梦深度】状态的首领幻影会积累【濒死梦泡】，【濒死梦泡】达到上限时首领幻影进入【死亡的芬芳】状态，此时首领幻影和其召唤物的技能大幅强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "我方目标陷入【负载生命值】状态时造成的伤害和弱点击破效率大幅降低，优先回复其生命值以解除该状态。",
+          "对【哀悯长臂】造成弱点击破可以削减首领幻影的韧性和生命值，若此时首领幻影处于【死亡的芬芳】状态，还可以回复我方生命值。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：求死不能",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "answer": "应对策略：优先对处于【负载生命值】状态的我方目标进行回复。",
+            "difficulty": 1,
+            "skill_list": [
+              101311,
+              101312
+            ]
+          },
+          {
+            "name": "阶段二：向死而生",
+            "desc": "首领幻影施放【死亡想要更多的死亡】时会对处于【负载生命值】状态的我方目标造成致命伤害。",
+            "answer": "应对策略：在【死亡想要更多的死亡】施放前通过回复生命值解除所有我方单位的【负载生命值】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101321
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420561,
+          "stage_type": "Challenge",
+          "stage_name": 3513447881416968543,
+          "hard_level_group": 1,
+          "level": 60,
+          "elite_group": 896,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Planarcadia_Combat_Pam"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 501402401
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420571,
+          "stage_type": "Challenge",
+          "stage_name": 1712224853307384992,
+          "hard_level_group": 1,
+          "level": 60,
+          "elite_group": 896,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Pollux_P1"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 401403601
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30222,
+      "name": "领航冥茫·难度<unbreak>02</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Quantum",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Ice",
+        "Wind",
+        "Quantum",
+        "Imaginary"
+      ],
+      "maze_group_id1": 7,
+      "maze_group_id2": 9,
+      "boss_monster_id1": 501402402,
+      "boss_monster_id2": 401403602,
+      "boss_monster_id1_skill_list": [
+        501402401,
+        501402403,
+        501402402,
+        501402404,
+        501402405,
+        501402406,
+        501402408,
+        501402409,
+        501402411,
+        501402415,
+        501402414
+      ],
+      "boss_monster_id2_skill_list": [
+        401403601,
+        401403602,
+        401403603,
+        401403604,
+        401403605,
+        401403606,
+        401403607,
+        401403608,
+        401403609,
+        401403610,
+        401403611,
+        401403612,
+        401403613,
+        401403614,
+        401403615,
+        401403616
+      ],
+      "boss_monster_config1": {
+        "difficulty": 2,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "至臻友情",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "不动如山",
+            "desc": "【破晓战队】退出【破晓力场】所需的攻击次数提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚不可摧",
+            "desc": "【破晓战队】处于【破晓力场】状态时，受到的伤害大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "任意【破晓战队】成员被我方目标消灭时，我方「合金保姆」立即获得1个可施放强化普攻的额外回合。我方「合金保姆」对首领幻影施放强化普攻时，可<color=#f29e38ff>无视其【弱点无效】</color>效果，强制削减韧性。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "<color=#f29e38ff>获得笑点</color>可加速充能我方「合金保姆」，我方「合金保姆」的强化普攻可解除首领幻影的伤害减免效果，并削减首领幻影的韧性。",
+          "造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+          "消灭任意<color=#f29e38ff>【破晓战队】</color>成员可使我方「合金保姆」立即获得1个可施放强化普攻的额外回合。"
+        ],
+        "phase_list": [
+          {
+            "name": "含辛茹苦的列车长",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "answer": "应对策略：造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101811,
+              101812
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 2,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "朽株枯木",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "摧刚为柔",
+            "desc": "【哀悯长臂】的韧性上限提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚韧之志",
+            "desc": "敌方全体受到的伤害降低。但每拥有1个<color=#f29e38ff>弱点属性</color>，受到的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影和其召唤物受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "本场战斗中我方目标的生命值最多降至1点，同时将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "我方目标生命值降低时，处于【死梦深度】状态的首领幻影会积累【濒死梦泡】，【濒死梦泡】达到上限时首领幻影进入【死亡的芬芳】状态，此时首领幻影和其召唤物的技能大幅强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "我方目标陷入【负载生命值】状态时造成的伤害和弱点击破效率大幅降低，优先回复其生命值以解除该状态。",
+          "对【哀悯长臂】造成弱点击破可以削减首领幻影的韧性和生命值，若此时首领幻影处于【死亡的芬芳】状态，还可以回复我方生命值。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：求死不能",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "answer": "应对策略：优先对处于【负载生命值】状态的我方目标进行回复。",
+            "difficulty": 1,
+            "skill_list": [
+              101311,
+              101312
+            ]
+          },
+          {
+            "name": "阶段二：向死而生",
+            "desc": "首领幻影施放【死亡想要更多的死亡】时会对处于【负载生命值】状态的我方目标造成致命伤害。",
+            "answer": "应对策略：在【死亡想要更多的死亡】施放前通过回复生命值解除所有我方单位的【负载生命值】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101321
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420562,
+          "stage_type": "Challenge",
+          "stage_name": 3513447881416968543,
+          "hard_level_group": 1,
+          "level": 70,
+          "elite_group": 897,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Planarcadia_Combat_Pam"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 501402402
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420572,
+          "stage_type": "Challenge",
+          "stage_name": 1712224853307384992,
+          "hard_level_group": 1,
+          "level": 70,
+          "elite_group": 897,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Pollux_P1"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 401403602
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30223,
+      "name": "领航冥茫·难度<unbreak>03</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Quantum",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Ice",
+        "Wind",
+        "Quantum",
+        "Imaginary"
+      ],
+      "maze_group_id1": 7,
+      "maze_group_id2": 9,
+      "boss_monster_id1": 501402403,
+      "boss_monster_id2": 401403603,
+      "boss_monster_id1_skill_list": [
+        501402401,
+        501402403,
+        501402402,
+        501402404,
+        501402405,
+        501402406,
+        501402408,
+        501402409,
+        501402411,
+        501402415,
+        501402414
+      ],
+      "boss_monster_id2_skill_list": [
+        401403601,
+        401403602,
+        401403603,
+        401403604,
+        401403605,
+        401403606,
+        401403607,
+        401403608,
+        401403609,
+        401403610,
+        401403611,
+        401403612,
+        401403613,
+        401403614,
+        401403615,
+        401403616
+      ],
+      "boss_monster_config1": {
+        "difficulty": 3,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "至臻友情",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "不动如山",
+            "desc": "【破晓战队】退出【破晓力场】所需的攻击次数提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚不可摧",
+            "desc": "【破晓战队】处于【破晓力场】状态时，受到的伤害大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "任意【破晓战队】成员被我方目标消灭时，我方「合金保姆」立即获得1个可施放强化普攻的额外回合。我方「合金保姆」对首领幻影施放强化普攻时，可<color=#f29e38ff>无视其【弱点无效】</color>效果，强制削减韧性。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "<color=#f29e38ff>获得笑点</color>可加速充能我方「合金保姆」，我方「合金保姆」的强化普攻可解除首领幻影的伤害减免效果，并削减首领幻影的韧性。",
+          "造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+          "消灭任意<color=#f29e38ff>【破晓战队】</color>成员可使我方「合金保姆」立即获得1个可施放强化普攻的额外回合。"
+        ],
+        "phase_list": [
+          {
+            "name": "含辛茹苦的列车长",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "answer": "应对策略：造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101811,
+              101812
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 3,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "朽株枯木",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "摧刚为柔",
+            "desc": "【哀悯长臂】的韧性上限提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚韧之志",
+            "desc": "敌方全体受到的伤害降低。但每拥有1个<color=#f29e38ff>弱点属性</color>，受到的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影和其召唤物受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "本场战斗中我方目标的生命值最多降至1点，同时将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "我方目标生命值降低时，处于【死梦深度】状态的首领幻影会积累【濒死梦泡】，【濒死梦泡】达到上限时首领幻影进入【死亡的芬芳】状态，此时首领幻影和其召唤物的技能大幅强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "我方目标陷入【负载生命值】状态时造成的伤害和弱点击破效率大幅降低，优先回复其生命值以解除该状态。",
+          "对【哀悯长臂】造成弱点击破可以削减首领幻影的韧性和生命值，若此时首领幻影处于【死亡的芬芳】状态，还可以回复我方生命值。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：求死不能",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "answer": "应对策略：优先对处于【负载生命值】状态的我方目标进行回复。",
+            "difficulty": 1,
+            "skill_list": [
+              101311,
+              101312
+            ]
+          },
+          {
+            "name": "阶段二：向死而生",
+            "desc": "首领幻影施放【死亡想要更多的死亡】时会对处于【负载生命值】状态的我方目标造成致命伤害。",
+            "answer": "应对策略：在【死亡想要更多的死亡】施放前通过回复生命值解除所有我方单位的【负载生命值】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101321
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420563,
+          "stage_type": "Challenge",
+          "stage_name": 3513447881416968543,
+          "hard_level_group": 1,
+          "level": 80,
+          "elite_group": 943,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Planarcadia_Combat_Pam"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 501402403
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": [],
+          "invasion": {
+            "level": 2,
+            "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+            "maze_buff_id": 3034002,
+            "maze_buff_param": [
+              0.4,
+              0.2,
+              1,
+              1,
+              0.35
+            ],
+            "monster_param": [
+              0.4,
+              0.4,
+              1,
+              1,
+              0.72
+            ],
+            "monster_list": [
+              {
+                "monster_id": 5013052,
+                "param_list": []
+              },
+              {
+                "monster_id": 5013042,
+                "param_list": []
+              },
+              {
+                "monster_id": 5013072,
+                "param_list": [
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420573,
+          "stage_type": "Challenge",
+          "stage_name": 1712224853307384992,
+          "hard_level_group": 1,
+          "level": 80,
+          "elite_group": 898,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Pollux_P1"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 401403603
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30224,
+      "name": "领航冥茫·难度<unbreak>04</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Quantum",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Ice",
+        "Wind",
+        "Quantum",
+        "Imaginary"
+      ],
+      "maze_group_id1": 7,
+      "maze_group_id2": 9,
+      "boss_monster_id1": 501402404,
+      "boss_monster_id2": 401403604,
+      "boss_monster_id1_skill_list": [
+        501402401,
+        501402403,
+        501402402,
+        501402404,
+        501402405,
+        501402406,
+        501402408,
+        501402409,
+        501402411,
+        501402415,
+        501402414
+      ],
+      "boss_monster_id2_skill_list": [
+        401403601,
+        401403602,
+        401403603,
+        401403604,
+        401403605,
+        401403606,
+        401403607,
+        401403608,
+        401403609,
+        401403610,
+        401403611,
+        401403612,
+        401403613,
+        401403614,
+        401403615,
+        401403616
+      ],
+      "boss_monster_config1": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "至臻友情",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "不动如山",
+            "desc": "【破晓战队】退出【破晓力场】所需的攻击次数提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚不可摧",
+            "desc": "【破晓战队】处于【破晓力场】状态时，受到的伤害大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 501402411,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "任意【破晓战队】成员被我方目标消灭时，我方「合金保姆」立即获得1个可施放强化普攻的额外回合。我方「合金保姆」对首领幻影施放强化普攻时，可<color=#f29e38ff>无视其【弱点无效】</color>效果，强制削减韧性。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "<color=#f29e38ff>获得笑点</color>可加速充能我方「合金保姆」，我方「合金保姆」的强化普攻可解除首领幻影的伤害减免效果，并削减首领幻影的韧性。",
+          "造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+          "消灭任意<color=#f29e38ff>【破晓战队】</color>成员可使我方「合金保姆」立即获得1个可施放强化普攻的额外回合。"
+        ],
+        "phase_list": [
+          {
+            "name": "含辛茹苦的列车长",
+            "desc": "【破晓战队】被召唤时立即施放【破晓意志】进入【破晓力场】状态。【破晓战队】处于【破晓力场】状态时，首领幻影获得与该名【破晓战队】成员同属性的<color=#f29e38ff>【伤害免疫】</color>效果，并获得<color=#f29e38ff>【弱点无效】</color>效果。",
+            "answer": "应对策略：造成<color=#f29e38ff>欢愉伤害</color>可使【破晓战队】更快退出【破晓力场】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101811,
+              101812
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "朽株枯木",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "摧刚为柔",
+            "desc": "【哀悯长臂】的韧性上限提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "坚韧之志",
+            "desc": "敌方全体受到的伤害降低。但每拥有1个<color=#f29e38ff>弱点属性</color>，受到的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影和其召唤物受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 401403609,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "本场战斗中我方目标的生命值最多降至1点，同时将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "我方目标生命值降低时，处于【死梦深度】状态的首领幻影会积累【濒死梦泡】，【濒死梦泡】达到上限时首领幻影进入【死亡的芬芳】状态，此时首领幻影和其召唤物的技能大幅强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "我方目标陷入【负载生命值】状态时造成的伤害和弱点击破效率大幅降低，优先回复其生命值以解除该状态。",
+          "对【哀悯长臂】造成弱点击破可以削减首领幻影的韧性和生命值，若此时首领幻影处于【死亡的芬芳】状态，还可以回复我方生命值。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：求死不能",
+            "desc": "本场战斗中我方单位的生命值最多降至1点，同时会将受到的伤害超出当前生命值的部分转化为【负载生命值】。处于【负载生命值】状态的我方单位造成的伤害和弱点击破效率大幅降低。",
+            "answer": "应对策略：优先对处于【负载生命值】状态的我方目标进行回复。",
+            "difficulty": 1,
+            "skill_list": [
+              101311,
+              101312
+            ]
+          },
+          {
+            "name": "阶段二：向死而生",
+            "desc": "首领幻影施放【死亡想要更多的死亡】时会对处于【负载生命值】状态的我方目标造成致命伤害。",
+            "answer": "应对策略：在【死亡想要更多的死亡】施放前通过回复生命值解除所有我方单位的【负载生命值】状态。",
+            "difficulty": 1,
+            "skill_list": [
+              101321
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420564,
+          "stage_type": "Challenge",
+          "stage_name": 3513447881416968543,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 91,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Planarcadia_Combat_Pam"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 501402404
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": [],
+          "invasion": {
+            "level": 3,
+            "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+            "maze_buff_id": 3034003,
+            "maze_buff_param": [
+              0.65,
+              0.3,
+              0.5,
+              1,
+              0.5
+            ],
+            "monster_param": [
+              0.6,
+              0.8,
+              1,
+              3,
+              1.44
+            ],
+            "monster_list": [
+              {
+                "monster_id": 5013052,
+                "param_list": [
+                  1,
+                  0
+                ]
+              },
+              {
+                "monster_id": 5013042,
+                "param_list": []
+              },
+              {
+                "monster_id": 5013072,
+                "param_list": [
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420574,
+          "stage_type": "Challenge",
+          "stage_name": 1712224853307384992,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 97,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Pollux_P1"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 401403604
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30225,
+      "pre_id": 30224,
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 6000
+        },
+        {
+          "name": "获得#1分",
+          "param": 7800
+        },
+        {
+          "name": "获得#1分",
+          "param": 9900
+        }
+      ],
+      "challenge_special": {
+        "name": "获得#1分",
+        "param": 10200
+      },
+      "damage_type": [
+        "Physical",
+        "Fire",
+        "Ice",
+        "Imaginary"
+      ],
+      "boss_monster_id": 302401304,
+      "boss_monster_id_skill_list": [
+        302401301,
+        302401302,
+        302401303,
+        302401304,
+        302401305,
+        302401306,
+        302401307,
+        302401308,
+        302401310,
+        302401311,
+        302401312,
+        302401313,
+        302401314,
+        302401315,
+        302401316,
+        302401317,
+        302401318,
+        302401319,
+        302401320,
+        302401321,
+        302401322,
+        302401323,
+        302401324,
+        302401325,
+        302401326
+      ],
+      "boss_monster_config": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.6,
+              1.25,
+              1
+            ],
+            "skill_id": 100401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "攻守易型",
+            "desc": "首领幻影会在战斗中切换自身<color=#f29e38ff><u>战斗姿态</u></color>，召唤不同雕塑进行战斗；我方消灭处于【灵魂释放】状态的雕塑时，会使本次战斗中我方全体造成的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "战斗姿态",
+                "desc": "芒寒色正的银骑士会随着战斗改变自身的状态：\\n【骑士之怒】：召唤【枪尖】的雕塑，自身受到的所有伤害降低，有4个雕塑在场时自身进入韧性保护状态。\\n【黄金奉还】：召唤【盾】的雕塑，自身造成的所有伤害提高。\\n【瑰丽之勋】：召唤【授勋】的雕塑，有雕塑存在时，自身不可被选中。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "绝境逆转",
+            "desc": "首领幻影第二阶段施加【灵魂释放】时，会选择<color=#f29e38ff>所有</color>雕塑作为目标。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "众星拱卫",
+            "desc": "除首领幻影外，每多存在1个<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低，造成的伤害提高。",
+            "param": [
+              0.25
+            ],
+            "skill_id": 302401325,
+            "param_fix": [
+              0.05,
+              0.03
+            ],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.6,
+              1.25,
+              1
+            ],
+            "skill_id": 100401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "处于【灵魂释放】状态的<color=#f29e38ff>召唤物</color>会得到大幅强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "第二阶段时，<color=#f29e38ff>所有的召唤物</color>都会被强化为【灵魂释放】状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "<color=#f29e38ff>击破</color>首领幻影会大幅提高其受到的伤害，使我方全体恢复战技点并行动提前。",
+          "优先消灭或击破<color=#f29e38ff>召唤物</color>，可以有效削弱首领幻影。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：攻防之势",
+            "desc": "首领幻影会召唤【枪尖】或【盾】两种召唤物。",
+            "answer": "应对策略：优先消灭被强化的召唤物以削弱首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100211,
+              100212
+            ]
+          },
+          {
+            "name": "阶段二：荣誉之战",
+            "desc": "首领幻影会额外召唤【授勋】召唤物。",
+            "answer": "应对策略：优先消灭被强化的召唤物以削弱首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100221,
+              100222
+            ]
+          }
+        ]
+      },
+      "event_id_list": [
+        {
+          "stage_id": 420584,
+          "stage_type": "Challenge",
+          "stage_name": 4596526360486806805,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 173,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Spacetrain_Combat_Argenti"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110018"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 302401304
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    }
+  ]
+}

@@ -808,6 +808,7 @@
       psel.value = S.battlePeriod;
     } else {
       S.battlePeriod = periods.length ? periods[periods.length - 1].period : 0;
+      psel.value = S.battlePeriod;
     }
     renderBattleFloor();
     renderBattleCurrent();
@@ -872,11 +873,15 @@
       wave.filter((x) => x > 0)
         .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
-    if (mode === 'anomalyArbitration' && (f.tag_buffs || []).length) {
+    if ((f.tag_buffs || []).length) {
       html += '<div class="ep-tierce">关卡 buff：</div>' +
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
     }
-    if (mode === 'anomalyArbitration' && f.invasion) {
+    if ((f.buff_ids || []).length) {
+      html += '<div class="ep-tierce">关卡湍流：</div>' +
+        f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
+    }
+    if (f.invasion) {
       html += `<div class="ep-tierce">贪饕污染 Lv.${f.invasion.level}</div>` +
         (f.invasion.monsters || []).map((id) =>
           `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('');
@@ -935,7 +940,7 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      if (mode === 'anomalyArbitration' && f.invasion && (f.invasion.monsters || []).length) {
+      if (f.invasion && (f.invasion.monsters || []).length) {
         waves.push(toWave(f.invasion.monsters));   // 贪饕污染：额外一波污染怪
       }
       // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
@@ -946,6 +951,7 @@
       if (turbulence) {
         const bl = [];
         for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
+        for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
         if (f.invasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
         if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
         bc.blessings = bl;

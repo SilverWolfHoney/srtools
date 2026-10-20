@@ -1,0 +1,1616 @@
+[
+  {
+    "id": 5301,
+    "name": "扫除风暴其一",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4033010
+    ],
+    "npc_monster_id_list2": [
+      8013010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124011,
+        "stage_type": "Challenge",
+        "stage_name": 14552693742518040294,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4022010,
+            "monster1": 4033010,
+            "monster2": 4022010
+          },
+          {
+            "monster0": 4033010,
+            "monster1": 8003030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124012,
+        "stage_type": "Challenge",
+        "stage_name": 7287667153632341933,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 8012010,
+            "monster1": 8013010,
+            "monster2": 8012010
+          },
+          {
+            "monster0": 8013010,
+            "monster1": 3003050
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5302,
+    "name": "扫除风暴其二",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Physical",
+      "Fire"
+    ],
+    "damage_type2": [
+      "Ice",
+      "Wind"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      5013010
+    ],
+    "npc_monster_id_list2": [
+      2023010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124021,
+        "stage_type": "Challenge",
+        "stage_name": 9742045115079604233,
+        "hard_level_group": 3,
+        "level": 72,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5012030,
+            "monster1": 5013010,
+            "monster2": 5012030
+          },
+          {
+            "monster0": 5013010,
+            "monster1": 4053010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124022,
+        "stage_type": "Challenge",
+        "stage_name": 189339872378837144,
+        "hard_level_group": 3,
+        "level": 72,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2022060,
+            "monster1": 2023010,
+            "monster2": 2022060
+          },
+          {
+            "monster0": 2023010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5303,
+    "name": "扫除风暴其三",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Fire",
+      "Ice"
+    ],
+    "damage_type2": [
+      "Fire"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1013010
+    ],
+    "npc_monster_id_list2": [
+      3003010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124031,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 76,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 4053020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124032,
+        "stage_type": "Challenge",
+        "stage_name": 9344842774432863716,
+        "hard_level_group": 3,
+        "level": 76,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3002020,
+            "monster1": 3003010,
+            "monster2": 3002020
+          },
+          {
+            "monster0": 3003010,
+            "monster1": 8003040
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5304,
+    "name": "扫除风暴其四",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind"
+    ],
+    "damage_type2": [
+      "Thunder",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      2033010
+    ],
+    "npc_monster_id_list2": [
+      1013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124041,
+        "stage_type": "Challenge",
+        "stage_name": 16830651616508961311,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2032020,
+            "monster1": 2033010,
+            "monster2": 2032020
+          },
+          {
+            "monster0": 2033010,
+            "monster1": 2013010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124042,
+        "stage_type": "Challenge",
+        "stage_name": 16229653902150898118,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1012030,
+            "monster1": 1013020,
+            "monster2": 1012030
+          },
+          {
+            "monster0": 1013020,
+            "monster1": 3003030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5305,
+    "name": "扫除风暴其五",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Thunder",
+      "Wind"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Ice"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4033020
+    ],
+    "npc_monster_id_list2": [
+      1003010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124051,
+        "stage_type": "Challenge",
+        "stage_name": 4122473837421904295,
+        "hard_level_group": 3,
+        "level": 84,
+        "elite_group": 280,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4032040,
+            "monster1": 4033020,
+            "monster2": 4032040
+          },
+          {
+            "monster0": 4033020,
+            "monster1": 8003040
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124052,
+        "stage_type": "Challenge",
+        "stage_name": 9874079526424322448,
+        "hard_level_group": 3,
+        "level": 84,
+        "elite_group": 280,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002050,
+            "monster1": 1003010,
+            "monster2": 1002050
+          },
+          {
+            "monster0": 1003010,
+            "monster1": 2023030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5306,
+    "name": "扫除风暴其六",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4033010
+    ],
+    "npc_monster_id_list2": [
+      8013010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124061,
+        "stage_type": "Challenge",
+        "stage_name": 14552693742518040294,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4022010,
+            "monster1": 4033010,
+            "monster2": 4022010
+          },
+          {
+            "monster0": 4033010,
+            "monster1": 8003030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124062,
+        "stage_type": "Challenge",
+        "stage_name": 7287667153632341933,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 8012010,
+            "monster1": 8013010,
+            "monster2": 8012010
+          },
+          {
+            "monster0": 8013010,
+            "monster1": 3003050
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5307,
+    "name": "扫除风暴其七",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Physical",
+      "Fire"
+    ],
+    "damage_type2": [
+      "Ice",
+      "Wind"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      5013010
+    ],
+    "npc_monster_id_list2": [
+      2023010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124071,
+        "stage_type": "Challenge",
+        "stage_name": 9742045115079604233,
+        "hard_level_group": 3,
+        "level": 72,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5012030,
+            "monster1": 5013010,
+            "monster2": 5012030
+          },
+          {
+            "monster0": 5013010,
+            "monster1": 4053010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124072,
+        "stage_type": "Challenge",
+        "stage_name": 189339872378837144,
+        "hard_level_group": 3,
+        "level": 72,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2022060,
+            "monster1": 2023010,
+            "monster2": 2022060
+          },
+          {
+            "monster0": 2023010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5308,
+    "name": "扫除风暴其八",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Fire",
+      "Ice"
+    ],
+    "damage_type2": [
+      "Fire"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1013010
+    ],
+    "npc_monster_id_list2": [
+      3003010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124081,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 76,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 4053020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124082,
+        "stage_type": "Challenge",
+        "stage_name": 9344842774432863716,
+        "hard_level_group": 3,
+        "level": 76,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3002020,
+            "monster1": 3003010,
+            "monster2": 3002020
+          },
+          {
+            "monster0": 3003010,
+            "monster1": 8003040
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5309,
+    "name": "扫除风暴其九",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind"
+    ],
+    "damage_type2": [
+      "Thunder",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      2033010
+    ],
+    "npc_monster_id_list2": [
+      1013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124091,
+        "stage_type": "Challenge",
+        "stage_name": 16830651616508961311,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2032020,
+            "monster1": 2033010,
+            "monster2": 2032020
+          },
+          {
+            "monster0": 2033010,
+            "monster1": 2013010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124092,
+        "stage_type": "Challenge",
+        "stage_name": 16229653902150898118,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1012030,
+            "monster1": 1013020,
+            "monster2": 1012030
+          },
+          {
+            "monster0": 1013020,
+            "monster1": 3003030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5310,
+    "name": "扫除风暴其十",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Ice",
+      "Thunder"
+    ],
+    "damage_type2": [
+      "Fire",
+      "Ice"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4034010
+    ],
+    "npc_monster_id_list2": [
+      2024010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124101,
+        "stage_type": "Challenge",
+        "stage_name": 394586006630307543,
+        "hard_level_group": 3,
+        "level": 90,
+        "elite_group": 282,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1013010,
+            "monster1": 1013020
+          },
+          {
+            "monster0": 4034010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124102,
+        "stage_type": "Challenge",
+        "stage_name": 15606630685968003963,
+        "hard_level_group": 3,
+        "level": 90,
+        "elite_group": 282,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 803301014,
+            "monster1": 8003050
+          },
+          {
+            "monster0": 202401008
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5311,
+    "name": "扫除风暴其十一",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind",
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Fire"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4014030
+    ],
+    "npc_monster_id_list2": [
+      5024010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124111,
+        "stage_type": "Challenge",
+        "stage_name": 9761341926756168334,
+        "hard_level_group": 3,
+        "level": 92,
+        "elite_group": 266,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4033010,
+            "monster1": 8003030
+          },
+          {
+            "monster0": 4014030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124112,
+        "stage_type": "Challenge",
+        "stage_name": 13970359017855679954,
+        "hard_level_group": 3,
+        "level": 92,
+        "elite_group": 266,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5013010,
+            "monster1": 3003040
+          },
+          {
+            "monster0": 5024010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5312,
+    "name": "扫除风暴其十二",
+    "group_name": "扫除风暴",
+    "desc": "每个轮开始时，随机使1名我方「巡猎」或「智识」命途目标立即行动，并使其造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+    "param": [
+      0.8,
+      1
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Thunder",
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Fire",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      3024020
+    ],
+    "npc_monster_id_list2": [
+      5014020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30124121,
+        "stage_type": "Challenge",
+        "stage_name": 16451895588771372811,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 164,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3013010,
+            "monster1": 1023020
+          },
+          {
+            "monster0": 3024020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30124122,
+        "stage_type": "Challenge",
+        "stage_name": 3416332227273864389,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 164,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5013040,
+            "monster1": 5013070
+          },
+          {
+            "monster0": 5014020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-06-01 04:00:00",
+    "end_time": "2026-08-22 04:00:00"
+  },
+  {
+    "id": 5313,
+    "pre_id": 5312,
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 15
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 30
+      },
+      {
+        "name": "无法战斗角色不超过<unbreak>#1[i]</unbreak>名"
+      }
+    ],
+    "challenge_special": {
+      "name": "获得3星，且获胜时剩余<unbreak>#1[i]</unbreak>轮以上",
+      "param": 33
+    },
+    "countdown": 45,
+    "damage_type": [
+      "Physical",
+      "Fire"
+    ],
+    "npc_monster_id_list": [
+      3024030
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30124123,
+        "stage_type": "Challenge",
+        "stage_name": 18134484362013513791,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 167,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30147"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3003050,
+            "monster1": 3003040,
+            "monster2": 3003030
+          },
+          {
+            "monster0": 3024030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ]
+  }
+]

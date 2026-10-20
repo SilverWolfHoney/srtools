@@ -348,92 +348,138 @@ class Builder:
         } for row in rows]
 
     def battle_presets(self) -> dict:
-        """4 玩法最近 4 期（网站 srtools 数据，含星启模式 monster_ids_tierce）。
+        """4 玩法最近 4 期（数据以 nanoka.cc 4.6.53 为准）。
 
-        数据来自 data/site/{moc,pure-fictions,ap-shadows,challenge-peak}.json
-        （由 fetch_battle_presets.py 从 cdn.neonteam.dev 下载）。客户端 4.6.53
-        表里没有星启模式字段，因此统一用网站数据；每层怪物按波次给出：
-        top = 第一节点、bot = 第二节点、tierce = 星启模式的额外一路。
+        nanoka 数据（data/site/nanoka/{maze,story,boss,peak}/<期>.json）：
+        - maze/story/boss：每层有 event_id_list1（第一节点）、event_id_list2（第二节点）、
+          event_id_list（第三节点=星启，含 invasion 贪饕污染）
+        - peak：pre_level（关1-3）+ boss_level（关4）+ boss_config（绝境），带 tag_list/invasion
+        关卡 buff（turbulence）nanoka 只有文本，buff id 从客户端 ChallengeMazeConfig 的
+        MazeBuffID 按层 ID 合并（同版本 4.6.53）。
         """
-        site = ROOT / "data" / "site"
-        specs = [
-            ("moC", "混沌回忆", "moc.json"),
-            ("pureFiction", "虚构叙事", "pure-fictions.json"),
-            ("apocalypticShadow", "末日幻影", "ap-shadows.json"),
-        ]
+        site = ROOT / "data" / "site" / "nanoka"
+
+        # 客户端 turbulence buff id（按层 ID）
+        twist: dict[int, int] = {}
+        try:
+            for r in self.table("ExcelOutput/ChallengeMazeConfig.bytes",
+                                "RPG.GameCore.ChallengeMazeConfigRow"):
+                rid = _int(r.get("ID"))
+                bid = _int(r.get("MazeBuffID"))
+                if rid and bid:
+                    twist[rid] = bid
+        except (OSError, KeyError, ValueError):
+            twist = {}
+
+        def wave_list(monster_list) -> list:
+            out = []
+            for m in monster_list or []:
+                wave = [int(m.get(k) or 0) for k in
+                        ("monster0", "monster1", "monster2", "monster3", "monster4")]
+                out.append([x for x in wave if x])
+            return [w for w in out if w]
+
+        def event_of(events) -> dict:
+            return (events or [{}])[0]
+
+        def invasion_of(inv) -> dict | None:
+            if not inv:
+                return None
+            return {
+                "level": int(inv.get("level") or 0),
+                "desc": _clean_text(str(inv.get("desc") or "")),
+                "buff": int(inv.get("maze_buff_id") or 0),
+                "params": inv.get("maze_buff_param") or [],
+                "monsters": [int(m.get("monster_id")) for m in (inv.get("monster_list") or [])
+                             if m.get("monster_id")],
+            }
+
+        def floor_of(lv, mode: str) -> dict:
+            ev1 = event_of(lv.get("event_id_list1"))
+            ev2 = event_of(lv.get("event_id_list2"))
+            ev3 = event_of(lv.get("event_id_list"))
+            inv = ev3.get("invasion") or None
+            lid = int(lv.get("id") or 0)
+            buff_ids = []
+            if twist.get(lid):
+                buff_ids.append(twist[lid])
+            return {
+                "floor": lid,
+                "name": _clean_text(str(lv.get("name") or "")),
+                "top": wave_list(ev1.get("monster_list")),
+                "bot": wave_list(ev2.get("monster_list")),
+                "tierce": wave_list(ev3.get("monster_list")),
+                "has_tierce": bool(ev3.get("monster_list")),
+                "stage_top": int(ev1.get("stage_id") or 0),
+                "stage_bot": int(ev2.get("stage_id") or 0),
+                "stage_tierce": int(ev3.get("stage_id") or 0),
+                "invasion": invasion_of(inv),
+                "buff_ids": buff_ids,
+                "cycle": int(lv.get("countdown") or 0) or 30,
+            }
+
         out = {}
-        for key, label, fname in specs:
-            path = site / fname
+
+        # 混沌（maze：list of 层）
+        moc = {"name": "混沌回忆", "periods": []}
+        out["moC"] = moc
+        for f in sorted((site / "maze").glob("*.json"), key=lambda x: int(x.stem))[-4:]:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            pname = ""
+            floors = []
+            for lv in data:
+                if not pname:
+                    pname = _clean_text(str(lv.get("group_name") or ""))
+                floors.append(floor_of(lv, "maze"))
+            moc["periods"].append({"period": int(f.stem), "name": pname, "floors": floors})
+
+        # 虚构（story）/ 末日（boss）：dict.level
+        for key, label, dname in (("pureFiction", "虚构叙事", "story"),
+                                  ("apocalypticShadow", "末日幻影", "boss")):
             item = {"name": label, "periods": []}
             out[key] = item
-            if not path.is_file():
-                continue
-            data = json.loads(path.read_text(encoding="utf-8"))
-            ids = sorted(int(k) for k in data.keys())[-4:]
-            for pid in ids:
-                entry = data[str(pid)]
-                floors = []
-                for f in entry.get("floors") or []:
-                    floors.append({
-                        "floor": int(f.get("floor") or 0),
-                        "name": self.text(f.get("name")),
-                        "has_tierce": bool(f.get("has_tierce_mode")),
-                        "stage_top": int(f.get("stage_id_top") or 0),
-                        "stage_bot": int(f.get("stage_id_bot") or 0),
-                        "stage_tierce": int(f.get("stage_id_tierce") or 0),
-                        "top": [[int(x) for x in w] for w in (f.get("monster_ids_top") or [])],
-                        "bot": [[int(x) for x in w] for w in (f.get("monster_ids_bot") or [])],
-                        "tierce": [[int(x) for x in w] for w in (f.get("monster_ids_tierce") or [])],
-                        "cycle": int(f.get("cycle_count") or 0),
-                    })
+            for f in sorted((site / dname).glob("*.json"), key=lambda x: int(x.stem))[-4:]:
+                data = json.loads(f.read_text(encoding="utf-8"))
+                buff = data.get("buff") or {}
                 item["periods"].append({
-                    "period": pid,
-                    "name": self.text(entry.get("name")),
-                    "floors": floors,
+                    "period": int(f.stem),
+                    "name": _clean_text(str(data.get("name") or "")),
+                    "buff": {
+                        "name": _clean_text(str(buff.get("name") or "")),
+                        "desc": _clean_text(str(buff.get("desc") or "")),
+                        "param": buff.get("param") or [],
+                    },
+                    "floors": [floor_of(lv, dname) for lv in (data.get("level") or [])],
                 })
 
-        peak_dir = site / "peak"
+        # 异相仲裁（peak：pre_level + boss_level + boss_config）
         periods = []
-        if peak_dir.is_dir():
-            files = sorted(peak_dir.glob("*.json"), key=lambda x: int(x.stem))[-4:]
-            for fp in files:
-                data = json.loads(fp.read_text(encoding="utf-8"))
-                levels = list(data.get("pre_level") or [])
-                if data.get("boss_level"):
-                    levels.append(data["boss_level"])
-                if data.get("boss_config"):
-                    levels.append(data["boss_config"])
-                floors = []
-                for lv in levels:
-                    ev = (lv.get("event_id_list") or [{}])[0]
-                    inv = ev.get("invasion")
-                    floors.append({
-                        "floor": int(lv.get("id") or 0),
-                        "name": lv.get("name") or "",
-                        "waves": [
-                            [m.get(kk) for kk in ("monster0", "monster1", "monster2",
-                                                  "monster3", "monster4") if m.get(kk)]
-                            for m in (ev.get("monster_list") or [])
-                        ],
-                        "tag_buffs": [
-                            {"id": int(t.get("id") or 0),
-                             "name": _clean_text(str(t.get("name") or "")),
-                             "desc": _clean_text(str(t.get("desc") or "")),
-                             "param": t.get("param") or []}
-                            for t in (lv.get("tag_list") or []) if t.get("id")
-                        ],
-                        "invasion": ({
-                            "level": int(inv.get("level") or 0),
-                            "desc": _clean_text(str(inv.get("desc") or "")),
-                            "buff": int(inv.get("maze_buff_id") or 0),
-                            "params": inv.get("maze_buff_param") or [],
-                            "monsters": [int(m.get("monster_id")) for m in (inv.get("monster_list") or [])
-                                         if m.get("monster_id")],
-                        } if inv else None),
-                        "stage": int(ev.get("stage_id") or 0),
-                    })
-                periods.append({"period": int(fp.stem), "name": data.get("name") or "",
-                                "floors": floors})
+        for f in sorted((site / "peak").glob("*.json"), key=lambda x: int(x.stem))[-4:]:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            levels = list(data.get("pre_level") or [])
+            if data.get("boss_level"):
+                levels.append(data["boss_level"])
+            if data.get("boss_config"):
+                levels.append(data["boss_config"])
+            floors = []
+            for lv in levels:
+                ev = event_of(lv.get("event_id_list"))
+                floors.append({
+                    "floor": int(lv.get("id") or 0),
+                    "name": _clean_text(str(lv.get("name") or "")),
+                    "waves": wave_list(ev.get("monster_list")),
+                    "tag_buffs": [
+                        {"id": int(t.get("id") or 0),
+                         "name": _clean_text(str(t.get("name") or "")),
+                         "desc": _clean_text(str(t.get("desc") or "")),
+                         "param": t.get("param") or []}
+                        for t in (lv.get("tag_list") or []) if t.get("id")
+                    ],
+                    "invasion": invasion_of(ev.get("invasion")),
+                    "stage": int(ev.get("stage_id") or 0),
+                })
+            periods.append({"period": int(f.stem), "name": _clean_text(str(data.get("name") or "")),
+                            "floors": floors})
         out["anomalyArbitration"] = {"name": "异相仲裁", "periods": periods}
         return out
 

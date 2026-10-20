@@ -1,0 +1,1668 @@
+[
+  {
+    "id": 5401,
+    "name": "来生泅渡其一",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1003010
+    ],
+    "npc_monster_id_list2": [
+      2013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125011,
+        "stage_type": "Challenge",
+        "stage_name": 9874079526424322448,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002040,
+            "monster1": 1003010,
+            "monster2": 1002040
+          },
+          {
+            "monster0": 1003010,
+            "monster1": 1023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125012,
+        "stage_type": "Challenge",
+        "stage_name": 17363227603743607405,
+        "hard_level_group": 3,
+        "level": 68,
+        "elite_group": 273,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2012010,
+            "monster1": 2013020,
+            "monster2": 2012010
+          },
+          {
+            "monster0": 2013020,
+            "monster1": 3003020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5402,
+    "name": "来生泅渡其二",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Physical",
+      "Fire"
+    ],
+    "damage_type2": [
+      "Ice",
+      "Wind"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      3003020
+    ],
+    "npc_monster_id_list2": [
+      2023010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125021,
+        "stage_type": "Challenge",
+        "stage_name": 9524722474129506048,
+        "hard_level_group": 3,
+        "level": 70,
+        "elite_group": 274,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3002020,
+            "monster1": 3003020,
+            "monster2": 3002020
+          },
+          {
+            "monster0": 3003020,
+            "monster1": 3003040
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125022,
+        "stage_type": "Challenge",
+        "stage_name": 189339872378837144,
+        "hard_level_group": 3,
+        "level": 70,
+        "elite_group": 274,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2022010,
+            "monster1": 2023010,
+            "monster2": 2022010
+          },
+          {
+            "monster0": 2023010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5403,
+    "name": "来生泅渡其三",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Fire",
+      "Ice"
+    ],
+    "damage_type2": [
+      "Fire"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1013010
+    ],
+    "npc_monster_id_list2": [
+      1013010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125031,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 73,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125032,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 73,
+        "elite_group": 275,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 1023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5404,
+    "name": "来生泅渡其四",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind"
+    ],
+    "damage_type2": [
+      "Thunder",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      2013010
+    ],
+    "npc_monster_id_list2": [
+      1013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125041,
+        "stage_type": "Challenge",
+        "stage_name": 6099984704558274809,
+        "hard_level_group": 3,
+        "level": 75,
+        "elite_group": 276,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002040,
+            "monster1": 2013010,
+            "monster2": 1002040
+          },
+          {
+            "monster0": 2013010,
+            "monster1": 2023010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125042,
+        "stage_type": "Challenge",
+        "stage_name": 16229653902150898118,
+        "hard_level_group": 3,
+        "level": 75,
+        "elite_group": 276,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1012010,
+            "monster1": 1013020,
+            "monster2": 1012010
+          },
+          {
+            "monster0": 1013020,
+            "monster1": 1023010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5405,
+    "name": "来生泅渡其五",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Thunder",
+      "Wind"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Ice"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      2013010
+    ],
+    "npc_monster_id_list2": [
+      1003010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125051,
+        "stage_type": "Challenge",
+        "stage_name": 6099984704558274809,
+        "hard_level_group": 3,
+        "level": 78,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2012010,
+            "monster1": 2013010,
+            "monster2": 2012010
+          },
+          {
+            "monster0": 2013010,
+            "monster1": 2033010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125052,
+        "stage_type": "Challenge",
+        "stage_name": 9874079526424322448,
+        "hard_level_group": 3,
+        "level": 78,
+        "elite_group": 277,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1003010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1003010,
+            "monster1": 2023030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5406,
+    "name": "来生泅渡其六",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1003010
+    ],
+    "npc_monster_id_list2": [
+      2013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125061,
+        "stage_type": "Challenge",
+        "stage_name": 9874079526424322448,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 278,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002040,
+            "monster1": 1003010,
+            "monster2": 1002040
+          },
+          {
+            "monster0": 1003010,
+            "monster1": 1023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125062,
+        "stage_type": "Challenge",
+        "stage_name": 17363227603743607405,
+        "hard_level_group": 3,
+        "level": 80,
+        "elite_group": 278,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2012010,
+            "monster1": 2013020,
+            "monster2": 2012010
+          },
+          {
+            "monster0": 2013020,
+            "monster1": 3003020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5407,
+    "name": "来生泅渡其七",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Physical",
+      "Fire"
+    ],
+    "damage_type2": [
+      "Ice",
+      "Wind"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      3003020
+    ],
+    "npc_monster_id_list2": [
+      2023010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125071,
+        "stage_type": "Challenge",
+        "stage_name": 9524722474129506048,
+        "hard_level_group": 3,
+        "level": 82,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3002020,
+            "monster1": 3003020,
+            "monster2": 3002020
+          },
+          {
+            "monster0": 3003020,
+            "monster1": 3003040
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125072,
+        "stage_type": "Challenge",
+        "stage_name": 189339872378837144,
+        "hard_level_group": 3,
+        "level": 82,
+        "elite_group": 279,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2022010,
+            "monster1": 2023010,
+            "monster2": 2022010
+          },
+          {
+            "monster0": 2023010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5408,
+    "name": "来生泅渡其八",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Fire",
+      "Ice"
+    ],
+    "damage_type2": [
+      "Fire"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      1013010
+    ],
+    "npc_monster_id_list2": [
+      1013010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125081,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 85,
+        "elite_group": 280,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 2023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125082,
+        "stage_type": "Challenge",
+        "stage_name": 13087150147011258837,
+        "hard_level_group": 3,
+        "level": 85,
+        "elite_group": 280,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002020,
+            "monster1": 1013010,
+            "monster2": 1002020
+          },
+          {
+            "monster0": 1013010,
+            "monster1": 1023020
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5409,
+    "name": "来生泅渡其九",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind"
+    ],
+    "damage_type2": [
+      "Thunder",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      2013010
+    ],
+    "npc_monster_id_list2": [
+      1013020
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125091,
+        "stage_type": "Challenge",
+        "stage_name": 6099984704558274809,
+        "hard_level_group": 3,
+        "level": 88,
+        "elite_group": 281,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1002040,
+            "monster1": 2013010,
+            "monster2": 1002040
+          },
+          {
+            "monster0": 2013010,
+            "monster1": 2023010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125092,
+        "stage_type": "Challenge",
+        "stage_name": 16229653902150898118,
+        "hard_level_group": 3,
+        "level": 88,
+        "elite_group": 281,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1012010,
+            "monster1": 1013020,
+            "monster2": 1012010
+          },
+          {
+            "monster0": 1013020,
+            "monster1": 1023010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5410,
+    "name": "来生泅渡其十",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Ice",
+      "Thunder"
+    ],
+    "damage_type2": [
+      "Fire",
+      "Ice"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4034010
+    ],
+    "npc_monster_id_list2": [
+      3024010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125101,
+        "stage_type": "Challenge",
+        "stage_name": 394586006630307543,
+        "hard_level_group": 3,
+        "level": 90,
+        "elite_group": 282,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1013010,
+            "monster1": 1013020
+          },
+          {
+            "monster0": 4034010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125102,
+        "stage_type": "Challenge",
+        "stage_name": 14805961183082142131,
+        "hard_level_group": 3,
+        "level": 90,
+        "elite_group": 282,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4063010,
+            "monster1": 1013010
+          },
+          {
+            "monster0": 302401012
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5411,
+    "name": "来生泅渡其十一",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Wind",
+      "Imaginary"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Imaginary"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      4014030
+    ],
+    "npc_monster_id_list2": [
+      3024030
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125111,
+        "stage_type": "Challenge",
+        "stage_name": 9761341926756168334,
+        "hard_level_group": 3,
+        "level": 92,
+        "elite_group": 266,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 2033010,
+            "monster1": 3013010
+          },
+          {
+            "monster0": 4014030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125112,
+        "stage_type": "Challenge",
+        "stage_name": 18134484362013513791,
+        "hard_level_group": 3,
+        "level": 92,
+        "elite_group": 266,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 4033020,
+            "monster1": 4063010
+          },
+          {
+            "monster0": 3024030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": [],
+        "invasion": {
+          "level": 2,
+          "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+          "maze_buff_id": 3034002,
+          "maze_buff_param": [
+            0.4,
+            0.2,
+            1,
+            1,
+            0.35
+          ],
+          "monster_param": [
+            0.4,
+            0.4,
+            1,
+            1,
+            0.72
+          ],
+          "monster_list": [
+            {
+              "monster_id": 4063010,
+              "param_list": []
+            }
+          ]
+        }
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5412,
+    "name": "来生泅渡其十二",
+    "group_name": "来生泅渡",
+    "desc": "我方编队中第一位角色获得欢愉技【极乐漩涡】，可对敌方全体造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的角色属性欢愉伤害。\\n每个轮开始时，使阿哈立即获得1个固定计入<color=#f29e38ff><unbreak>#2[i]</unbreak></color>笑点的额外回合，该回合不消耗笑点。",
+    "param": [
+      1,
+      20
+    ],
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 10
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 20
+      },
+      {
+        "name": "没有角色无法战斗"
+      }
+    ],
+    "countdown": 30,
+    "damage_type1": [
+      "Fire",
+      "Quantum"
+    ],
+    "damage_type2": [
+      "Physical",
+      "Ice"
+    ],
+    "maze_group_id1": 5,
+    "maze_group_id2": 6,
+    "npc_monster_id_list1": [
+      5014010
+    ],
+    "npc_monster_id_list2": [
+      4044010
+    ],
+    "event_id_list1": [
+      {
+        "stage_id": 30125121,
+        "stage_type": "Challenge",
+        "stage_name": 18056700297458990573,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 164,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5013060,
+            "monster1": 8003010
+          },
+          {
+            "monster0": 5014010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": [],
+        "invasion": {
+          "level": 3,
+          "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+          "maze_buff_id": 3034003,
+          "maze_buff_param": [
+            0.65,
+            0.3,
+            0.5,
+            1,
+            0.5
+          ],
+          "monster_param": [
+            0.6,
+            0.8,
+            1,
+            3,
+            1.44
+          ],
+          "monster_list": [
+            {
+              "monster_id": 5014010,
+              "param_list": []
+            },
+            {
+              "monster_id": 8003010,
+              "param_list": []
+            }
+          ]
+        }
+      }
+    ],
+    "event_id_list2": [
+      {
+        "stage_id": 30125122,
+        "stage_type": "Challenge",
+        "stage_name": 7318916243052570451,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 164,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 1003010,
+            "monster1": 2023030
+          },
+          {
+            "monster0": 4044010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "begin_time": "2026-08-24 03:59:59",
+    "end_time": "2026-09-25 04:00:00"
+  },
+  {
+    "id": 5413,
+    "pre_id": 5412,
+    "challenge": [
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 15
+      },
+      {
+        "name": "取得胜利时，剩余<unbreak>#1[i]</unbreak>轮以上",
+        "param": 30
+      },
+      {
+        "name": "无法战斗角色不超过<unbreak>#1[i]</unbreak>名"
+      }
+    ],
+    "challenge_special": {
+      "name": "获得3星，且获胜时剩余<unbreak>#1[i]</unbreak>轮以上",
+      "param": 33
+    },
+    "countdown": 45,
+    "damage_type": [
+      "Fire"
+    ],
+    "npc_monster_id_list": [
+      5014030
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30125123,
+        "stage_type": "Challenge",
+        "stage_name": 11050040960591794587,
+        "hard_level_group": 3,
+        "level": 95,
+        "elite_group": 167,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "2"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30148"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5013040,
+            "monster1": 3003050
+          },
+          {
+            "monster0": 5014030
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ]
+  }
+]

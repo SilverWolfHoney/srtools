@@ -1,0 +1,1928 @@
+{
+  "id": 3021,
+  "name": "支配遗忘",
+  "buff": {
+    "name": "末法余烬",
+    "desc": "拥有<color=#f29e38ff>【坚防守备】</color>的敌方目标被<color=#f29e38ff>弱点击破</color>时，使我方全体目标解除控制状态、行动提前并使阿哈立即获得一个额外回合（本回合固定计入<color=#f29e38ff><unbreak>#3[i]</unbreak></color>笑点）。\\n敌方全体目标受到的终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，欢愉伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+    "param": [
+      0.25,
+      0.15,
+      10
+    ]
+  },
+  "buff_list1": [
+    {
+      "name": "魔法时间",
+      "desc": "战斗开始时，我方队伍中存在1/2/3/4名欢愉命途的角色时，我方全体目标欢愉度提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#3[i]%</unbreak></color>/<color=#f29e38ff><unbreak>#4[i]%</unbreak></color>。",
+      "param": [
+        0.1,
+        0.2,
+        0.3,
+        0.6
+      ]
+    },
+    {
+      "name": "望风瓦解",
+      "desc": "敌方全体受到的击破伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。击破敌方弱点后，我方全体速度提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+      "param": [
+        0.1,
+        0.15,
+        2
+      ]
+    },
+    {
+      "name": "可乘之隙",
+      "desc": "我方全体造成的追加攻击和终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，对弱点击破状态下的敌方目标额外提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+      "param": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "buff_list2": [
+    {
+      "name": "沦为笑谈",
+      "desc": "我方目标施放攻击造成欢愉伤害后，使受到欢愉伤害的目标陷入易伤状态，受到的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。该效果每次攻击对每名敌方目标最多触发1次。",
+      "param": [
+        0.15,
+        2
+      ]
+    },
+    {
+      "name": "有机可趁",
+      "desc": "我方目标对敌方目标施加负面状态后，使自身暴击伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#2[i]</unbreak></color>回合。",
+      "param": [
+        0.75,
+        2
+      ]
+    },
+    {
+      "name": "膏腴之地",
+      "desc": "我方全体造成的战技和终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，编队中的第1位角色造成的战技和终结技伤害额外提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+      "param": [
+        0.3,
+        0.3
+      ]
+    }
+  ],
+  "buff_list3": [
+    {
+      "name": "攻无不克",
+      "desc": "忆灵造成伤害时无视目标<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的防御力。",
+      "param": [
+        0.2
+      ]
+    },
+    {
+      "name": "登锋陷阵",
+      "desc": "队伍中的第1位角色施放终结技后，使自身的弱点击破效率提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，暴击伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+      "param": [
+        0.5,
+        0.5,
+        1
+      ]
+    },
+    {
+      "name": "聚气化神",
+      "desc": "我方目标每次消耗战技点后，使自身暴击伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，最多叠加<color=#f29e38ff><unbreak>#2[i]</unbreak></color>层。",
+      "param": [
+        0.06,
+        10
+      ]
+    }
+  ],
+  "begin_time": "2026-08-24 04:00:02",
+  "end_time": "2026-10-27 04:00:00",
+  "level": [
+    {
+      "id": 30211,
+      "name": "支配遗忘·难度<unbreak>01</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Wind",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Physical",
+        "Fire",
+        "Thunder",
+        "Imaginary"
+      ],
+      "maze_group_id1": 6,
+      "maze_group_id2": 7,
+      "boss_monster_id1": 200401401,
+      "boss_monster_id2": 406401201,
+      "boss_monster_id1_skill_list": [
+        200401401,
+        200401402,
+        200401403,
+        200401404,
+        200401405,
+        200401406,
+        200401407,
+        200401408,
+        200401409,
+        200401410,
+        200401411,
+        200401412,
+        200401413,
+        200401414
+      ],
+      "boss_monster_id2_skill_list": [
+        406401201,
+        406401202,
+        406401203,
+        406401204,
+        406401205,
+        406401206,
+        406401207,
+        406401208,
+        406401209,
+        406401211,
+        406401213,
+        406401214,
+        406401215,
+        406401216,
+        406401217,
+        406401210
+      ],
+      "boss_monster_config1": {
+        "difficulty": 1,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ],
+            "child": []
+          },
+          {
+            "name": "阵地转移",
+            "desc": "首领幻影召唤2个精英敌人协助战斗。首领幻影会将自身弱点属性<color=#f29e38ff><u>传递</u></color>给召唤物，但当召唤物被消灭时，自身韧性值受到额外削减。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "传递",
+                "desc": "将弱点属性传递给目标，目标被消灭后造成额外韧性值削减，弱点属性会在所有获得弱点属性的目标被消灭后返回。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "众星拱卫",
+            "desc": "除首领幻影外，每多存在1个<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "绝境逆转",
+            "desc": "首领幻影第二阶段施放【傀儡候场】时，会对<color=#f29e38ff>所有的召唤物</color>附加强化效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "desc": "首领幻影会将<color=#f29e38ff>自身弱点属性传递给召唤物</color>。任一召唤物被消灭后，该召唤物的弱点属性会被<color=#f29e38ff>添加</color>给其余召唤物。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "攻击召唤物会对首领幻影削减<color=#f29e38ff>等量生命值</color>。任一召唤物被消灭后，其余召唤物速度提高，<color=#f29e38ff>受到的伤害提高</color>。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先<color=#f29e38ff>消灭召唤物</color>，消灭后可使其弱点属性<color=#f29e38ff>传递</color>回首领幻影。",
+          "消灭任一召唤物后，其余召唤物受到的伤害提高，利用该机制快速消灭其余召唤物。",
+          "提高效果抵抗或使用技能解除首领幻影施加的<color=#f29e38ff>【支配】</color>状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：冰火重奏",
+            "desc": "首领幻影将召唤外宇宙之炎和外宇宙之冰协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100411,
+              100412,
+              100413
+            ]
+          },
+          {
+            "name": "阶段二：好戏开场",
+            "desc": "首领幻影将召唤惊梦剧团的十七分熟和忆域迷因「狂怒褪去之壳」协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100421,
+              100422,
+              100423
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 1,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "化整为零",
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【<u>合而为一</u>】。当拥有【合而为一】的【金血忆灵】全部陷入【<u>假死</u>】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "合而为一",
+                "desc": "受到致命伤害时陷入【假死】状态。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体为【迷惘之渊的裁定者】。",
+                "param": []
+              },
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "相生相成",
+            "desc": "首领幻影分裂后召唤的【金血忆灵】的生命上限提高，且第二阶段分裂后召唤的【金血忆灵】共享生命值。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "规模效应",
+            "desc": "除首领幻影外，每多存在1个不处于【<u>假死</u>】状态的<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低，造成的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "首领幻影施放【罪血嚼齿】和【罪血锯刑】击中我方目标后，若受到攻击的我方目标拥有护盾，则触发【壁垒反震】。消灭【执刑就位】召唤的召唤物时，触发【壁垒反震】。首领幻影触发【壁垒反震】时，削减自身韧性和防御力。\\n若我方对首领幻影及其召唤物施放攻击时施加了负面状态，则少量削减该敌方单位的韧性，并使其受到真实伤害。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【合而为一】。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先为我方目标施加护盾，可以在抵消首领幻影的伤害的同时削减其韧性并降低其防御力。",
+          "使用具有<color=#f29e38ff>妨害</color>能力的技能攻击敌方目标，若成功施加负面状态还可进一步削减其韧性并使其受到真实伤害。",
+          "当首领幻影分裂并召唤【金血忆灵】后，优先施放群攻技能，尽快使召唤物陷入【假死】状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "迷惘之渊的裁定者",
+            "desc": "战斗开始时和转阶段时，首领幻影会分裂为5只【金血忆灵】。",
+            "answer": "应对策略：积极施放群攻技能，尽快使所有【金血忆灵】陷入【假死】，使其重新合体。",
+            "difficulty": 1,
+            "skill_list": [
+              101511,
+              101512
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420531,
+          "stage_type": "Challenge",
+          "stage_name": 1358289180218405445,
+          "hard_level_group": 1,
+          "level": 60,
+          "elite_group": 900,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Xianzhou_Combat_Kafuka"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 200401401
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420541,
+          "stage_type": "Challenge",
+          "stage_name": 7487180788362239792,
+          "hard_level_group": 1,
+          "level": 60,
+          "elite_group": 896,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Serpent"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 406401201
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30212,
+      "name": "支配遗忘·难度<unbreak>02</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Wind",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Physical",
+        "Fire",
+        "Thunder",
+        "Imaginary"
+      ],
+      "maze_group_id1": 6,
+      "maze_group_id2": 7,
+      "boss_monster_id1": 200401402,
+      "boss_monster_id2": 406401202,
+      "boss_monster_id1_skill_list": [
+        200401401,
+        200401402,
+        200401403,
+        200401404,
+        200401405,
+        200401406,
+        200401407,
+        200401408,
+        200401409,
+        200401410,
+        200401411,
+        200401412,
+        200401413,
+        200401414
+      ],
+      "boss_monster_id2_skill_list": [
+        406401201,
+        406401202,
+        406401203,
+        406401204,
+        406401205,
+        406401206,
+        406401207,
+        406401208,
+        406401209,
+        406401211,
+        406401213,
+        406401214,
+        406401215,
+        406401216,
+        406401217,
+        406401210
+      ],
+      "boss_monster_config1": {
+        "difficulty": 2,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ],
+            "child": []
+          },
+          {
+            "name": "阵地转移",
+            "desc": "首领幻影召唤2个精英敌人协助战斗。首领幻影会将自身弱点属性<color=#f29e38ff><u>传递</u></color>给召唤物，但当召唤物被消灭时，自身韧性值受到额外削减。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "传递",
+                "desc": "将弱点属性传递给目标，目标被消灭后造成额外韧性值削减，弱点属性会在所有获得弱点属性的目标被消灭后返回。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "众星拱卫",
+            "desc": "除首领幻影外，每多存在1个<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "绝境逆转",
+            "desc": "首领幻影第二阶段施放【傀儡候场】时，会对<color=#f29e38ff>所有的召唤物</color>附加强化效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "desc": "首领幻影会将<color=#f29e38ff>自身弱点属性传递给召唤物</color>。任一召唤物被消灭后，该召唤物的弱点属性会被<color=#f29e38ff>添加</color>给其余召唤物。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "攻击召唤物会对首领幻影削减<color=#f29e38ff>等量生命值</color>。任一召唤物被消灭后，其余召唤物速度提高，<color=#f29e38ff>受到的伤害提高</color>。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先<color=#f29e38ff>消灭召唤物</color>，消灭后可使其弱点属性<color=#f29e38ff>传递</color>回首领幻影。",
+          "消灭任一召唤物后，其余召唤物受到的伤害提高，利用该机制快速消灭其余召唤物。",
+          "提高效果抵抗或使用技能解除首领幻影施加的<color=#f29e38ff>【支配】</color>状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：冰火重奏",
+            "desc": "首领幻影将召唤外宇宙之炎和外宇宙之冰协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100411,
+              100412,
+              100413
+            ]
+          },
+          {
+            "name": "阶段二：好戏开场",
+            "desc": "首领幻影将召唤惊梦剧团的十七分熟和忆域迷因「狂怒褪去之壳」协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100421,
+              100422,
+              100423
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 2,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "化整为零",
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【<u>合而为一</u>】。当拥有【合而为一】的【金血忆灵】全部陷入【<u>假死</u>】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "合而为一",
+                "desc": "受到致命伤害时陷入【假死】状态。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体为【迷惘之渊的裁定者】。",
+                "param": []
+              },
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "相生相成",
+            "desc": "首领幻影分裂后召唤的【金血忆灵】的生命上限提高，且第二阶段分裂后召唤的【金血忆灵】共享生命值。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "规模效应",
+            "desc": "除首领幻影外，每多存在1个不处于【<u>假死</u>】状态的<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低，造成的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "首领幻影施放【罪血嚼齿】和【罪血锯刑】击中我方目标后，若受到攻击的我方目标拥有护盾，则触发【壁垒反震】。消灭【执刑就位】召唤的召唤物时，触发【壁垒反震】。首领幻影触发【壁垒反震】时，削减自身韧性和防御力。\\n若我方对首领幻影及其召唤物施放攻击时施加了负面状态，则少量削减该敌方单位的韧性，并使其受到真实伤害。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【合而为一】。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先为我方目标施加护盾，可以在抵消首领幻影的伤害的同时削减其韧性并降低其防御力。",
+          "使用具有<color=#f29e38ff>妨害</color>能力的技能攻击敌方目标，若成功施加负面状态还可进一步削减其韧性并使其受到真实伤害。",
+          "当首领幻影分裂并召唤【金血忆灵】后，优先施放群攻技能，尽快使召唤物陷入【假死】状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "迷惘之渊的裁定者",
+            "desc": "战斗开始时和转阶段时，首领幻影会分裂为5只【金血忆灵】。",
+            "answer": "应对策略：积极施放群攻技能，尽快使所有【金血忆灵】陷入【假死】，使其重新合体。",
+            "difficulty": 1,
+            "skill_list": [
+              101511,
+              101512
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420532,
+          "stage_type": "Challenge",
+          "stage_name": 1358289180218405445,
+          "hard_level_group": 1,
+          "level": 70,
+          "elite_group": 901,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Xianzhou_Combat_Kafuka"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 200401402
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420542,
+          "stage_type": "Challenge",
+          "stage_name": 7487180788362239792,
+          "hard_level_group": 1,
+          "level": 70,
+          "elite_group": 897,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Serpent"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 406401202
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30213,
+      "name": "支配遗忘·难度<unbreak>03</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Wind",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Physical",
+        "Fire",
+        "Thunder",
+        "Imaginary"
+      ],
+      "maze_group_id1": 6,
+      "maze_group_id2": 7,
+      "boss_monster_id1": 200401403,
+      "boss_monster_id2": 406401203,
+      "boss_monster_id1_skill_list": [
+        200401401,
+        200401402,
+        200401403,
+        200401404,
+        200401405,
+        200401406,
+        200401407,
+        200401408,
+        200401409,
+        200401410,
+        200401411,
+        200401412,
+        200401413,
+        200401414
+      ],
+      "boss_monster_id2_skill_list": [
+        406401201,
+        406401202,
+        406401203,
+        406401204,
+        406401205,
+        406401206,
+        406401207,
+        406401208,
+        406401209,
+        406401211,
+        406401213,
+        406401214,
+        406401215,
+        406401216,
+        406401217,
+        406401210
+      ],
+      "boss_monster_config1": {
+        "difficulty": 3,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ],
+            "child": []
+          },
+          {
+            "name": "阵地转移",
+            "desc": "首领幻影召唤2个精英敌人协助战斗。首领幻影会将自身弱点属性<color=#f29e38ff><u>传递</u></color>给召唤物，但当召唤物被消灭时，自身韧性值受到额外削减。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "传递",
+                "desc": "将弱点属性传递给目标，目标被消灭后造成额外韧性值削减，弱点属性会在所有获得弱点属性的目标被消灭后返回。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "众星拱卫",
+            "desc": "除首领幻影外，每多存在1个<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "绝境逆转",
+            "desc": "首领幻影第二阶段施放【傀儡候场】时，会对<color=#f29e38ff>所有的召唤物</color>附加强化效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "desc": "首领幻影会将<color=#f29e38ff>自身弱点属性传递给召唤物</color>。任一召唤物被消灭后，该召唤物的弱点属性会被<color=#f29e38ff>添加</color>给其余召唤物。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "攻击召唤物会对首领幻影削减<color=#f29e38ff>等量生命值</color>。任一召唤物被消灭后，其余召唤物速度提高，<color=#f29e38ff>受到的伤害提高</color>。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先<color=#f29e38ff>消灭召唤物</color>，消灭后可使其弱点属性<color=#f29e38ff>传递</color>回首领幻影。",
+          "消灭任一召唤物后，其余召唤物受到的伤害提高，利用该机制快速消灭其余召唤物。",
+          "提高效果抵抗或使用技能解除首领幻影施加的<color=#f29e38ff>【支配】</color>状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：冰火重奏",
+            "desc": "首领幻影将召唤外宇宙之炎和外宇宙之冰协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100411,
+              100412,
+              100413
+            ]
+          },
+          {
+            "name": "阶段二：好戏开场",
+            "desc": "首领幻影将召唤惊梦剧团的十七分熟和忆域迷因「狂怒褪去之壳」协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100421,
+              100422,
+              100423
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 3,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "化整为零",
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【<u>合而为一</u>】。当拥有【合而为一】的【金血忆灵】全部陷入【<u>假死</u>】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "合而为一",
+                "desc": "受到致命伤害时陷入【假死】状态。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体为【迷惘之渊的裁定者】。",
+                "param": []
+              },
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "相生相成",
+            "desc": "首领幻影分裂后召唤的【金血忆灵】的生命上限提高，且第二阶段分裂后召唤的【金血忆灵】共享生命值。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "规模效应",
+            "desc": "除首领幻影外，每多存在1个不处于【<u>假死</u>】状态的<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低，造成的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "首领幻影施放【罪血嚼齿】和【罪血锯刑】击中我方目标后，若受到攻击的我方目标拥有护盾，则触发【壁垒反震】。消灭【执刑就位】召唤的召唤物时，触发【壁垒反震】。首领幻影触发【壁垒反震】时，削减自身韧性和防御力。\\n若我方对首领幻影及其召唤物施放攻击时施加了负面状态，则少量削减该敌方单位的韧性，并使其受到真实伤害。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【合而为一】。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先为我方目标施加护盾，可以在抵消首领幻影的伤害的同时削减其韧性并降低其防御力。",
+          "使用具有<color=#f29e38ff>妨害</color>能力的技能攻击敌方目标，若成功施加负面状态还可进一步削减其韧性并使其受到真实伤害。",
+          "当首领幻影分裂并召唤【金血忆灵】后，优先施放群攻技能，尽快使召唤物陷入【假死】状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "迷惘之渊的裁定者",
+            "desc": "战斗开始时和转阶段时，首领幻影会分裂为5只【金血忆灵】。",
+            "answer": "应对策略：积极施放群攻技能，尽快使所有【金血忆灵】陷入【假死】，使其重新合体。",
+            "difficulty": 1,
+            "skill_list": [
+              101511,
+              101512
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420533,
+          "stage_type": "Challenge",
+          "stage_name": 1358289180218405445,
+          "hard_level_group": 1,
+          "level": 80,
+          "elite_group": 902,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Xianzhou_Combat_Kafuka"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 200401403
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": [],
+          "invasion": {
+            "level": 2,
+            "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+            "maze_buff_id": 3034002,
+            "maze_buff_param": [
+              0.4,
+              0.2,
+              1,
+              1,
+              0.35
+            ],
+            "monster_param": [
+              0.4,
+              0.4,
+              1,
+              1,
+              0.72
+            ],
+            "monster_list": [
+              {
+                "monster_id": 800302201,
+                "param_list": []
+              },
+              {
+                "monster_id": 300301401,
+                "param_list": []
+              }
+            ]
+          }
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420543,
+          "stage_type": "Challenge",
+          "stage_name": 7487180788362239792,
+          "hard_level_group": 1,
+          "level": 80,
+          "elite_group": 943,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Serpent"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 406401203
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30214,
+      "name": "支配遗忘·难度<unbreak>04</unbreak>",
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 4000
+        },
+        {
+          "name": "获得#1分",
+          "param": 5200
+        },
+        {
+          "name": "获得#1分",
+          "param": 6600
+        }
+      ],
+      "damage_type1": [
+        "Physical",
+        "Fire",
+        "Wind",
+        "Imaginary"
+      ],
+      "damage_type2": [
+        "Physical",
+        "Fire",
+        "Thunder",
+        "Imaginary"
+      ],
+      "maze_group_id1": 6,
+      "maze_group_id2": 7,
+      "boss_monster_id1": 200401404,
+      "boss_monster_id2": 406401204,
+      "boss_monster_id1_skill_list": [
+        200401401,
+        200401402,
+        200401403,
+        200401404,
+        200401405,
+        200401406,
+        200401407,
+        200401408,
+        200401409,
+        200401410,
+        200401411,
+        200401412,
+        200401413,
+        200401414
+      ],
+      "boss_monster_id2_skill_list": [
+        406401201,
+        406401202,
+        406401203,
+        406401204,
+        406401205,
+        406401206,
+        406401207,
+        406401208,
+        406401209,
+        406401211,
+        406401213,
+        406401214,
+        406401215,
+        406401216,
+        406401217,
+        406401210
+      ],
+      "boss_monster_config1": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ],
+            "child": []
+          },
+          {
+            "name": "阵地转移",
+            "desc": "首领幻影召唤2个精英敌人协助战斗。首领幻影会将自身弱点属性<color=#f29e38ff><u>传递</u></color>给召唤物，但当召唤物被消灭时，自身韧性值受到额外削减。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "传递",
+                "desc": "将弱点属性传递给目标，目标被消灭后造成额外韧性值削减，弱点属性会在所有获得弱点属性的目标被消灭后返回。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "众星拱卫",
+            "desc": "除首领幻影外，每多存在1个<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "绝境逆转",
+            "desc": "首领幻影第二阶段施放【傀儡候场】时，会对<color=#f29e38ff>所有的召唤物</color>附加强化效果。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 200401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5,
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "desc": "首领幻影会将<color=#f29e38ff>自身弱点属性传递给召唤物</color>。任一召唤物被消灭后，该召唤物的弱点属性会被<color=#f29e38ff>添加</color>给其余召唤物。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "攻击召唤物会对首领幻影削减<color=#f29e38ff>等量生命值</color>。任一召唤物被消灭后，其余召唤物速度提高，<color=#f29e38ff>受到的伤害提高</color>。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先<color=#f29e38ff>消灭召唤物</color>，消灭后可使其弱点属性<color=#f29e38ff>传递</color>回首领幻影。",
+          "消灭任一召唤物后，其余召唤物受到的伤害提高，利用该机制快速消灭其余召唤物。",
+          "提高效果抵抗或使用技能解除首领幻影施加的<color=#f29e38ff>【支配】</color>状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：冰火重奏",
+            "desc": "首领幻影将召唤外宇宙之炎和外宇宙之冰协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100411,
+              100412,
+              100413
+            ]
+          },
+          {
+            "name": "阶段二：好戏开场",
+            "desc": "首领幻影将召唤惊梦剧团的十七分熟和忆域迷因「狂怒褪去之壳」协助作战，并将自身弱点属性传递给召唤物。",
+            "answer": "应对策略：优先消灭召唤物，消灭所有召唤物会使弱点属性传递回首领幻影。",
+            "difficulty": 1,
+            "skill_list": [
+              100421,
+              100422,
+              100423
+            ]
+          }
+        ]
+      },
+      "boss_monster_config2": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "化整为零",
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【<u>合而为一</u>】。当拥有【合而为一】的【金血忆灵】全部陷入【<u>假死</u>】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "合而为一",
+                "desc": "受到致命伤害时陷入【假死】状态。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体为【迷惘之渊的裁定者】。",
+                "param": []
+              },
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          },
+          {
+            "name": "相生相成",
+            "desc": "首领幻影分裂后召唤的【金血忆灵】的生命上限提高，且第二阶段分裂后召唤的【金血忆灵】共享生命值。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "规模效应",
+            "desc": "除首领幻影外，每多存在1个不处于【<u>假死</u>】状态的<color=#f29e38ff>敌方单位</color>，敌方全体受到的伤害降低，造成的伤害提高。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": [
+              {
+                "name": "假死",
+                "desc": "无法被选中，无法行动。",
+                "param": []
+              }
+            ]
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 406401213,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "首领幻影施放【罪血嚼齿】和【罪血锯刑】击中我方目标后，若受到攻击的我方目标拥有护盾，则触发【壁垒反震】。消灭【执刑就位】召唤的召唤物时，触发【壁垒反震】。首领幻影触发【壁垒反震】时，削减自身韧性和防御力。\\n若我方对首领幻影及其召唤物施放攻击时施加了负面状态，则少量削减该敌方单位的韧性，并使其受到真实伤害。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "战斗开始时和转阶段时，首领幻影分裂为5只【金血忆灵】并为这些召唤物施加【合而为一】。当拥有【合而为一】的【金血忆灵】全部陷入【假死】状态时，它们重新合体成为首领幻影。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "优先为我方目标施加护盾，可以在抵消首领幻影的伤害的同时削减其韧性并降低其防御力。",
+          "使用具有<color=#f29e38ff>妨害</color>能力的技能攻击敌方目标，若成功施加负面状态还可进一步削减其韧性并使其受到真实伤害。",
+          "当首领幻影分裂并召唤【金血忆灵】后，优先施放群攻技能，尽快使召唤物陷入【假死】状态。"
+        ],
+        "phase_list": [
+          {
+            "name": "迷惘之渊的裁定者",
+            "desc": "战斗开始时和转阶段时，首领幻影会分裂为5只【金血忆灵】。",
+            "answer": "应对策略：积极施放群攻技能，尽快使所有【金血忆灵】陷入【假死】，使其重新合体。",
+            "difficulty": 1,
+            "skill_list": [
+              101511,
+              101512
+            ]
+          }
+        ]
+      },
+      "event_id_list1": [
+        {
+          "stage_id": 420534,
+          "stage_type": "Challenge",
+          "stage_name": 1358289180218405445,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 166,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Xianzhou_Combat_Kafuka"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 200401404
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": [],
+          "invasion": {
+            "level": 3,
+            "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+            "maze_buff_id": 3034003,
+            "maze_buff_param": [
+              0.65,
+              0.3,
+              0.5,
+              1,
+              0.5
+            ],
+            "monster_param": [
+              0.6,
+              0.8,
+              1,
+              3,
+              1.44
+            ],
+            "monster_list": [
+              {
+                "monster_id": 800302201,
+                "param_list": []
+              },
+              {
+                "monster_id": 300301401,
+                "param_list": []
+              }
+            ]
+          }
+        }
+      ],
+      "event_id_list2": [
+        {
+          "stage_id": 420544,
+          "stage_type": "Challenge",
+          "stage_name": 7487180788362239792,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 85,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Amphoreus_Combat_Boss_Serpent"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 406401204
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    },
+    {
+      "id": 30215,
+      "pre_id": 30214,
+      "challenge": [
+        {
+          "name": "获得#1分",
+          "param": 6000
+        },
+        {
+          "name": "获得#1分",
+          "param": 7800
+        },
+        {
+          "name": "获得#1分",
+          "param": 9900
+        }
+      ],
+      "challenge_special": {
+        "name": "获得#1分",
+        "param": 10200
+      },
+      "damage_type": [
+        "Physical",
+        "Fire",
+        "Wind",
+        "Quantum"
+      ],
+      "boss_monster_id": 203401404,
+      "boss_monster_id_skill_list": [
+        203401401,
+        203401402,
+        203401403,
+        203401404,
+        203401405,
+        203401406,
+        203401407,
+        203401408,
+        203401409,
+        203401410,
+        203401411,
+        203401412,
+        203401413,
+        203401414
+      ],
+      "boss_monster_config": {
+        "difficulty": 4,
+        "difficulty_list": [
+          1,
+          1,
+          3,
+          4
+        ],
+        "tag_list": [
+          {
+            "name": "坚防守备",
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 203401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ],
+            "child": []
+          },
+          {
+            "name": "宁枉勿纵",
+            "desc": "首领幻影在施放【裂地三舍，寸草不留】时，将会消灭其他所有狼卒。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "狼顾鸱张",
+            "desc": "首领幻影在进入第二阶段后，【孤战】期间每回合可再次行动。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": [],
+            "child": []
+          },
+          {
+            "name": "至死方休",
+            "desc": "首领幻影在进入【孤战】后，受到的伤害额外降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。",
+            "param": [
+              0.6
+            ],
+            "skill_id": 203401413,
+            "param_fix": [
+              0.15
+            ],
+            "child": []
+          }
+        ],
+        "difficulty_guide_list": [
+          {
+            "desc": "首领幻影受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。<color=#f29e38ff>弱点击破</color>后，行动额外延后，受到的伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+            "param": [
+              0.5,
+              1,
+              1.5
+            ],
+            "skill_id": 203401410,
+            "param_fix": [
+              0.5,
+              1,
+              1.5
+            ]
+          },
+          {
+            "desc": "首领幻影进入【噬月】状态时，会解除弱点保护，我方需要选择1名最强的角色与首领幻影进行【孤战】，【孤战】期间除被选择的角色及其召唤的目标外，其他我方目标处于离场状态。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          },
+          {
+            "desc": "我方在击杀敌方狼卒时，会获得【血涌】，进入【孤战】的角色和召唤的目标会根据【血涌】层数获得强化。",
+            "param": [],
+            "skill_id": null,
+            "param_fix": []
+          }
+        ],
+        "text_guide_list": [
+          "在首领幻影尚未进入【噬月】状态时，优先消灭狼卒，为我方提供【血涌】并使首领幻影快速进入【噬月】状态。",
+          "在首领幻影即将进入【噬月】状态时，保存实力以应对【孤战】。",
+          "在进行【孤战】时，若选择的我方角色存在召唤的目标，召唤的目标将一同进入【孤战】。"
+        ],
+        "phase_list": [
+          {
+            "name": "阶段一：风雷激荡",
+            "desc": "首领幻影进入【噬月】状态时，我方需要选择1名最强的角色与首领幻影进行【孤战】。",
+            "answer": "应对策略：在首领幻影进入【噬月】状态前，尽可能击杀狼卒以获得强化。",
+            "difficulty": 1,
+            "skill_list": [
+              101011,
+              101012
+            ]
+          },
+          {
+            "name": "阶段二：吞天噬月",
+            "desc": "首领幻影的技能会对狼卒造成伤害，且进入【噬月】状态时会获得额外强化。",
+            "answer": "应对策略：在首领幻影行动前击杀狼卒，防止狼卒被首领幻影消灭。",
+            "difficulty": 1,
+            "skill_list": [
+              101021
+            ]
+          }
+        ]
+      },
+      "event_id_list": [
+        {
+          "stage_id": 420554,
+          "stage_type": "Challenge",
+          "stage_name": 12811059761001697875,
+          "hard_level_group": 1,
+          "level": 90,
+          "elite_group": 156,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "battle_scoring_group": 902,
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_BGM",
+              "mojjbfbkbnc": "State_Xianzhou_Combat_LycanKing"
+            },
+            {
+              "jdkamoanicm": "_BindingMazeBuff",
+              "mojjbfbkbnc": "3110017"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 203401404
+            }
+          ],
+          "level_lose_condition": [
+            "[CDT_WaitCustomString:Level_SpecialLose]"
+          ],
+          "level_win_condition": [
+            "[CDT_WaitCustomString:Level_SpecialWin]"
+          ],
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1,
+          "trial_avatar_list": []
+        }
+      ]
+    }
+  ]
+}
