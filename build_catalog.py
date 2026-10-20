@@ -432,6 +432,24 @@ class Builder:
                 out.append([x for x in wave if x])
             return [w for w in out if w]
 
+        def wave_from_infinite(inf) -> list:
+            """infinite_list: {wave_id: {monster_group_id_list}} -> 每波去重后的怪列表。"""
+            if not isinstance(inf, dict):
+                return []
+            waves = []
+            for wid in sorted(inf.keys(), key=lambda x: int(x)):
+                ids = []
+                for mid in (inf[wid].get("monster_group_id_list") or []):
+                    try:
+                        mid = int(mid)
+                    except (TypeError, ValueError):
+                        continue
+                    if mid and mid not in ids:
+                        ids.append(mid)
+                if ids:
+                    waves.append(ids)
+            return waves
+
         def event_of(events) -> dict:
             return (events or [{}])[0]
 
@@ -448,7 +466,7 @@ class Builder:
             }
 
         def floor_of(lv, mode: str, season=None, stage_extra=None, use_twist=False,
-                     season_groups=None) -> dict:
+                     season_groups=None, use_infinite=False) -> dict:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
@@ -477,9 +495,12 @@ class Builder:
             return {
                 "floor": lid,
                 "name": _clean_text(str(lv.get("name") or "")),
-                "top": wave_list(ev1.get("monster_list")),
-                "bot": wave_list(ev2.get("monster_list")),
-                "tierce": wave_list(ev3.get("monster_list")),
+                "top": (wave_from_infinite(lv.get("infinite_list1")) if use_infinite else [])
+                        or wave_list(ev1.get("monster_list")),
+                "bot": (wave_from_infinite(lv.get("infinite_list2")) if use_infinite else [])
+                        or wave_list(ev2.get("monster_list")),
+                "tierce": wave_from_infinite(lv.get("infinite_list")) if use_infinite else []
+                          or wave_list(ev3.get("monster_list")),
                 "has_tierce": bool(ev3.get("monster_list")),
                 "stage_top": int(ev1.get("stage_id") or 0),
                 "stage_bot": int(ev2.get("stage_id") or 0),
@@ -497,7 +518,7 @@ class Builder:
             }
 
         def floors_of(levels, season=None, stage_extra=None, use_twist=False,
-                     season_groups=None) -> list:
+                     season_groups=None, use_infinite=False) -> list:
             """把 pre_id 节点3 层（如 5613=其十二的节点3）合并进前置层的 tierce/invasion。"""
             extra: dict[int, dict] = {}
             ordered = []
@@ -509,11 +530,13 @@ class Builder:
                     ordered.append(lv)
             out = []
             for lv in ordered:
-                f = floor_of(lv, "maze", season, stage_extra, use_twist, season_groups)
+                f = floor_of(lv, "maze", season, stage_extra, use_twist, season_groups, use_infinite)
                 node3 = extra.get(f["floor"])
                 if node3:
                     ev3 = event_of(node3.get("event_id_list"))
-                    tierce = wave_list(ev3.get("monster_list"))
+                    tierce = wave_from_infinite(node3.get("infinite_list")) if use_infinite else []
+                    if not tierce:
+                        tierce = wave_list(ev3.get("monster_list"))
                     if not tierce:
                         tierce = [[int(x) for x in (node3.get("npc_monster_id_list") or []) if x]]
                     if tierce:
@@ -583,7 +606,8 @@ class Builder:
                         "param": buff.get("param") or [],
                     },
                     "floors": floors_of(data.get("level") or [], season, stage_extra,
-                                        season_groups=season_groups),
+                                        season_groups=season_groups,
+                                        use_infinite=(dname == "story")),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
