@@ -348,7 +348,7 @@ def main() -> int:
                     help="SilverWolfHoney 根目录（读 server_config 凭据）")
     ap.add_argument("--profile", type=Path, default=None,
                     help="freesr-data.json 路径（缺省不绑定，启动为空配置）")
-    ap.add_argument("--host", default="127.0.0.1")
+    ap.add_argument("--host", default="0.0.0.0")
     ap.add_argument("--port", type=int, default=21100)
     args = ap.parse_args()
 
