@@ -492,13 +492,22 @@ class Builder:
             for b in (stage_extra or []):
                 if not any(x.get("name") == b.get("name") for x in stage_buffs):
                     stage_buffs.append(b)
+            top_w = ((wave_from_infinite(lv.get("infinite_list1")) if use_infinite else [])
+                     or wave_list(ev1.get("monster_list")))
+            bot_w = ((wave_from_infinite(lv.get("infinite_list2")) if use_infinite else [])
+                     or wave_list(ev2.get("monster_list")))
+            if not use_infinite:   # 混沌/末日：npc_monster_id_list 是波里的额外普通怪
+                npc1 = [int(x) for x in (lv.get("npc_monster_id_list1") or []) if x]
+                npc2 = [int(x) for x in (lv.get("npc_monster_id_list2") or []) if x]
+                if npc1 and top_w:
+                    top_w[0] = top_w[0] + [x for x in npc1 if x not in top_w[0]]
+                if npc2 and bot_w:
+                    bot_w[0] = bot_w[0] + [x for x in npc2 if x not in bot_w[0]]
             return {
                 "floor": lid,
                 "name": _clean_text(str(lv.get("name") or "")),
-                "top": (wave_from_infinite(lv.get("infinite_list1")) if use_infinite else [])
-                        or wave_list(ev1.get("monster_list")),
-                "bot": (wave_from_infinite(lv.get("infinite_list2")) if use_infinite else [])
-                        or wave_list(ev2.get("monster_list")),
+                "top": top_w,
+                "bot": bot_w,
                 "tierce": wave_from_infinite(lv.get("infinite_list")) if use_infinite else []
                           or wave_list(ev3.get("monster_list")),
                 "has_tierce": bool(ev3.get("monster_list")),
