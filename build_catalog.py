@@ -452,8 +452,10 @@ class Builder:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
-            inv = (ev3.get("invasion") or ev1.get("invasion")
-                   or ev2.get("invasion") or None)
+            invasion_top = invasion_of(ev1.get("invasion"))
+            invasion_bot = invasion_of(ev2.get("invasion"))
+            invasion_tierce = invasion_of(ev3.get("invasion"))
+            inv = invasion_tierce or invasion_top or invasion_bot or None
             lid = int(lv.get("id") or 0)
             buff_ids = []
             buff_infos = []
@@ -482,7 +484,10 @@ class Builder:
                 "stage_top": int(ev1.get("stage_id") or 0),
                 "stage_bot": int(ev2.get("stage_id") or 0),
                 "stage_tierce": int(ev3.get("stage_id") or 0),
-                "invasion": invasion_of(inv),
+                "invasion": inv,
+                "invasion_top": invasion_top,
+                "invasion_bot": invasion_bot,
+                "invasion_tierce": invasion_tierce,
                 "buff_ids": buff_ids,
                 "buff_infos": buff_infos,
                 "stage_buffs": stage_buffs,
@@ -518,6 +523,7 @@ class Builder:
                     inv3 = invasion_of(ev3.get("invasion"))
                     if inv3:
                         f["invasion"] = inv3
+                        f["invasion_tierce"] = inv3
                 out.append(f)
             return out
 

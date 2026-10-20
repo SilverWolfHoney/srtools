@@ -914,10 +914,13 @@
         f.options.map((o) =>
           `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(o.desc || '')}">${escapeHtml(o.name)}</span>`).join('')));
     }
-    const showInvasion = f.invasion && (mode === 'anomalyArbitration' || side === '3');
+    const curInv = mode === 'anomalyArbitration'
+      ? f.invasion
+      : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top);
+    const showInvasion = !!curInv;
     if (showInvasion) {
-      groups.push(group(`贪饕污染 Lv.${f.invasion.level}`,
-        (f.invasion.monsters || []).map((id) =>
+      groups.push(group(`贪饕污染 Lv.${curInv.level}`,
+        (curInv.monsters || []).map((id) =>
           `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('')));
     }
     const body = `<div class="ep-waves">${wavesHtml}</div>` + groups.join('');
@@ -986,10 +989,13 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      // 污染（invasion）是第三节点（星启）的怪，只有选第三节点时才有；异相仲裁无节点直接算
-      const useInvasion = f.invasion && (mode === 'anomalyArbitration' || side === '3');
-      if (useInvasion && (f.invasion.monsters || []).length) {
-        const invWave = toWave(f.invasion.monsters);
+      // 污染（invasion）按节点独立：每个 Side 有自己的入侵（末日第一节点也可能有污染）
+      const curInv = (mode === 'anomalyArbitration'
+        ? f.invasion
+        : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top));
+      const useInvasion = !!curInv;
+      if (useInvasion && (curInv.monsters || []).length) {
+        const invWave = toWave(curInv.monsters);
         const first = waves[0];
         if (first && first.length + invWave.length <= 5) first.push(...invWave);
         else waves.unshift(invWave);
@@ -1003,7 +1009,7 @@
         const bl = [];
         for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
         for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
-        if (useInvasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
+        if (useInvasion && curInv.buff) bl.push({ id: curInv.buff, level: 1 });
         if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
         const seasonSel = $('ep-season');
         if (seasonSel && seasonSel.value) bl.push({ id: Number(seasonSel.value), level: 1 });
