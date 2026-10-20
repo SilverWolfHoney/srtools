@@ -906,7 +906,8 @@
     if ((f.stage_buffs || []).length) {
       groups.push(group('Stage Buff：',
         f.stage_buffs.map((b) =>
-          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
+          `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>` +
+          `<span class="ep-desc">${escapeHtml(b.desc || '')}</span>`).join('')));
     }
     if ((f.options || []).length) {
       groups.push(group('可选 Buff：',
