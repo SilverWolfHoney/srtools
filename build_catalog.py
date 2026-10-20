@@ -496,13 +496,8 @@ class Builder:
                      or wave_list(ev1.get("monster_list")))
             bot_w = ((wave_from_infinite(lv.get("infinite_list2")) if use_infinite else [])
                      or wave_list(ev2.get("monster_list")))
-            if not use_infinite:   # 混沌/末日：npc_monster_id_list 是波里的额外普通怪
-                npc1 = [int(x) for x in (lv.get("npc_monster_id_list1") or []) if x]
-                npc2 = [int(x) for x in (lv.get("npc_monster_id_list2") or []) if x]
-                if npc1 and top_w:
-                    top_w[0] = top_w[0] + [x for x in npc1 if x not in top_w[0]]
-                if npc2 and bot_w:
-                    bot_w[0] = bot_w[0] + [x for x in npc2 if x not in bot_w[0]]
+            # 波次严格用关卡自己的 monster_list / infinite_list，不额外补 npc_monster_id_list
+            # （nanoka 页面 WAVE 里也不显示它，补进去会多出一只怪）
             return {
                 "floor": lid,
                 "name": _clean_text(str(lv.get("name") or "")),
