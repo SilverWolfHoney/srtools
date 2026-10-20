@@ -456,8 +456,14 @@ class Builder:
                    or ev2.get("invasion") or None)
             lid = int(lv.get("id") or 0)
             buff_ids = []
-            if use_twist and twist.get(lid):   # 关卡湍流仅混沌专有
-                buff_ids.append(twist[lid])
+            buff_infos = []
+            if use_twist and twist.get(lid):   # 混沌专有 Buff（记忆紊流）
+                bid = twist[lid]
+                info = maze_buffs.get(bid) or {}
+                buff_ids.append(bid)
+                buff_infos.append({"id": bid,
+                                   "name": info.get("name", ""),
+                                   "desc": fmt_desc(info.get("desc", ""), info.get("param"))})
             stage_buffs = []
             for ev in (ev1, ev2):
                 for b in stage_buffs_of(ev):
@@ -478,6 +484,7 @@ class Builder:
                 "stage_tierce": int(ev3.get("stage_id") or 0),
                 "invasion": invasion_of(inv),
                 "buff_ids": buff_ids,
+                "buff_infos": buff_infos,
                 "stage_buffs": stage_buffs,
                 "season_buffs": season or [],
                 "season_groups": season_groups or [],

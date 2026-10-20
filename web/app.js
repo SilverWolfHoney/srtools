@@ -885,9 +885,11 @@
       groups.push(group('敌人词条：',
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
     }
-    if (mode === 'moC' && (f.buff_ids || []).length) {
+    if (mode === 'moC' && (f.buff_infos || []).length) {
       groups.push(group('混沌 Buff：',
-        f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('')));
+        f.buff_infos.map((b) =>
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>` +
+          `<span class="ep-desc">${escapeHtml(b.desc || '')}</span>`).join('')));
     }
     let seasonList = f.season_buffs || [];
     if ((f.season_groups || []).length) {
