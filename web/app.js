@@ -1021,19 +1021,13 @@
           : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
       {
         const ids = [];
-        const bind = (S.cata.battle_presets || {}).buff_bind || {};
         const add = (id) => {
           const v = Number(id);
-          if (!v || ids.includes(v)) return;
-          // 依赖关卡 ability 的 buff（StageAbilityBeforeCharacterBorn）在普通战斗里挂不上会卡，
-          // 只显示不下发；无绑定 / AfterCharacterBorn 的可以安全写进 blessings
-          const b = bind[String(v)];
-          if (b && b.type === 'StageAbilityBeforeCharacterBorn') return;
-          ids.push(v);
+          if (v && !ids.includes(v)) ids.push(v);   // 去重，顺序即预览显示顺序
         };
         for (const b of f.tag_buffs || []) add(b.id);      // 敌人词条
-        for (const b of f.stage_buffs || []) add(b.id);    // 关卡 Buff
-        for (const id of f.buff_ids || []) add(id);        // 混沌关卡 Buff（记忆紊流，无绑定）
+        for (const b of f.stage_buffs || []) add(b.id);    // 关卡 Buff（预览里「关卡 Buff」那一组）
+        for (const id of f.buff_ids || []) add(id);        // 混沌关卡 Buff（记忆紊流等）
         if (useInvasion && curInv.buff) add(curInv.buff);  // 贪饕污染
         if (f.turbulence) add(f.turbulence);
         const seasonSel = $('ep-season');
