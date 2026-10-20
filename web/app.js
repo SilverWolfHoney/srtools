@@ -914,7 +914,8 @@
         f.options.map((o) =>
           `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(o.desc || '')}">${escapeHtml(o.name)}</span>`).join('')));
     }
-    if (f.invasion) {
+    const showInvasion = f.invasion && (mode === 'anomalyArbitration' || side === '3');
+    if (showInvasion) {
       groups.push(group(`贪饕污染 Lv.${f.invasion.level}`,
         (f.invasion.monsters || []).map((id) =>
           `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('')));
@@ -985,8 +986,9 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      if (f.invasion && (f.invasion.monsters || []).length) {
-        // 贪饕污染是同一场战斗开始时就在场的「额外污染目标」，并入第 1 波（每波最多 5 个）
+      // 污染（invasion）是第三节点（星启）的怪，只有选第三节点时才有；异相仲裁无节点直接算
+      const useInvasion = f.invasion && (mode === 'anomalyArbitration' || side === '3');
+      if (useInvasion && (f.invasion.monsters || []).length) {
         const invWave = toWave(f.invasion.monsters);
         const first = waves[0];
         if (first && first.length + invWave.length <= 5) first.push(...invWave);
@@ -1001,7 +1003,7 @@
         const bl = [];
         for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
         for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
-        if (f.invasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
+        if (useInvasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
         if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
         const seasonSel = $('ep-season');
         if (seasonSel && seasonSel.value) bl.push({ id: Number(seasonSel.value), level: 1 });
