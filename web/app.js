@@ -18,7 +18,7 @@
     traceEditing: null,  // 正在编辑的行迹节点
     battleMode: 'moC',   // 战斗配置：当前玩法
     battlePeriod: 0,     // 战斗配置：当前期数
-    battleFloor: 0,      // 战斗配置：当前层索引
+    battleFloor: null,   // 战斗配置：当前层索引（null = 默认最高层）
   };
   const $ = (id) => document.getElementById(id);
   const PART_ORDER = ['HEAD', 'HAND', 'BODY', 'FOOT'];
@@ -826,8 +826,12 @@
       const tag = mode === 'anomalyArbitration' ? `第 ${f.floor} 关` : `第 ${f.floor} 层`;
       return `<option value="${i}">${tag}${f.name ? ` · ${f.name}` : ''}</option>`;
     }).join('') || '<option value="">-</option>';
-    if (S.battleFloor !== null && S.battleFloor < floors.length) fsel.value = S.battleFloor;
-    else S.battleFloor = 0;
+    if (S.battleFloor !== null && S.battleFloor < floors.length) {
+      fsel.value = S.battleFloor;
+    } else {
+      S.battleFloor = Math.max(0, floors.length - 1);   // 默认最高层
+      fsel.value = S.battleFloor;
+    }
     renderBattleSide();
   }
 
@@ -1031,13 +1035,13 @@
       t.addEventListener('click', () => {
         S.battleMode = t.dataset.mode;
         S.battlePeriod = 0;
-        S.battleFloor = 0;
+        S.battleFloor = null;
         renderBattle();
       });
     }
     $('ep-period').addEventListener('change', () => {
       S.battlePeriod = Number($('ep-period').value) || 0;
-      S.battleFloor = 0;
+      S.battleFloor = null;
       renderBattleFloor();
     });
     $('ep-floor').addEventListener('change', () => {
