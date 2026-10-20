@@ -1009,9 +1009,11 @@
           else waves.push(extraWave);
         }
       }
-      // 私服实际打怪在「花萼/虫洞」（StartCocoonStageCsReq → create_battle），
-      // 那里 stage_id 必须为 0，客户端才会用花萼自己的场景；写关卡 stage_id 会卡加载。
-      bc.stage_id = 0;
+      // create_battle 也按 stage_id 加载战斗配置：必须写对应节点的关卡 stage_id（stage=0 会卡加载）
+      bc.stage_id = mode === 'anomalyArbitration'
+        ? (f.stage || 0)
+        : (side === '3' ? (f.stage_tierce || 0)
+          : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
       {
         const bl = [];
         for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
