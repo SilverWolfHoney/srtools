@@ -878,12 +878,27 @@
         .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
     if ((f.tag_buffs || []).length) {
-      html += '<div class="ep-tierce">关卡 buff：</div>' +
+      html += '<div class="ep-tierce">敌人词条：</div>' +
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
     }
     if ((f.buff_ids || []).length) {
       html += '<div class="ep-tierce">关卡湍流：</div>' +
         f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
+    }
+    if ((f.season_buffs || []).length) {
+      html += '<div class="ep-tierce">Buff：</div>' +
+        f.season_buffs.map((b) =>
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span>`).join('');
+    }
+    if ((f.stage_buffs || []).length) {
+      html += '<div class="ep-tierce">Stage Buff：</div>' +
+        f.stage_buffs.map((b) =>
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
+    }
+    if ((f.options || []).length) {
+      html += '<div class="ep-tierce">可选 Buff：</div>' +
+        f.options.map((o) =>
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(o.desc || '')}">${escapeHtml(o.name)}</span>`).join('');
     }
     if (f.invasion) {
       html += `<div class="ep-tierce">贪饕污染 Lv.${f.invasion.level}</div>` +

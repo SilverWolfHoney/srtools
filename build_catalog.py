@@ -371,6 +371,38 @@ class Builder:
         except (OSError, KeyError, ValueError):
             twist = {}
 
+        # 客户端 MazeBuff 表：id -> 名称/描述（关卡效果 _BindingMazeBuff 用）
+        maze_buffs: dict[int, dict] = {}
+        try:
+            for r in self.table("ExcelOutputGameCore/MazeBuff.bytes",
+                                "RPG.GameCore.MazeBuffRow"):
+                bid = _int(r.get("ID"))
+                if bid:
+                    maze_buffs[bid] = {
+                        "name": self.text(r.get("BuffName")),
+                        "desc": self.text(r.get("BuffDesc")) or self.text(r.get("BuffDescBattle")),
+                    }
+        except (OSError, KeyError, ValueError):
+            maze_buffs = {}
+
+        def stage_buffs_of(ev) -> list:
+            """从 stage_config_data 里取 _BindingMazeBuff（关卡效果）。"""
+            out = []
+            for item in (ev.get("stage_config_data") or []):
+                vals = list(item.values())
+                if "_BindingMazeBuff" not in vals:
+                    continue
+                i = vals.index("_BindingMazeBuff")
+                if i + 1 >= len(vals):
+                    continue
+                bid = _int(vals[i + 1])
+                if bid and bid in maze_buffs:
+                    item_out = {"id": bid, "name": maze_buffs[bid]["name"],
+                                "desc": maze_buffs[bid]["desc"]}
+                    if item_out not in out:
+                        out.append(item_out)
+            return out
+
         def wave_list(monster_list) -> list:
             out = []
             for m in monster_list or []:
@@ -394,7 +426,7 @@ class Builder:
                              if m.get("monster_id")],
             }
 
-        def floor_of(lv, mode: str) -> dict:
+        def floor_of(lv, mode: str, season=None, stage_extra=None) -> dict:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
@@ -404,6 +436,14 @@ class Builder:
             buff_ids = []
             if twist.get(lid):
                 buff_ids.append(twist[lid])
+            stage_buffs = []
+            for ev in (ev1, ev2):
+                for b in stage_buffs_of(ev):
+                    if b not in stage_buffs:
+                        stage_buffs.append(b)
+            for b in (stage_extra or []):
+                if not any(x.get("name") == b.get("name") for x in stage_buffs):
+                    stage_buffs.append(b)
             return {
                 "floor": lid,
                 "name": _clean_text(str(lv.get("name") or "")),
@@ -416,10 +456,12 @@ class Builder:
                 "stage_tierce": int(ev3.get("stage_id") or 0),
                 "invasion": invasion_of(inv),
                 "buff_ids": buff_ids,
+                "stage_buffs": stage_buffs,
+                "season_buffs": season or [],
                 "cycle": int(lv.get("countdown") or 0) or 30,
             }
 
-        def floors_of(levels) -> list:
+        def floors_of(levels, season=None, stage_extra=None) -> list:
             """把 pre_id 节点3 层（如 5613=其十二的节点3）合并进前置层的 tierce/invasion。"""
             extra: dict[int, dict] = {}
             ordered = []
@@ -431,7 +473,7 @@ class Builder:
                     ordered.append(lv)
             out = []
             for lv in ordered:
-                f = floor_of(lv, "maze")
+                f = floor_of(lv, "maze", season, stage_extra)
                 node3 = extra.get(f["floor"])
                 if node3:
                     ev3 = event_of(node3.get("event_id_list"))
@@ -470,6 +512,25 @@ class Builder:
             for f in sorted((site / dname).glob("*.json"), key=lambda x: int(x.stem))[-4:]:
                 data = json.loads(f.read_text(encoding="utf-8"))
                 buff = data.get("buff") or {}
+
+                def norm(items) -> list:
+                    out = []
+                    for b in (items or []):
+                        if b.get("name"):
+                            out.append({"name": _clean_text(str(b["name"])),
+                                        "desc": _clean_text(str(b.get("desc") or "")),
+                                        "param": b.get("param") or []})
+                    return out
+
+                if dname == "story":
+                    # 虚构：option = Buff（可携带），sub_option = Stage Buff（关卡）
+                    season = norm(data.get("option"))
+                    stage_extra = norm(data.get("sub_option"))
+                else:
+                    # 末日：buff_list1/2/3 = Buff（候选），buff = Stage Buff（关卡机制）
+                    season = (norm(data.get("buff_list1")) + norm(data.get("buff_list2"))
+                              + norm(data.get("buff_list3")))
+                    stage_extra = norm([buff]) if buff.get("name") else []
                 item["periods"].append({
                     "period": int(f.stem),
                     "name": _clean_text(str(data.get("name") or "")),
@@ -478,7 +539,7 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": floors_of(data.get("level") or []),
+                    "floors": floors_of(data.get("level") or [], season, stage_extra),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
@@ -510,6 +571,12 @@ class Builder:
                          "desc": _clean_text(str(t.get("desc") or "")),
                          "param": t.get("param") or []}
                         for t in (lv.get("tag_list") or []) if t.get("id")
+                    ],
+                    "season_buffs": [
+                        {"name": _clean_text(str(b.get("name") or "")),
+                         "desc": _clean_text(str(b.get("desc") or "")),
+                         "param": b.get("param") or []}
+                        for b in (lv.get("buff_list") or []) if b.get("name")
                     ],
                     "invasion": invasion_of(ev.get("invasion")),
                     "stage": int(ev.get("stage_id") or 0),
