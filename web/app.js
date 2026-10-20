@@ -867,11 +867,20 @@
     else if (side === '3') waves = f.tierce || [];
     else if (side === '2') waves = f.bot || [];
     else waves = f.top || [];
-    const html = (waves || []).map((wave, wi) =>
+    let html = (waves || []).map((wave, wi) =>
       `<div class="ep-wave-line"><b>第 ${wi + 1} 波</b>` +
       wave.filter((x) => x > 0)
         .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
+    if (mode === 'anomalyArbitration' && (f.tag_buffs || []).length) {
+      html += '<div class="ep-tierce">关卡 buff：</div>' +
+        f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
+    }
+    if (mode === 'anomalyArbitration' && f.invasion) {
+      html += `<div class="ep-tierce">贪饕污染 Lv.${f.invasion.level}</div>` +
+        (f.invasion.monsters || []).map((id) =>
+          `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('');
+    }
     box.innerHTML = html || '<div class="side-hint">这一层没有怪物数据。</div>';
   }
 
@@ -926,15 +935,29 @@
       else if (side === '2') base = f.bot || [];
       else base = f.top || [];
       for (const w of base) waves.push(toWave(w));
-      if (turbulence && f.buffs && f.buffs.length) bc.blessings = f.buffs.map((id) => ({ id, level: 1 }));
-      else if (turbulence && f.turbulence) bc.blessings = [{ id: f.turbulence, level: 1 }];
-      else if (!turbulence) bc.blessings = [];
+      if (mode === 'anomalyArbitration' && f.invasion && (f.invasion.monsters || []).length) {
+        waves.push(toWave(f.invasion.monsters));   // 贪饕污染：额外一波污染怪
+      }
+      // 客户端按 battle_id == stage_id 匹配战斗配置，必须写入对应节点的 stage_id
+      bc.stage_id = mode === 'anomalyArbitration'
+        ? (f.stage || 0)
+        : (side === '3' ? (f.stage_tierce || 0)
+          : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
+      if (turbulence) {
+        const bl = [];
+        for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
+        if (f.invasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
+        if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
+        bc.blessings = bl;
+      } else {
+        bc.blessings = [];
+      }
       if (cycle && f.cycle) bc.cycle_count = f.cycle;
     }
     bc.monsters = waves.filter((w) => w.length);
     if (cycle) bc.cycle_count = bc.cycle_count || 30;
     markDirty();
-    toast(`已应用 ${monsters.length} 个怪物为第 1 波`, 'ok');
+    toast(`已应用 ${bc.monsters.reduce((n, w) => n + w.length, 0)} 个怪物、stage_id=${bc.stage_id || 0}`, 'ok');
     renderBattle();
   }
 

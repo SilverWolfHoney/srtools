@@ -1,0 +1,484 @@
+{
+  "id": 3,
+  "name": "不协和音",
+  "pre_level": [
+    {
+      "id": 301,
+      "name": "骑士（一）",
+      "damage_type": [
+        "Ice",
+        "Thunder"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30503011,
+          "stage_type": "Challenge",
+          "stage_name": 6678071601873633008,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30503011"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 4053020,
+              "monster1": 2023030
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033003,
+          "name": "反相",
+          "desc": "敌方目标每次受到攻击后，攻击者都会损失自身最大生命值<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的生命值，该效果不致命。",
+          "param": [
+            0.02
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305030111": {
+          "infinite_wave_id": 305030111,
+          "monster_group_id_list": [
+            4053020,
+            2023030,
+            4053020,
+            2023030
+          ],
+          "max_monster_count": 4,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 349
+        }
+      }
+    },
+    {
+      "id": 302,
+      "name": "骑士（二）",
+      "damage_type": [
+        "Fire",
+        "Imaginary"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30503012,
+          "stage_type": "Challenge",
+          "stage_name": 17584672809448222237,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30503012"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 4023010,
+              "monster1": 4023020
+            },
+            {
+              "monster0": 802401107
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033002,
+          "name": "淬火",
+          "desc": "敌方目标生命值每降低1%，我方对其造成的暴击伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。",
+          "param": [
+            0.03
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305030121": {
+          "infinite_wave_id": 305030121,
+          "monster_group_id_list": [
+            4023010,
+            4023020
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 350
+        },
+        "305030122": {
+          "infinite_wave_id": 305030122,
+          "monster_group_id_list": [
+            802401107
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 350
+        }
+      }
+    },
+    {
+      "id": 303,
+      "name": "骑士（三）",
+      "damage_type": [
+        "Physical",
+        "Imaginary"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30503013,
+          "stage_type": "Challenge",
+          "stage_name": 2590962765852260361,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30503013"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 1013020,
+              "monster1": 3003020,
+              "monster2": 1013020
+            },
+            {
+              "monster0": 4064010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033023,
+          "name": "挑衅",
+          "desc": "敌方目标受到<color=#f29e38ff><unbreak>#1[i]</unbreak></color>次攻击后立即行动，该计数在敌方目标回合开始时清空。",
+          "param": [
+            6
+          ]
+        },
+        {
+          "id": 3033025,
+          "name": "滋扰",
+          "desc": "敌方目标施放攻击后，对攻击目标随机造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>或者<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>的行动延后。",
+          "param": [
+            0.05,
+            0.1
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305030131": {
+          "infinite_wave_id": 305030131,
+          "monster_group_id_list": [
+            1013020,
+            3003020
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 351
+        },
+        "305030132": {
+          "infinite_wave_id": 305030132,
+          "monster_group_id_list": [
+            4064010
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 351
+        }
+      }
+    }
+  ],
+  "boss_level": {
+    "id": 304,
+    "name": "将杀王棋",
+    "damage_type": [
+      "Fire"
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30503021,
+        "stage_type": "Challenge",
+        "stage_name": 8883840217250797593,
+        "hard_level_group": 3,
+        "level": 100,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30503021"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30503"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3025016
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033028,
+        "name": "韧甲+",
+        "desc": "敌方目标初始拥有<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层【韧甲+】，每层使敌方目标受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>；敌方目标每次韧性被削减为0时降低1层【韧甲+】。该效果的层数在敌方目标的每个阶段重置。",
+        "param": [
+          3,
+          0.15
+        ]
+      },
+      {
+        "id": 3033038,
+        "name": "失能",
+        "desc": "进入战斗时，固定降低我方目标<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的能量，并使我方目标在自身回合外的能量恢复效率降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+        "param": [
+          0.5,
+          0.5,
+          2
+        ]
+      },
+      {
+        "id": 3033035,
+        "name": "百炼",
+        "desc": "敌方目标每次受到攻击后，使自身受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，受到的暴击伤害降低<color=#f29e38ff><unbreak>#3[i]%</unbreak></color>，最多叠加<color=#f29e38ff><unbreak>#2[i]</unbreak></color>层，该效果在敌方目标回合开始或进入弱点击破状态时清空层数；若敌方目标处于弱点击破状态时，该效果不会叠加层数。",
+        "param": [
+          0.02,
+          10,
+          0.04
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305030211": {
+        "infinite_wave_id": 305030211,
+        "monster_group_id_list": [
+          3025016
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 354
+      }
+    }
+  },
+  "boss_config": {
+    "hard_name": "将杀王棋•绝境",
+    "buff_list": [
+      {
+        "id": 3033032,
+        "name": "不破不立",
+        "desc": "我方全体目标击破特攻提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；每次将敌方目标韧性削减为0时，使该目标受到的击破伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，该效果最多叠加<color=#f29e38ff><unbreak>#3[i]</unbreak></color>层。",
+        "param": [
+          0.6,
+          0.15,
+          4
+        ]
+      },
+      {
+        "id": 3033033,
+        "name": "意气激昂",
+        "desc": "我方全体目标攻击力提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；施放【遥远地平的长音】时，额外使我方全体目标攻击力提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，该效果可叠加。",
+        "param": [
+          0.4,
+          0.2
+        ]
+      },
+      {
+        "id": 3033034,
+        "name": "乘间击瑕",
+        "desc": "我方全体目标造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；我方目标施放攻击后，对被攻击的敌方目标添加自身属性对应的弱点，该效果在敌方目标从弱点击破状态恢复时移除。",
+        "param": [
+          0.4
+        ]
+      }
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30503022,
+        "stage_type": "Challenge",
+        "stage_name": 8883840217250797593,
+        "hard_level_group": 3,
+        "level": 120,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30503022"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30504"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 3025016
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033029,
+        "name": "韧甲++",
+        "desc": "敌方目标初始拥有<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层【韧甲++】，每层使敌方目标受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>；敌方目标每次韧性被削减为0时降低1层【韧甲++】。该效果的层数在敌方目标的每个阶段重置。",
+        "param": [
+          4,
+          0.15
+        ]
+      },
+      {
+        "id": 3033040,
+        "name": "失能++",
+        "desc": "进入战斗时，固定降低我方目标<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的能量，并使我方目标在自身回合外的能量恢复效率降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+        "param": [
+          1,
+          1,
+          2
+        ]
+      },
+      {
+        "id": 3033036,
+        "name": "百炼+",
+        "desc": "敌方目标每次受到攻击后，使自身受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，受到的暴击伤害降低<color=#f29e38ff><unbreak>#3[i]%</unbreak></color>，最多叠加<color=#f29e38ff><unbreak>#2[i]</unbreak></color>层，该效果在敌方目标回合开始或进入弱点击破状态时清空层数；若敌方目标处于弱点击破状态时，该效果不会叠加层数。",
+        "param": [
+          0.03,
+          10,
+          0.06
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305030221": {
+        "infinite_wave_id": 305030221,
+        "monster_group_id_list": [
+          3025016
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 352
+      }
+    }
+  }
+}

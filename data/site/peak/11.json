@@ -1,0 +1,586 @@
+{
+  "id": 11,
+  "name": "隐藏关卡",
+  "pre_level": [
+    {
+      "id": 1101,
+      "name": "骑士（一）",
+      "damage_type": [
+        "Quantum",
+        "Imaginary"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30511011,
+          "stage_type": "Challenge",
+          "stage_name": 12542455939681295413,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30511011"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 5023010,
+              "monster1": 5033010
+            },
+            {
+              "monster0": 5034010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033058,
+          "name": "血嗜",
+          "desc": "我方目标回合开始时损失<color=#f29e38ff><unbreak>#1[i]</unbreak></color>点生命值，该效果可致命。",
+          "param": [
+            500
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305110111": {
+          "infinite_wave_id": 305110111,
+          "monster_group_id_list": [
+            5023010,
+            5033010
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 360
+        },
+        "305110112": {
+          "infinite_wave_id": 305110112,
+          "monster_group_id_list": [
+            5034010
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 349
+        }
+      }
+    },
+    {
+      "id": 1102,
+      "name": "骑士（二）",
+      "damage_type": [
+        "Fire",
+        "Thunder"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30511012,
+          "stage_type": "Challenge",
+          "stage_name": 11050040960591794587,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30511012"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 5023020,
+              "monster1": 3003010
+            },
+            {
+              "monster0": 5014030
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": [],
+          "invasion": {
+            "level": 4,
+            "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+            "maze_buff_id": 3034004,
+            "maze_buff_param": [
+              0.8,
+              0.4,
+              0.5,
+              1,
+              0.65
+            ],
+            "monster_param": [
+              0.77,
+              1.2,
+              1,
+              3,
+              1.8
+            ],
+            "monster_list": [
+              {
+                "monster_id": 5014030,
+                "param_list": []
+              },
+              {
+                "monster_id": 5023020,
+                "param_list": []
+              },
+              {
+                "monster_id": 502302001,
+                "param_list": [
+                  0,
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033071,
+          "name": "鳞甲",
+          "desc": "敌方目标初始拥有<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层该效果，每层使敌方目标受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，敌方目标每次受到攻击后降低1层。该效果的层数在首领敌人阶段转换时重置。",
+          "param": [
+            20,
+            0.02
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305110121": {
+          "infinite_wave_id": 305110121,
+          "monster_group_id_list": [
+            5023020,
+            3003010
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 352
+        },
+        "305110122": {
+          "infinite_wave_id": 305110122,
+          "monster_group_id_list": [
+            5014030
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 350
+        }
+      }
+    },
+    {
+      "id": 1103,
+      "name": "骑士（三）",
+      "damage_type": [
+        "Fire",
+        "Ice"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30511013,
+          "stage_type": "Challenge",
+          "stage_name": 12223446868998010287,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30511013"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 4053020,
+              "monster1": 4063010
+            },
+            {
+              "monster0": 3004020
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033088,
+          "name": "刚毅",
+          "desc": "敌方目标韧性无法被削减，且受到的击破伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。",
+          "param": [
+            0.5
+          ]
+        },
+        {
+          "id": 3033092,
+          "name": "破军",
+          "desc": "我方全体目标治疗量降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>。",
+          "param": [
+            0.7
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305110131": {
+          "infinite_wave_id": 305110131,
+          "monster_group_id_list": [
+            4053020,
+            4063010
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 370
+        },
+        "305110132": {
+          "infinite_wave_id": 305110132,
+          "monster_group_id_list": [
+            3004020
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 376
+        }
+      }
+    }
+  ],
+  "boss_level": {
+    "id": 1104,
+    "name": "将杀王棋",
+    "damage_type": [
+      "Fire",
+      "Wind",
+      "Imaginary"
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30511021,
+        "stage_type": "Challenge",
+        "stage_name": 17515627681698436443,
+        "hard_level_group": 3,
+        "level": 100,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30511021"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30503"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 801503006
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": [],
+        "invasion": {
+          "level": 4,
+          "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+          "maze_buff_id": 3034004,
+          "maze_buff_param": [
+            0.8,
+            0.4,
+            0.5,
+            1,
+            0.65
+          ],
+          "monster_param": [
+            0.77,
+            1.2,
+            1,
+            3,
+            1.8
+          ],
+          "monster_list": [
+            {
+              "monster_id": 801503006,
+              "param_list": []
+            },
+            {
+              "monster_id": 801204002,
+              "param_list": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "monster_id": 801505001,
+              "param_list": []
+            }
+          ]
+        }
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033093,
+        "name": "残秽",
+        "desc": "战斗开始时，我方全体角色损失自身最大生命值<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的生命值。",
+        "param": [
+          0.5
+        ]
+      },
+      {
+        "id": 3033025,
+        "name": "滋扰",
+        "desc": "敌方目标施放攻击后，对攻击目标随机造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>或者<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>的行动延后。",
+        "param": [
+          0.05,
+          0.1
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305110211": {
+        "infinite_wave_id": 305110211,
+        "monster_group_id_list": [
+          801503006
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 369
+      }
+    }
+  },
+  "boss_config": {
+    "hard_name": "将杀王棋•绝境",
+    "buff_list": [
+      {
+        "id": 3033095,
+        "name": "无上喜悦",
+        "desc": "我方角色施放终结技时获得<color=#f29e38ff><unbreak>#1[i]</unbreak></color>个笑点，该效果每位角色只触发1次。我方欢愉命途角色施放攻击后，使【机铠剑界•破空斩】固定恢复<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>能量。",
+        "param": [
+          30,
+          0.02
+        ]
+      },
+      {
+        "id": 3033074,
+        "name": "终结之吻",
+        "desc": "我方任意目标回合开始时，我方全体目标固定恢复<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>能量，该效果全场只触发1次。我方全体目标造成的战技和终结技伤害提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.25,
+          0.4
+        ]
+      },
+      {
+        "id": 3033008,
+        "name": "锤砧战术",
+        "desc": "获得除自身外的友方目标施加的护盾效果或治疗后，自身受到的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，同时全属性抗性穿透提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，持续<color=#f29e38ff><unbreak>#3[i]</unbreak></color>回合。",
+        "param": [
+          0.25,
+          0.2,
+          2
+        ]
+      }
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30511022,
+        "stage_type": "Challenge",
+        "stage_name": 17515627681698436443,
+        "hard_level_group": 3,
+        "level": 120,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30511022"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30504"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 801503006
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": [],
+        "invasion": {
+          "level": 4,
+          "desc": "被污染的怪物获得了「贪饕」的力量，受到致命攻击后不会被消灭，而是立即回复一定比例的生命值。\\n对其造成伤害可不断压制其生命上限，压制到一定比例后，可将敌人彻底消灭。",
+          "maze_buff_id": 3034004,
+          "maze_buff_param": [
+            0.8,
+            0.4,
+            0.5,
+            1,
+            0.65
+          ],
+          "monster_param": [
+            0.77,
+            1.2,
+            1,
+            3,
+            1.8
+          ],
+          "monster_list": [
+            {
+              "monster_id": 801503006,
+              "param_list": []
+            },
+            {
+              "monster_id": 801204002,
+              "param_list": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "monster_id": 801505001,
+              "param_list": []
+            }
+          ]
+        }
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033094,
+        "name": "残秽+",
+        "desc": "战斗开始时，我方全体角色损失自身最大生命值<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>的生命值。",
+        "param": [
+          0.7
+        ]
+      },
+      {
+        "id": 3033026,
+        "name": "滋扰+",
+        "desc": "敌方目标施放攻击后，对攻击目标随机造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>或者<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>的行动延后。",
+        "param": [
+          0.05,
+          0.2
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305110221": {
+        "infinite_wave_id": 305110221,
+        "monster_group_id_list": [
+          801503006
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 164
+      }
+    }
+  }
+}

@@ -1,0 +1,549 @@
+{
+  "id": 6,
+  "name": "幸福语法",
+  "pre_level": [
+    {
+      "id": 601,
+      "name": "骑士（一）",
+      "damage_type": [
+        "Physical",
+        "Fire"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30506011,
+          "stage_type": "Challenge",
+          "stage_name": 9742045115079604233,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30506011"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 5012030,
+              "monster1": 5013010,
+              "monster2": 5012090,
+              "monster3": 5012030
+            },
+            {
+              "monster0": 5023010,
+              "monster1": 5013010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033041,
+          "name": "桎梏",
+          "desc": "我方目标初始获得<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层该效果，每层使自身造成的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，该效果不可解除，每次施放终结技后移除1层该效果。",
+          "param": [
+            2,
+            0.1
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305060111": {
+          "infinite_wave_id": 305060111,
+          "monster_group_id_list": [
+            5012030,
+            5013010,
+            5012090,
+            5012030,
+            5012090,
+            5013010,
+            5012030,
+            5012090
+          ],
+          "max_monster_count": 8,
+          "max_teammate_count": 4,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 367
+        },
+        "305060112": {
+          "infinite_wave_id": 305060112,
+          "monster_group_id_list": [
+            5023010,
+            5013010
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 367
+        }
+      }
+    },
+    {
+      "id": 602,
+      "name": "骑士（二）",
+      "damage_type": [
+        "Fire",
+        "Imaginary"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30506012,
+          "stage_type": "Challenge",
+          "stage_name": 18056700297458990573,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30506012"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 5013030,
+              "monster1": 5013040
+            },
+            {
+              "monster0": 5014010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033051,
+          "name": "均衡",
+          "desc": "战斗开始时，速度最高的<color=#f29e38ff><unbreak>#1[i]</unbreak></color>名我方角色速度降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，速度最低的<color=#f29e38ff><unbreak>#3[i]</unbreak></color>名我方角色速度提高<color=#f29e38ff><unbreak>#4[i]%</unbreak></color>。",
+          "param": [
+            1,
+            0.2,
+            1,
+            0.15
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305060121": {
+          "infinite_wave_id": 305060121,
+          "monster_group_id_list": [
+            5013030,
+            5013040
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 360
+        },
+        "305060122": {
+          "infinite_wave_id": 305060122,
+          "monster_group_id_list": [
+            5014010
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 360
+        }
+      }
+    },
+    {
+      "id": 603,
+      "name": "骑士（三）",
+      "damage_type": [
+        "Physical",
+        "Quantum"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30506013,
+          "stage_type": "Challenge",
+          "stage_name": 394586006630307543,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30506013"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 5013060,
+              "monster1": 5013050
+            },
+            {
+              "monster0": 4034010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033023,
+          "name": "挑衅",
+          "desc": "敌方目标受到<color=#f29e38ff><unbreak>#1[i]</unbreak></color>次攻击后立即行动，该计数在敌方目标回合开始时清空。",
+          "param": [
+            6
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305060131": {
+          "infinite_wave_id": 305060131,
+          "monster_group_id_list": [
+            5013060,
+            5013050
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 360
+        },
+        "305060132": {
+          "infinite_wave_id": 305060132,
+          "monster_group_id_list": [
+            4034010
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 360
+        }
+      }
+    }
+  ],
+  "boss_level": {
+    "id": 604,
+    "name": "将杀王棋",
+    "damage_type": [
+      "Physical",
+      "Thunder",
+      "Imaginary"
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30506021,
+        "stage_type": "Challenge",
+        "stage_name": 13970359017855679954,
+        "hard_level_group": 3,
+        "level": 100,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "3"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30506021"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30503"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5012100,
+            "monster1": 3003020,
+            "monster2": 5012100
+          },
+          {
+            "monster0": 5023010
+          },
+          {
+            "monster0": 5024010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033056,
+        "name": "沉毅",
+        "desc": "我方全体目标造成的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.1,
+          0.1
+        ]
+      },
+      {
+        "id": 3033041,
+        "name": "桎梏",
+        "desc": "我方目标初始获得<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层该效果，每层使自身造成的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，该效果不可解除，每次施放终结技后移除1层该效果。",
+        "param": [
+          2,
+          0.1
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305060211": {
+        "infinite_wave_id": 305060211,
+        "monster_group_id_list": [
+          5012100,
+          3003020,
+          5012100
+        ],
+        "max_monster_count": 3,
+        "max_teammate_count": 3,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 365
+      },
+      "305060212": {
+        "infinite_wave_id": 305060212,
+        "monster_group_id_list": [
+          5023010
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 365
+      },
+      "305060213": {
+        "infinite_wave_id": 305060213,
+        "monster_group_id_list": [
+          5024010
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 365
+      }
+    }
+  },
+  "boss_config": {
+    "hard_name": "将杀王棋•绝境",
+    "buff_list": [
+      {
+        "id": 3033053,
+        "name": "拍手称快",
+        "desc": "我方目标造成的欢愉伤害无视目标<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>防御力，我方角色回合开始时获得<color=#f29e38ff><unbreak>#2[i]</unbreak></color>个笑点。",
+        "param": [
+          0.3,
+          6
+        ]
+      },
+      {
+        "id": 3033054,
+        "name": "摧枯拉朽",
+        "desc": "敌方目标受到的击破伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，敌方目标每次陷入弱点击破状态时，使我方全体行动提前<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.3,
+          0.05
+        ]
+      },
+      {
+        "id": 3033055,
+        "name": "灵威御邪",
+        "desc": "我方全体目标造成的伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，【极乐颠倒•邪愿莲华主】及其召唤物全属性抗性降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.4,
+          0.2
+        ]
+      }
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30506022,
+        "stage_type": "Challenge",
+        "stage_name": 13970359017855679954,
+        "hard_level_group": 3,
+        "level": 120,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "3"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30506022"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30504"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 5012100,
+            "monster1": 3003020,
+            "monster2": 5012100
+          },
+          {
+            "monster0": 5023010
+          },
+          {
+            "monster0": 5024010
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033057,
+        "name": "沉毅+",
+        "desc": "我方全体目标造成的伤害降低<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>，受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.2,
+          0.1
+        ]
+      },
+      {
+        "id": 3033042,
+        "name": "桎梏+",
+        "desc": "我方目标初始获得<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层该效果，每层使自身造成的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>，该效果不可解除，每次施放终结技后移除1层该效果。",
+        "param": [
+          2,
+          0.2
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305060221": {
+        "infinite_wave_id": 305060221,
+        "monster_group_id_list": [
+          5012100,
+          3003020,
+          5012100
+        ],
+        "max_monster_count": 3,
+        "max_teammate_count": 3,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 366
+      },
+      "305060222": {
+        "infinite_wave_id": 305060222,
+        "monster_group_id_list": [
+          5023010
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 366
+      },
+      "305060223": {
+        "infinite_wave_id": 305060223,
+        "monster_group_id_list": [
+          5024010
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 366
+      }
+    }
+  }
+}

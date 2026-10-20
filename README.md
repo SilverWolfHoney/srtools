@@ -35,13 +35,13 @@ python serve.py --port 21101
 | 页 | 能做什么 |
 |---|---|
 | **角色** | 角色列表带**头像缩略图**（来自 srtools 网站 CDN，100 个角色），支持按**命途 / 元素**下拉筛选；等级 / 晋阶 / 星魂 / 能量；**特殊星魂（EX）**（4.6.53 的景元 / 丹恒·饮月 / 黄泉各一个，独立于普通 6 星魂，勾选后写入 `data.ex_rank_id_list`）；**游戏风格行迹树**（按命途底图 + 图标 + 点击节点编辑等级，可一键满级；**10 个加强角色**——瓦尔特/卡芙卡/银狼/希儿/刃/镜流/藿藿/花火/黑天鹅/流萤——有「加强形态」开关，切换普通/加强两套各 18 个行迹点）；光锥（按命途分组选择、等级/叠影/晋阶）；遗器（4 部位、主词条、4 条副词条 + 档位/强化次数、一键自动补齐 4 件） |
-| **战斗配置** | 左侧 5 个标签：**混沌回忆 / 虚构叙事 / 末日幻影 / 异相仲裁 / 自定义怪**。前 4 个玩法取**最近 4 期**，按「期 · 层」选关（每期带名称）并预览怪物波次；**第 12 层（混沌）/ 第 4 层（虚构、末日）的星启模式**会额外显示「星启模式（额外一路）」的一组 Boss。勾选 Use cycle count / Use turbulence buff 后点「应用为战斗配置」，把怪物波次 + 祝福写入 `battle_config`；当前配置可一键清空。自定义怪标签可按 ID 输入任意怪物 |
+| **战斗配置** | 左侧 5 个标签：**混沌回忆 / 虚构叙事 / 末日幻影 / 异相仲裁 / 自定义怪**。前 4 个玩法取**最近 4 期**，按「期 · 层」选关（每期带名称）并预览怪物波次；**第 12 层（混沌）/ 第 4 层（虚构、末日）的星启模式**会额外显示「星启模式（额外一路）」的一组 Boss；**异相仲裁**显示关卡 buff 与**贪饕污染**（额外污染怪 + 贪饕 buff）。勾选 Use cycle count / Use turbulence buff 后点「应用为战斗配置」，把怪物波次 + 祝福 + 关卡 ID（stage_id）写入 `battle_config`；当前配置可一键清空。自定义怪标签可按 ID 输入任意怪物 |
 | **工具** | 批量满级 / 补光锥 / 补遗器；存档信息 |
 | **上传 / 下载 / 同步** | 顶栏三个按钮：**上传 freesr-data.json**（选择本地存档载入工具）、**下载 freesr-data.json**（当前编辑结果导出，弹出系统保存位置对话框）、**同步到私服**（弹出 Connect 弹窗：Provider + Server URL + Connect，验证后把当前配置推送到私服） |
 
 ## 数据来源与重建
 
-`data/catalog.json` 是构建产物（约 1.9 MB），由 `build_catalog.py` 生成：
+`data/catalog.json` 是构建产物（约 2.5 MB），由 `build_catalog.py` 生成：
 
 | catalog 段 | 来源 |
 |---|---|
@@ -52,7 +52,7 @@ python serve.py --port 21101
 | 中文名 | `SilverWolfHoney/dump_4.6.53/TextMap.json` |
 | 角色头像 | `https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/<id>.webp`（下载到 `web/avatars/`，缺失的角色显示文字占位） |
 | 行迹树 | 布局/树结构来自 srtools 站点（`data/trace_layout.json`、`data/trace_trees.json`，随仓库分发）；命途底图 `https://srtools.neonteam.dev/traces/<Path>.svg`、行迹图标 `cdn.neonteam.dev/.../skillicons|ui/avatar/icon/*.webp`（下载到 `web/traces/`、`web/trace-icons/`） |
-| 战斗配置挑战数据（含星启） | `https://cdn.neonteam.dev/neonteam/4.6.51-16704169/{moc,pure-fictions,ap-shadows,challenge-peak}.json`（下载到 `data/site/`，随仓库分发；客户端 4.6.53 表里没有星启模式字段，因此统一用网站整理好的挑战数据） |
+| 战斗配置挑战数据（含星启） | 混沌/虚构/末日：`https://cdn.neonteam.dev/neonteam/4.6.51-16704169/{moc,pure-fictions,ap-shadows}.json`；异相仲裁（含 **invasion 贪饕污染**）：`https://static.nanoka.cc/hsr/4.6.53/zh/peak/<期>.json`。都下载到 `data/site/`，随仓库分发；客户端挑战表没有星启/贪饕字段，因此用网站整理好的数据 |
 
 > 头像与行迹底图/图标（游戏版权）不随仓库分发：克隆后运行
 > `python fetch_avatars.py` 和 `python fetch_trace_assets.py` 重建即可；

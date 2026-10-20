@@ -1,0 +1,471 @@
+{
+  "id": 2,
+  "name": "烈阳幻域",
+  "pre_level": [
+    {
+      "id": 201,
+      "name": "骑士（一）",
+      "damage_type": [
+        "Physical",
+        "Thunder"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30502011,
+          "stage_type": "Challenge",
+          "stage_name": 17363227603743607405,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30502011"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 3002030,
+              "monster1": 2013020,
+              "monster2": 2033010,
+              "monster3": 3002030
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033023,
+          "name": "挑衅",
+          "desc": "敌方目标受到<color=#f29e38ff><unbreak>#1[i]</unbreak></color>次攻击后立即行动，该计数在敌方目标回合开始时清空。",
+          "param": [
+            6
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305020111": {
+          "infinite_wave_id": 305020111,
+          "monster_group_id_list": [
+            3002030,
+            2013020,
+            2033010,
+            3002030,
+            3002030,
+            2033010,
+            3002030,
+            2013020,
+            3002030,
+            3002030
+          ],
+          "max_monster_count": 10,
+          "max_teammate_count": 4,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 345
+        }
+      }
+    },
+    {
+      "id": 202,
+      "name": "骑士（二）",
+      "damage_type": [
+        "Physical",
+        "Wind"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30502012,
+          "stage_type": "Challenge",
+          "stage_name": 4307424808395091276,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30502012"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 4063010,
+              "monster1": 2033010
+            },
+            {
+              "monster0": 2034010
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033025,
+          "name": "滋扰",
+          "desc": "敌方目标施放攻击后，对攻击目标随机造成<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>或者<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>的行动延后。",
+          "param": [
+            0.05,
+            0.1
+          ]
+        },
+        {
+          "id": 3033005,
+          "name": "吸能",
+          "desc": "敌方目标每次受到攻击后都会使攻击者能量降低<color=#f29e38ff><unbreak>#1[i]</unbreak></color>点，但攻击者能量达到上限时不会降低；敌方目标被消灭时固定恢复攻击者<color=#f29e38ff><unbreak>#2[i]</unbreak></color>点能量。",
+          "param": [
+            2,
+            10
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305020121": {
+          "infinite_wave_id": 305020121,
+          "monster_group_id_list": [
+            4063010,
+            2033010
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 346
+        },
+        "305020122": {
+          "infinite_wave_id": 305020122,
+          "monster_group_id_list": [
+            2034010
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 346
+        }
+      }
+    },
+    {
+      "id": 203,
+      "name": "骑士（三）",
+      "damage_type": [
+        "Fire",
+        "Ice"
+      ],
+      "event_id_list": [
+        {
+          "stage_id": 30502013,
+          "stage_type": "Challenge",
+          "stage_name": 12223446868998010287,
+          "hard_level_group": 3,
+          "level": 95,
+          "level_graph_path": "Config/Level/StageCommonTemplate.json",
+          "stage_ability_config": [],
+          "sub_level_graphs": [],
+          "stage_config_data": [
+            {
+              "jdkamoanicm": "_Wave",
+              "mojjbfbkbnc": "2"
+            },
+            {
+              "jdkamoanicm": "_IsEliteBattle",
+              "mojjbfbkbnc": "1"
+            },
+            {
+              "jdkamoanicm": "_StageInfiniteGroup",
+              "mojjbfbkbnc": "30502013"
+            },
+            {
+              "jdkamoanicm": "_CreateBattleEvent",
+              "mojjbfbkbnc": "30502"
+            }
+          ],
+          "monster_list": [
+            {
+              "monster0": 803301014,
+              "monster1": 2023020
+            },
+            {
+              "monster0": 3004020
+            }
+          ],
+          "level_lose_condition": [],
+          "level_win_condition": [],
+          "release": true,
+          "forbid_exit_battle": true,
+          "monster_warning_ratio": 1.1,
+          "trial_avatar_list": []
+        }
+      ],
+      "tag_list": [
+        {
+          "id": 3033001,
+          "name": "韧甲",
+          "desc": "敌方目标初始拥有<color=#f29e38ff><unbreak>#1[i]</unbreak></color>层【韧甲】，每层使敌方目标受到的伤害降低<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>；敌方目标每次韧性被削减为0时降低1层【韧甲】。",
+          "param": [
+            2,
+            0.15
+          ]
+        }
+      ],
+      "infinite_list": {
+        "305020131": {
+          "infinite_wave_id": 305020131,
+          "monster_group_id_list": [
+            803301014,
+            2023020
+          ],
+          "max_monster_count": 2,
+          "max_teammate_count": 2,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 347
+        },
+        "305020132": {
+          "infinite_wave_id": 305020132,
+          "monster_group_id_list": [
+            3004020
+          ],
+          "max_monster_count": 1,
+          "max_teammate_count": 1,
+          "ability": "",
+          "param_list": [],
+          "clear_previous_ability": true,
+          "elite_group": 347
+        }
+      }
+    }
+  ],
+  "boss_level": {
+    "id": 204,
+    "name": "将杀王棋",
+    "damage_type": [
+      "Physical",
+      "Ice",
+      "Quantum"
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30502021,
+        "stage_type": "Challenge",
+        "stage_name": 2554924480817709563,
+        "hard_level_group": 3,
+        "level": 100,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30502021"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30503"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 401501101
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033012,
+        "name": "吸能+",
+        "desc": "敌方目标每次受到攻击后都会使攻击者能量降低<color=#f29e38ff><unbreak>#1[i]</unbreak></color>点，但攻击者能量达到上限时不会降低；敌方目标被消灭时固定恢复攻击者<color=#f29e38ff><unbreak>#2[i]</unbreak></color>点能量。",
+        "param": [
+          3,
+          10
+        ]
+      },
+      {
+        "id": 3033017,
+        "name": "龟裂",
+        "desc": "我方目标受到敌方攻击时会被施加【龟裂】效果，每层使持有者在受到攻击后额外损失最大生命值<color=#f29e38ff><unbreak>#1[f1]%</unbreak></color>的生命值，该效果叠加层数无上限且不可驱散。持有【龟裂】的目标获得除自身外的友方目标施加的护盾效果或治疗后，双方均解除全部【龟裂】效果。",
+        "param": [
+          0.008
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305020211": {
+        "infinite_wave_id": 305020211,
+        "monster_group_id_list": [
+          401501101
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 353
+      }
+    }
+  },
+  "boss_config": {
+    "hard_name": "将杀王棋•绝境",
+    "buff_list": [
+      {
+        "id": 3033020,
+        "name": "狂戮生息",
+        "desc": "我方全体目标暴击伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；施放【治愈的虹彩】时，增加的生命上限额外提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.5,
+          0.6
+        ]
+      },
+      {
+        "id": 3033021,
+        "name": "火力激增",
+        "desc": "我方全体目标造成的普攻、战技、终结技伤害提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；施放【治愈的虹彩】时，额外使我方全体目标攻击力提高<color=#f29e38ff><unbreak>#2[i]</unbreak></color>点。",
+        "param": [
+          0.8,
+          2000
+        ]
+      },
+      {
+        "id": 3033022,
+        "name": "穿流疾驰",
+        "desc": "我方全体目标造成的持续伤害的全属性抗性穿透提高<color=#f29e38ff><unbreak>#1[i]%</unbreak></color>；施放【治愈的虹彩】时，额外使我方全体目标速度提高<color=#f29e38ff><unbreak>#2[i]%</unbreak></color>。",
+        "param": [
+          0.4,
+          0.3
+        ]
+      }
+    ],
+    "event_id_list": [
+      {
+        "stage_id": 30502022,
+        "stage_type": "Challenge",
+        "stage_name": 2554924480817709563,
+        "hard_level_group": 3,
+        "level": 120,
+        "level_graph_path": "Config/Level/StageCommonTemplate.json",
+        "stage_ability_config": [],
+        "sub_level_graphs": [],
+        "stage_config_data": [
+          {
+            "jdkamoanicm": "_Wave",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_IsEliteBattle",
+            "mojjbfbkbnc": "1"
+          },
+          {
+            "jdkamoanicm": "_StageInfiniteGroup",
+            "mojjbfbkbnc": "30502022"
+          },
+          {
+            "jdkamoanicm": "_CreateBattleEvent",
+            "mojjbfbkbnc": "30504"
+          }
+        ],
+        "monster_list": [
+          {
+            "monster0": 401501101
+          }
+        ],
+        "level_lose_condition": [],
+        "level_win_condition": [],
+        "release": true,
+        "forbid_exit_battle": true,
+        "monster_warning_ratio": 1.1,
+        "trial_avatar_list": []
+      }
+    ],
+    "tag_list": [
+      {
+        "id": 3033013,
+        "name": "吸能++",
+        "desc": "敌方目标每次受到攻击后都会使攻击者能量降低<color=#f29e38ff><unbreak>#1[i]</unbreak></color>点，但攻击者能量达到上限时不会降低；敌方目标被消灭时固定恢复攻击者<color=#f29e38ff><unbreak>#2[i]</unbreak></color>点能量。",
+        "param": [
+          4,
+          10
+        ]
+      },
+      {
+        "id": 3033019,
+        "name": "龟裂++",
+        "desc": "我方目标受到敌方攻击时会被施加【龟裂++】效果，每层使持有者在受到攻击后额外损失最大生命值<color=#f29e38ff><unbreak>#1[f1]%</unbreak></color>的生命值，该效果叠加层数无上限且不可驱散。持有【龟裂++】的目标获得除自身外的友方目标施加的护盾效果或治疗后，双方均解除全部【龟裂++】效果。",
+        "param": [
+          0.016
+        ]
+      }
+    ],
+    "infinite_list": {
+      "305020221": {
+        "infinite_wave_id": 305020221,
+        "monster_group_id_list": [
+          401501101
+        ],
+        "max_monster_count": 1,
+        "max_teammate_count": 1,
+        "ability": "",
+        "param_list": [],
+        "clear_previous_ability": true,
+        "elite_group": 348
+      }
+    }
+  }
+}

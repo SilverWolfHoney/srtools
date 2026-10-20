@@ -378,6 +378,9 @@ class Builder:
                         "floor": int(f.get("floor") or 0),
                         "name": self.text(f.get("name")),
                         "has_tierce": bool(f.get("has_tierce_mode")),
+                        "stage_top": int(f.get("stage_id_top") or 0),
+                        "stage_bot": int(f.get("stage_id_bot") or 0),
+                        "stage_tierce": int(f.get("stage_id_tierce") or 0),
                         "top": [[int(x) for x in w] for w in (f.get("monster_ids_top") or [])],
                         "bot": [[int(x) for x in w] for w in (f.get("monster_ids_bot") or [])],
                         "tierce": [[int(x) for x in w] for w in (f.get("monster_ids_tierce") or [])],
@@ -389,29 +392,48 @@ class Builder:
                     "floors": floors,
                 })
 
-        peak_path = site / "challenge-peak.json"
+        peak_dir = site / "peak"
         periods = []
-        if peak_path.is_file():
-            data = json.loads(peak_path.read_text(encoding="utf-8"))
-            ids = sorted(int(k) for k in data.keys())[-4:]
-            for pid in ids:
-                entry = data[str(pid)]
+        if peak_dir.is_dir():
+            files = sorted(peak_dir.glob("*.json"), key=lambda x: int(x.stem))[-4:]
+            for fp in files:
+                data = json.loads(fp.read_text(encoding="utf-8"))
+                levels = list(data.get("pre_level") or [])
+                if data.get("boss_level"):
+                    levels.append(data["boss_level"])
+                if data.get("boss_config"):
+                    levels.append(data["boss_config"])
                 floors = []
-                for p in entry.get("peaks") or []:
+                for lv in levels:
+                    ev = (lv.get("event_id_list") or [{}])[0]
+                    inv = ev.get("invasion")
                     floors.append({
-                        "floor": int(p.get("peak_id") or 0),
-                        "name": self.text(p.get("name")),
-                        "is_boss": bool(p.get("is_boss")),
-                        "level": int(p.get("monster_level") or 0),
-                        "waves": [[int(x) for x in w] for w in (p.get("monster_ids") or [])],
-                        "buffs": [int(b.get("id")) for b in (p.get("monster_tag_maze_buffs") or [])
-                                  if b.get("id")],
+                        "floor": int(lv.get("id") or 0),
+                        "name": lv.get("name") or "",
+                        "waves": [
+                            [m.get(kk) for kk in ("monster0", "monster1", "monster2",
+                                                  "monster3", "monster4") if m.get(kk)]
+                            for m in (ev.get("monster_list") or [])
+                        ],
+                        "tag_buffs": [
+                            {"id": int(t.get("id") or 0),
+                             "name": _clean_text(str(t.get("name") or "")),
+                             "desc": _clean_text(str(t.get("desc") or "")),
+                             "param": t.get("param") or []}
+                            for t in (lv.get("tag_list") or []) if t.get("id")
+                        ],
+                        "invasion": ({
+                            "level": int(inv.get("level") or 0),
+                            "desc": _clean_text(str(inv.get("desc") or "")),
+                            "buff": int(inv.get("maze_buff_id") or 0),
+                            "params": inv.get("maze_buff_param") or [],
+                            "monsters": [int(m.get("monster_id")) for m in (inv.get("monster_list") or [])
+                                         if m.get("monster_id")],
+                        } if inv else None),
+                        "stage": int(ev.get("stage_id") or 0),
                     })
-                periods.append({
-                    "period": pid,
-                    "name": self.text(entry.get("name")),
-                    "floors": floors,
-                })
+                periods.append({"period": int(fp.stem), "name": data.get("name") or "",
+                                "floors": floors})
         out["anomalyArbitration"] = {"name": "异相仲裁", "periods": periods}
         return out
 
