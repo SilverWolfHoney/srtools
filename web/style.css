@@ -396,3 +396,5 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .ep-wave b { color: var(--accent2); font-weight: 500; }
 
 .ep-desc { color: var(--muted); font-size: 12px; line-height: 1.5; flex-basis: 100%; }
+
+#ep-season { width: 180px; flex: none; }
