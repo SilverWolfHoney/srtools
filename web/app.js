@@ -999,16 +999,7 @@
         ? f.invasion
         : (side === '3' ? f.invasion_tierce : side === '2' ? f.invasion_bot : f.invasion_top));
       const useInvasion = !!curInv;
-      if (useInvasion && (curInv.monsters || []).length) {
-        // 虚构/混沌的污染怪本来就在波次里（只标记）；末日/异相仲裁的「额外污染目标」不在波次，并入第 1 波
-        const inWaves = new Set(waves.reduce((acc, w) => acc.concat(w.map((m) => m.monster_id)), []));
-        const extra = (curInv.monsters || []).filter((id) => id && !inWaves.has(id));
-        if (extra.length) {
-          const extraWave = toWave(extra);
-          if (waves.length) waves[0].push(...extraWave);
-          else waves.push(extraWave);
-        }
-      }
+      // 波次严格按配置的节点波次原样生成；污染怪只做标记，不额外并入/新增波次
       // create_battle 也按 stage_id 加载战斗配置：必须写对应节点的关卡 stage_id（stage=0 会卡加载）
       bc.stage_id = mode === 'anomalyArbitration'
         ? (f.stage || 0)
