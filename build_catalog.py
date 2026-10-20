@@ -655,6 +655,8 @@ class Builder:
                 floors.append({
                     "floor": int(lv.get("id") or 0),
                     "name": _clean_text(str(lv.get("name") or "")),
+                    "level": _int(ev.get("level")) or 80,
+                    "cycle": 30,
                     "waves": wave_list(ev.get("monster_list")),
                     "tag_buffs": [
                         {"id": int(t.get("id") or 0),
