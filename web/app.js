@@ -1410,7 +1410,31 @@
 
   function closeConnectModal() { $('connect-modal').hidden = true; }
 
-  /** 连接私服：只验证连接（不推送数据）。 */
+  /**
+   * 浏览器直连私服 /srtools（和原网站一致：请求从浏览器发出，因此部署到服务器后
+   * 仍能连到本机私服；地址填私服所在机器的地址，本机默认 http://127.0.0.1:21000）。
+   */
+  async function directPostSrtools(url, payload, timeoutMs = 8000) {
+    const endpoint = String(url || '').replace(/\/+$/, '') + '/srtools';
+    const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    const timer = ctrl ? setTimeout(() => ctrl.abort(), timeoutMs) : null;
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: ctrl ? ctrl.signal : undefined,
+      });
+      const text = await res.text();
+      let json = {};
+      try { json = text ? JSON.parse(text) : {}; } catch { json = {}; }
+      return { ok: res.ok, status: res.status, json, endpoint };
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  }
+
+  /** 连接私服：先浏览器直连，失败再退回本地 serve.py 中转（同机部署兜底）。 */
   async function connectServer() {
     const url = $('conn-url').value.trim();
     const provider = $('conn-provider').value;
@@ -1418,7 +1442,18 @@
     btn.disabled = true;
     btn.textContent = '连接中…';
     try {
-      const res = await postJson('/api/connect', { url, provider });
+      let res = null;
+      try {
+        const direct = await directPostSrtools(url, { username: '', password: '' });
+        if (direct.ok) {
+          res = { ok: true, endpoint: direct.endpoint };
+        } else if (direct.status === 401) {
+          res = { ok: false, message: '账号密码错误（凭据在私服 server_config.json 的 srtools 段）' };
+        }
+      } catch { /* 直连被拦（CSP/CORS/私服没开），走服务端中转兜底 */ }
+      if (!res) {
+        res = await postJson('/api/connect', { url, provider });
+      }
       if (res.ok) {
         S.conn = { url, provider, endpoint: res.endpoint || url };
         localStorage.setItem('srtools-conn', JSON.stringify({ url, provider }));
@@ -1435,22 +1470,38 @@
     }
   }
 
-  /** 把当前编辑的配置推送给已连接的私服。 */
+  /** 把当前编辑的配置推送给已连接的私服（浏览器直连优先，失败退回服务端中转）。 */
   async function syncServer() {
     if (!S.conn) return;
     const btn = $('conn-sync');
     btn.disabled = true;
     btn.textContent = '同步中…';
     try {
-      const res = await postJson('/api/connect', {
-        url: S.conn.url, provider: S.conn.provider, data: S.profile,
-      });
+      let res = null;
+      try {
+        const direct = await directPostSrtools(S.conn.url, {
+          username: '', password: '', data: S.profile,
+        });
+        if (direct.ok) {
+          res = { ok: true, endpoint: direct.endpoint, message: '已同步到私服' };
+        } else if (direct.status === 401) {
+          res = { ok: false, stage: 'auth', message: '账号密码错误' };
+        } else {
+          res = { ok: false, stage: 'data',
+                  message: (direct.json && direct.json.message) || `HTTP ${direct.status}` };
+        }
+      } catch { /* 直连失败，走服务端中转兜底 */ }
+      if (!res || (!res.ok && res.stage === 'data' && !res.message)) {
+        res = await postJson('/api/connect', {
+          url: S.conn.url, provider: S.conn.provider, data: S.profile,
+        });
+      }
       if (res.ok) {
         S.conn.endpoint = res.endpoint || S.conn.endpoint;
         renderConnState();
         clearDirty();
         const warns = res.warnings || [];
-        toast(res.message + (warns.length ? `\n注意：\n- ${warns.join('\n- ')}` : ''),
+        toast((res.message || '已同步到私服') + (warns.length ? `\n注意：\n- ${warns.join('\n- ')}` : ''),
               warns.length ? 'warn' : 'ok', 6000);
       } else {
         if (res.stage === 'auth' || res.stage === 'network') {
