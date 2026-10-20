@@ -398,7 +398,8 @@ class Builder:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
-            inv = ev3.get("invasion") or None
+            inv = (ev3.get("invasion") or ev1.get("invasion")
+                   or ev2.get("invasion") or None)
             lid = int(lv.get("id") or 0)
             buff_ids = []
             if twist.get(lid):
@@ -418,6 +419,35 @@ class Builder:
                 "cycle": int(lv.get("countdown") or 0) or 30,
             }
 
+        def floors_of(levels) -> list:
+            """把 pre_id 节点3 层（如 5613=其十二的节点3）合并进前置层的 tierce/invasion。"""
+            extra: dict[int, dict] = {}
+            ordered = []
+            for lv in levels:
+                pre = int(lv.get("pre_id") or 0)
+                if pre:
+                    extra[pre] = lv
+                else:
+                    ordered.append(lv)
+            out = []
+            for lv in ordered:
+                f = floor_of(lv, "maze")
+                node3 = extra.get(f["floor"])
+                if node3:
+                    ev3 = event_of(node3.get("event_id_list"))
+                    tierce = wave_list(ev3.get("monster_list"))
+                    if not tierce:
+                        tierce = [[int(x) for x in (node3.get("npc_monster_id_list") or []) if x]]
+                    if tierce:
+                        f["tierce"] = tierce
+                        f["has_tierce"] = True
+                        f["stage_tierce"] = int(ev3.get("stage_id") or 0)
+                    inv3 = invasion_of(ev3.get("invasion"))
+                    if inv3:
+                        f["invasion"] = inv3
+                out.append(f)
+            return out
+
         out = {}
 
         # 混沌（maze：list of 层）
@@ -426,12 +456,11 @@ class Builder:
         for f in sorted((site / "maze").glob("*.json"), key=lambda x: int(x.stem))[-4:]:
             data = json.loads(f.read_text(encoding="utf-8"))
             pname = ""
-            floors = []
             for lv in data:
                 if not pname:
                     pname = _clean_text(str(lv.get("group_name") or ""))
-                floors.append(floor_of(lv, "maze"))
-            moc["periods"].append({"period": int(f.stem), "name": pname, "floors": floors})
+            moc["periods"].append({"period": int(f.stem), "name": pname,
+                                   "floors": floors_of(data)})
 
         # 虚构（story）/ 末日（boss）：dict.level
         for key, label, dname in (("pureFiction", "虚构叙事", "story"),
@@ -449,7 +478,7 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": [floor_of(lv, dname) for lv in (data.get("level") or [])],
+                    "floors": floors_of(data.get("level") or []),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
@@ -457,10 +486,17 @@ class Builder:
         for f in sorted((site / "peak").glob("*.json"), key=lambda x: int(x.stem))[-4:]:
             data = json.loads(f.read_text(encoding="utf-8"))
             levels = list(data.get("pre_level") or [])
+            boss_id = 0
             if data.get("boss_level"):
                 levels.append(data["boss_level"])
+                boss_id = int(data["boss_level"].get("id") or 0)
             if data.get("boss_config"):
-                levels.append(data["boss_config"])
+                bc = dict(data["boss_config"])
+                if not bc.get("id"):
+                    bc["id"] = boss_id + 1
+                if not bc.get("name"):
+                    bc["name"] = bc.get("hard_name") or "绝境"
+                levels.append(bc)
             floors = []
             for lv in levels:
                 ev = event_of(lv.get("event_id_list"))
