@@ -374,7 +374,13 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .ep-checks label {
   display: inline-flex; align-items: center; gap: 6px; color: var(--text); min-width: 0;
 }
-.ep-monsters { display: flex; flex-wrap: wrap; gap: 8px; min-height: 30px; }
+.ep-monsters { display: flex; flex-direction: column; gap: 8px; min-height: 30px; }
+.ep-waves { display: flex; flex-direction: column; gap: 4px; }
+.ep-wave-line { font-size: 13px; color: var(--text); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ep-wave-line b { color: var(--accent2); font-weight: 500; }
+.ep-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ep-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.ep-tierce { color: var(--muted); font-size: 12px; }
 .ep-chip {
   padding: 4px 10px; border-radius: 999px; font-size: 12px;
   background: rgba(110, 168, 254, 0.16); border: 1px solid rgba(110, 168, 254, 0.4);

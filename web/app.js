@@ -873,18 +873,21 @@
     else if (side === '3') waves = f.tierce || [];
     else if (side === '2') waves = f.bot || [];
     else waves = f.top || [];
-    let html = (waves || []).map((wave, wi) =>
+    const wavesHtml = (waves || []).map((wave, wi) =>
       `<div class="ep-wave-line"><b>第 ${wi + 1} 波</b>` +
       wave.filter((x) => x > 0)
         .map((id) => `<span class="ep-chip">${escapeHtml(monsterName(id))}</span>`).join('') +
       '</div>').join('');
+    const groups = [];
+    const group = (title, body) =>
+      `<div class="ep-group"><span class="ep-tierce">${title}</span><span class="ep-chips">${body}</span></div>`;
     if ((f.tag_buffs || []).length) {
-      html += '<div class="ep-tierce">敌人词条：</div>' +
-        f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
+      groups.push(group('敌人词条：',
+        f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
     }
     if (mode === 'moC' && (f.buff_ids || []).length) {
-      html += '<div class="ep-tierce">关卡湍流：</div>' +
-        f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
+      groups.push(group('关卡湍流：',
+        f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('')));
     }
     let seasonList = f.season_buffs || [];
     if ((f.season_groups || []).length) {
@@ -892,26 +895,27 @@
       seasonList = f.season_groups[sideIdx] || seasonList;
     }
     if (seasonList.length) {
-      html += '<div class="ep-tierce">赛季效果（三选一）：</div>' +
+      groups.push(group('赛季效果（三选一）：',
         seasonList.map((b, i) =>
-          `<label class="ep-option"><input type="radio" name="ep-season" value="${b.id || ''}" ${i === 0 ? 'checked' : ''}> <span title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span></label>`).join('');
+          `<label class="ep-option"><input type="radio" name="ep-season" value="${b.id || ''}" ${i === 0 ? 'checked' : ''}> <span title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span></label>`).join('')));
     }
     if ((f.stage_buffs || []).length) {
-      html += '<div class="ep-tierce">Stage Buff：</div>' +
+      groups.push(group('Stage Buff：',
         f.stage_buffs.map((b) =>
-          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('')));
     }
     if ((f.options || []).length) {
-      html += '<div class="ep-tierce">可选 Buff：</div>' +
+      groups.push(group('可选 Buff：',
         f.options.map((o) =>
-          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(o.desc || '')}">${escapeHtml(o.name)}</span>`).join('');
+          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(o.desc || '')}">${escapeHtml(o.name)}</span>`).join('')));
     }
     if (f.invasion) {
-      html += `<div class="ep-tierce">贪饕污染 Lv.${f.invasion.level}</div>` +
+      groups.push(group(`贪饕污染 Lv.${f.invasion.level}`,
         (f.invasion.monsters || []).map((id) =>
-          `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('');
+          `<span class="ep-chip ep-chip-tierce">${escapeHtml(monsterName(id))}</span>`).join('')));
     }
-    box.innerHTML = html || '<div class="side-hint">这一层没有怪物数据。</div>';
+    const body = `<div class="ep-waves">${wavesHtml}</div>` + groups.join('');
+    box.innerHTML = body || '<div class="side-hint">这一层没有怪物数据。</div>';
   }
 
   /** 显示当前 battle_config（波次 / 祝福 / 回合）。 */
