@@ -1,111 +1,66 @@
 # SRTools 4.6.53（本地版）
 
-[srtools.neonteam.dev](https://srtools.neonteam.dev/) 的**离线替代品**：在浏览器里编辑
-《崩坏：星穹铁道》私服的 `freesr-data.json`（角色 / 光锥 / 遗器 / 战斗配置），
-一键写回本机私服。
+[srtools.neonteam.dev](https://srtools.neonteam.dev/) 的离线替代品：在浏览器里编辑《崩坏：星穹铁道》私服的
+`freesr-data.json`（角色 / 光锥 / 遗器 / 战斗配置），一键写回本机 SilverWolfHoney 私服。
 
-与在线站的区别：
-
-* **数据是 4.6.53 的**：角色、光锥、遗器、词条、怪物、祝福全部从本机 4.6.53
-  客户端的 `BakedConfig` Excel 表 + `SilverWolfHoney/resources` 生成，
-  新角色 / 新光锥 / 新遗器自动出现在下拉框；
-* **完全本地**：只有一个网页 + 标准库 HTTP 服务，不联网、不上传任何数据；
-* **直接对接本机私服**：写出的 `freesr-data.json` 与 srtools 同构，
-  `SilverWolfHoney/gameserver/freesr.py` 能直接解析；保存后私服的配置监视线程
-  会热重载并推送给在线玩家。
+- 数据是 **4.6.53** 的，从本机客户端的 `BakedConfig` Excel + `SilverWolfHoney/resources` 构建
+- 完全本地（`127.0.0.1:21100`），不联网、不上传
+- 输出的 `battle_config` 与原网站导出格式一致，私服 `gameserver/freesr.py` 直接解析并热重载
 
 ## 快速开始
 
 ```bat
-start.bat            :: 或者手动: python serve.py
+start.bat             :: 或 python serve.py
 ```
 
-然后浏览器打开 **http://127.0.0.1:21100**。
-
-默认读写的存档是 `E:\HSRBetaPS\SilverWolfHoney\freesr-data.json`。
-改路径：
-
-```bat
-python serve.py --profile D:\somewhere\freesr-data.json
-python serve.py --port 21101
-```
+浏览器打开 **http://127.0.0.1:21100**。默认存档 `E:\HSRBetaPS\SilverWolfHoney\freesr-data.json`，
+可用 `python serve.py --profile <路径> --port 21101` 改。
 
 ## 功能
 
-| 页 | 能做什么 |
+| 页 | 内容 |
 |---|---|
-| **角色** | 角色列表带**头像缩略图**（来自 srtools 网站 CDN，100 个角色），支持按**命途 / 元素**下拉筛选；等级 / 晋阶 / 星魂 / 能量；**特殊星魂（EX）**（4.6.53 的景元 / 丹恒·饮月 / 黄泉各一个，独立于普通 6 星魂，勾选后写入 `data.ex_rank_id_list`）；**游戏风格行迹树**（按命途底图 + 图标 + 点击节点编辑等级，可一键满级；**10 个加强角色**——瓦尔特/卡芙卡/银狼/希儿/刃/镜流/藿藿/花火/黑天鹅/流萤——有「加强形态」开关，切换普通/加强两套各 18 个行迹点）；光锥（按命途分组选择、等级/叠影/晋阶）；遗器（4 部位、主词条、4 条副词条 + 档位/强化次数、一键自动补齐 4 件） |
-| **战斗配置** | 左侧 5 个标签：**混沌回忆 / 虚构叙事 / 末日幻影 / 异相仲裁 / 自定义怪**。前 4 个玩法取**最近 4 期**，按「期 · 层」选关（每期带名称）并预览怪物波次；**第 12 层（混沌）/ 第 4 层（虚构、末日）的星启模式**会额外显示「星启模式（额外一路）」的一组 Boss；**异相仲裁**显示关卡 buff 与**贪饕污染**（额外污染怪 + 贪饕 buff）。勾选 Use cycle count / Use turbulence buff 后点「应用为战斗配置」，把怪物波次 + 祝福 + 关卡 ID（stage_id）写入 `battle_config`；当前配置可一键清空。自定义怪标签可按 ID 输入任意怪物 |
-| **工具** | 批量满级 / 补光锥 / 补遗器；存档信息 |
-| **上传 / 下载 / 同步** | 顶栏三个按钮：**上传 freesr-data.json**（选择本地存档载入工具）、**下载 freesr-data.json**（当前编辑结果导出，弹出系统保存位置对话框）、**同步到私服**（弹出 Connect 弹窗：Provider + Server URL + Connect，验证后把当前配置推送到私服） |
+| **角色** | 头像列表 + 命途/元素筛选；等级/晋阶/星魂/EX 星魂；游戏风格行迹树（10 个加强角色双形态）；光锥；遗器（主/副词条） |
+| **战斗配置** | 混沌回忆 / 虚构叙事 / 末日幻影 / 异相仲裁 / 自定义怪，取最近 4 期，按期·层·节点选关并预览波次；切期/层/节点时下方「当前战斗配置」实时跟随；赛季效果用下拉选框（带描述）；点「应用为战斗配置」把 stage_id / 波次 / 祝福 / 回合数写进 `battle_config` |
+| **工具** | 批量满级、补光锥、补遗器、存档信息 |
+| **顶栏** | 上传/下载 `freesr-data.json`；「同步到私服」推送到 `http://127.0.0.1:21000` |
 
-## 数据来源与重建
+## 数据源
 
-`data/catalog.json` 是构建产物（约 2.5 MB），由 `build_catalog.py` 生成：
-
-| catalog 段 | 来源 |
+| 内容 | 来源 |
 |---|---|
-| 角色 / 行迹 / 遗器 | `SilverWolfHoney/resources/AvatarConfig.json`、`AvatarSkillTreeConfig.json`、`RelicConfig.json`（4.6.53） |
-| 光锥 / 遗器套装 / 主副词条 / 晋阶 / 星魂 / 怪物 | 客户端 `F:\StarRail_4.6.53` 的 `BakedConfig/ExcelOutputGameCore/*.bytes` |
-| 祝福 | `BakedConfig/ExcelOutput/RogueBuff.bytes` |
-| **特殊星魂（EX）** | 客户端 `AvatarSkillConfig.RelatedExRankIDList`（只有景元 1204 / 丹恒·饮月 1213 / 黄泉 1308 的被动技能有值） |
-| 中文名 | `SilverWolfHoney/dump_4.6.53/TextMap.json` |
-| 角色头像 | `https://cdn.neonteam.dev/neonteam/assets/spriteoutput/avatarshopicon/avatar/<id>.webp`（下载到 `web/avatars/`，缺失的角色显示文字占位） |
-| 行迹树 | 布局/树结构来自 srtools 站点（`data/trace_layout.json`、`data/trace_trees.json`，随仓库分发）；命途底图 `https://srtools.neonteam.dev/traces/<Path>.svg`、行迹图标 `cdn.neonteam.dev/.../skillicons|ui/avatar/icon/*.webp`（下载到 `web/traces/`、`web/trace-icons/`） |
-| 战斗配置挑战数据（4 玩法） | `https://static.nanoka.cc/hsr/4.6.53/zh/{maze,story,boss,peak}/<期>.json`（下载到 `data/site/nanoka/`，随仓库分发；含星启第三节点与入侵 invasion）。nanoka.cc 每次版本更新都会跟进，客户端 Excel 里没有星启/入侵字段，因此挑战数据以它为准 |
-| 战斗配置关卡参数（等级/回合/关卡基础机制 buff） | `https://cdn.neonteam.dev/neonteam/<版本>/{moc,pure-fictions,ap-shadows,challenge-peak}.json`（下载到 `data/site/neonteam/`，随仓库分发）。nanoka 没有这三个字段，而原网站导出给私服的配置里带它们（虚构缺 `turbulence_maze_buff_id` 会卡加载），所以从原网站同源 CDN 取 |
+| 角色/行迹/遗器/光锥/词条/怪物/祝福 | 客户端 `BakedConfig/ExcelOutput*/*.bytes` + `SilverWolfHoney/resources` + `dump_4.6.53/TextMap.json`（中名） |
+| EX 星魂 | 客户端 `AvatarSkillConfig.RelatedExRankIDList` |
+| 挑战数据（波次/stage/星启/入侵/赛季效果） | `static.nanoka.cc/hsr/4.6.53/zh/{maze,story,boss,peak}/<期>.json` → `data/site/nanoka/` |
+| 关卡等级/回合数/关卡基础机制 buff | `cdn.neonteam.dev/neonteam/<版本>/{moc,pure-fictions,ap-shadows,challenge-peak}.json` → `data/site/neonteam/`（nanoka 没有这几项，缺了虚构会卡加载） |
 
-> 头像与行迹底图/图标（游戏版权）不随仓库分发：克隆后运行
-> `python fetch_avatars.py` 和 `python fetch_trace_assets.py` 重建即可；
-> 缺失资源会自动显示占位，不影响编辑功能。挑战数据同理，可用
-> `python fetch_battle_presets.py` 重新下载。
-
-客户端更新或换目录后重新生成：
+重建：
 
 ```bat
-python build_catalog.py                 :: 默认路径
-python build_catalog.py --check         :: 只看统计
-python build_catalog.py --client D:\StarRail_4.6.54 --swh E:\HSRBetaPS\SilverWolfHoney
+python fetch_battle_presets.py     :: 下载 nanoka + neonteam 数据
+python build_catalog.py            :: 生成 data/catalog.json
+python fetch_avatars.py            :: 角色头像（游戏版权资源不入库）
+python fetch_trace_assets.py       :: 行迹底图/图标
 ```
 
-> 依赖 `SilverWolfHoney/tools/hsr_design.py` 与 `dump_4.6.53/data.json`（IL2CPP 类型
-> schema）。Excel 表在客户端里走 `ExcelOutputGameCore/` 路径，不是 `ExcelOutput/`。
-
-## 与私服配合
-
-1. **下载后手动放回**：点「下载 freesr-data.json」把存档导出到任意位置，再放回私服的
-   `freesr-data.json`；私服 `gameserver/main.py` 里的配置监视线程发现文件变化后自动
-   重载并向在线玩家推送，也可以在游戏里敲 `/sync`。
-2. **同步到私服**：点顶栏「同步到私服」弹出「连接私服」弹窗，选服务端类型
-   （SilverWolfHoney / 自定义）并填服务器地址（默认 `http://127.0.0.1:21000`），
-   点「连接」通过后弹窗会变成「● 已连接 + 断开连接 + 同步」；之后编辑完成点
-   「同步」才把当前配置推给私服。账号密码取 `SilverWolfHoney/server_config.json`
-   的 `srtools` 段：
-
-   ```json
-   { "srtools": { "username": "your-user", "password": "your-pass" } }
-   ```
-
-   空凭据时私服端也留空即可（本机默认如此）。
+客户端换版本或目录：`python build_catalog.py --client D:\StarRail_x.yy --swh E:\HSRBetaPS\SilverWolfHoney`
+（依赖 `SilverWolfHoney/tools/hsr_design.py` 与对应版本的 `dump_*/data.json`）。
 
 ## 目录
 
 ```
 srtools/
-├─ serve.py            # 本地 Web 服务（标准库，默认 127.0.0.1:21100）
-├─ build_catalog.py    # 从 4.6.53 客户端/资源表构建 data/catalog.json
-├─ start.bat           # 双击启动
-├─ data/catalog.json   # 构建产物（角色/光锥/遗器/词条/怪物/祝福 + 中文名）
-└─ web/
-   ├─ index.html
-   ├─ app.js
-   └─ style.css
+├─ serve.py              # 本地 Web 服务（标准库）
+├─ build_catalog.py      # 构建 data/catalog.json
+├─ fetch_battle_presets.py / fetch_avatars.py / fetch_trace_assets.py
+├─ start.bat
+├─ data/catalog.json     # 构建产物
+├─ data/site/{nanoka,neonteam}/   # 挑战数据
+└─ web/{index.html,app.js,style.css}
 ```
 
 ## 注意
 
-* 服务只绑定 `127.0.0.1`，没有登录鉴权，**不要**改成对外监听；
-* `internal_uid` 由工具按当前存档递增分配，保证光锥/遗器在客户端背包里的
-  unique_id 不撞车；导入旧存档时会沿用原 uid；
-* 从 4.6.53 数据目录里找不到的旧 ID 会原样保留（保存时给出警告，私服侧同样会
-  过滤），不会静默丢弃你的数据。
+- 只绑定 `127.0.0.1`，无鉴权，不要对外监听
+- 找不到的旧 ID 会原样保留并给警告，不会静默丢弃
+- 同步凭据取 `SilverWolfHoney/server_config.json` 的 `srtools` 段（本机默认为空）
