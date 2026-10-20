@@ -385,6 +385,11 @@ class Builder:
         except (OSError, KeyError, ValueError):
             maze_buffs = {}
 
+        buff_id_by_name: dict[str, int] = {}
+        for _bid, _info in maze_buffs.items():
+            if _info.get("name"):
+                buff_id_by_name.setdefault(_info["name"], _bid)
+
         def stage_buffs_of(ev) -> list:
             """从 stage_config_data 里取 _BindingMazeBuff（关卡效果）。"""
             out = []
@@ -517,7 +522,9 @@ class Builder:
                     out = []
                     for b in (items or []):
                         if b.get("name"):
-                            out.append({"name": _clean_text(str(b["name"])),
+                            nm = _clean_text(str(b["name"]))
+                            out.append({"id": buff_id_by_name.get(nm, 0),
+                                        "name": nm,
                                         "desc": _clean_text(str(b.get("desc") or "")),
                                         "param": b.get("param") or []})
                     return out
@@ -573,7 +580,8 @@ class Builder:
                         for t in (lv.get("tag_list") or []) if t.get("id")
                     ],
                     "season_buffs": [
-                        {"name": _clean_text(str(b.get("name") or "")),
+                        {"id": int(b.get("id") or 0),
+                         "name": _clean_text(str(b.get("name") or "")),
                          "desc": _clean_text(str(b.get("desc") or "")),
                          "param": b.get("param") or []}
                         for b in (lv.get("buff_list") or []) if b.get("name")

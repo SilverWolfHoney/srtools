@@ -887,9 +887,9 @@
         f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
     }
     if ((f.season_buffs || []).length) {
-      html += '<div class="ep-tierce">Buff：</div>' +
-        f.season_buffs.map((b) =>
-          `<span class="ep-chip ep-chip-tierce" title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span>`).join('');
+      html += '<div class="ep-tierce">赛季效果（三选一）：</div>' +
+        f.season_buffs.map((b, i) =>
+          `<label class="ep-option"><input type="radio" name="ep-season" value="${b.id || ''}" ${i === 0 ? 'checked' : ''}> <span title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span></label>`).join('');
     }
     if ((f.stage_buffs || []).length) {
       html += '<div class="ep-tierce">Stage Buff：</div>' +
@@ -968,15 +968,15 @@
         ? (f.stage || 0)
         : (side === '3' ? (f.stage_tierce || 0)
           : side === '2' ? (f.stage_bot || 0) : (f.stage_top || 0));
-      if (turbulence) {
+      {
         const bl = [];
         for (const b of f.tag_buffs || []) bl.push({ id: b.id, level: 1 });
         for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
         if (f.invasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
         if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
+        const seasonSel = document.querySelector('input[name="ep-season"]:checked');
+        if (seasonSel && seasonSel.value) bl.push({ id: Number(seasonSel.value), level: 1 });
         bc.blessings = bl;
-      } else {
-        bc.blessings = [];
       }
       if (cycle && f.cycle) bc.cycle_count = f.cycle;
     }
