@@ -50,7 +50,8 @@ class App:
 
     def __init__(self, swh: Path, profile: Path | None):
         self.swh = swh
-        self.profile = profile or (swh / "freesr-data.json")
+        # None = 不绑定存档文件：启动时直接用空配置（保存需 --profile 指定路径或下载导出）
+        self.profile = profile
         self.catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
         self._known = {
             "avatars": {int(a["id"]) for a in self.catalog["avatars"]},
@@ -60,7 +61,7 @@ class App:
 
     # ---------------------------------------------------------------- 读
     def profile_raw(self) -> dict:
-        if not self.profile.is_file():
+        if not self.profile or not self.profile.is_file():
             return {"avatars": {}, "lightcones": [], "relics": [], "battle_config": {}}
         return json.loads(self.profile.read_text(encoding="utf-8"))
 
@@ -83,13 +84,14 @@ class App:
                 "relics": len(self.catalog["relics"]),
             },
             "profile": {
-                "path": str(self.profile),
-                "exists": self.profile.is_file(),
+                "path": str(self.profile) if self.profile else "",
+                "exists": bool(self.profile and self.profile.is_file()),
                 "avatars": len(raw.get("avatars") or {}),
                 "lightcones": len(raw.get("lightcones") or []),
                 "relics": len(raw.get("relics") or []),
                 "mtime": (datetime.fromtimestamp(self.profile.stat().st_mtime)
-                          .isoformat(timespec="seconds") if self.profile.is_file() else None),
+                          .isoformat(timespec="seconds")
+                          if (self.profile and self.profile.is_file()) else None),
             },
             "sync": {
                 "endpoint": DISPATCH + "/srtools",
@@ -142,6 +144,9 @@ class App:
 
     def save(self, data: dict) -> dict:
         warnings = self.validate(data)
+        if self.profile is None:
+            return {"ok": False,
+                    "message": "未指定存档路径 —— 启动时加 --profile <freesr-data.json>，或用「下载 freesr-data.json」导出"}
         self.profile.parent.mkdir(parents=True, exist_ok=True)
         # 不生成 .bak 备份（用户不需要；写盘用 tmp + replace 保证原子性）
         tmp = self.profile.with_name(self.profile.name + ".tmp")
@@ -301,7 +306,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(200, APP.catalog)
             if path == "/api/profile":
                 return self._json(200, {"ok": True, "data": APP.profile_raw(),
-                                        "path": str(APP.profile)})
+                                        "path": str(APP.profile) if APP.profile else ""})
             return self._static(path)
         except Exception as exc:  # noqa: BLE001 - 统一 500，前端显示原因
             return self._json(500, {"ok": False, "message": f"{type(exc).__name__}: {exc}"})
@@ -342,7 +347,7 @@ def main() -> int:
     ap.add_argument("--swh", type=Path, default=DEFAULT_SWH,
                     help="SilverWolfHoney 根目录（读 server_config 凭据）")
     ap.add_argument("--profile", type=Path, default=None,
-                    help="freesr-data.json 路径（默认 <swh>/freesr-data.json）")
+                    help="freesr-data.json 路径（缺省不绑定，启动为空配置）")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=21100)
     args = ap.parse_args()
@@ -356,7 +361,7 @@ def main() -> int:
     print(f"SRTools 4.6.53: http://{args.host}:{args.port}/")
     print(f"  数据目录: {CATALOG}（{APP.state()['catalog']['version']}，"
           f"{len(APP.catalog['avatars'])} 角色 / {len(APP.catalog['lightcones'])} 光锥）")
-    print(f"  存档文件: {APP.profile}")
+    print(f"  存档文件: {APP.profile or chr(65288) + '未绑定，空配置' + chr(65289)}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
