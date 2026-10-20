@@ -573,6 +573,32 @@ class Builder:
             moc["periods"].append({"period": int(f.stem), "name": pname,
                                    "floors": floors_of(data, use_twist=True)})
 
+        # neonteam 的虚构数据（比 nanoka 多 level / cycle_count / 关卡基础机制 buff）
+        nf_all: dict = {}
+        nf_path = site.parent / "neonteam" / "pure-fictions.json"
+        if nf_path.is_file():
+            try:
+                nf_all = json.loads(nf_path.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                nf_all = {}
+
+        def _attach_pf_meta(floors: list, nf_period) -> list:
+            """用 neonteam 的虚构数据补 level / 回合数 / 关卡基础机制 buff（每期不同）。"""
+            if not nf_period:
+                return floors
+            meta = {int(x.get("floor") or 0): x for x in (nf_period.get("floors") or [])}
+            for idx, fl in enumerate(floors):
+                m = meta.get(idx + 1)
+                if not m:
+                    continue
+                if m.get("level"):
+                    fl["level"] = int(m["level"])
+                if m.get("cycle_count"):
+                    fl["cycle"] = int(m["cycle_count"])
+                if m.get("turbulence_maze_buff_id"):
+                    fl["base_buff"] = int(m["turbulence_maze_buff_id"])
+            return floors
+
         # 虚构（story）/ 末日（boss）：dict.level
         for key, label, dname in (("pureFiction", "虚构叙事", "story"),
                                   ("apocalypticShadow", "末日幻影", "boss")):
@@ -614,14 +640,11 @@ class Builder:
                         "desc": _clean_text(str(buff.get("desc") or "")),
                         "param": buff.get("param") or [],
                     },
-                    "floors": [
-                        # 虚构关卡的基础机制 buff（FantasticStory_BaseAbility_2200）：
-                        # 原网站导出配置里带它（3031220）战斗才正常，不带会卡
-                        dict(fl, base_buff=3031220) if dname == "story" else fl
-                        for fl in floors_of(data.get("level") or [], season, stage_extra,
-                                            season_groups=season_groups,
-                                            use_infinite=False)   # 波次用关卡 event 的 monster_list 原样
-                    ],
+                    "floors": _attach_pf_meta(
+                        floors_of(data.get("level") or [], season, stage_extra,
+                                  season_groups=season_groups,
+                                  use_infinite=False),   # 波次用关卡 event 的 monster_list 原样
+                        nf_all.get(str(int(f.stem))) if dname == "story" else None),
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）

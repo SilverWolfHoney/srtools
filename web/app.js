@@ -1025,8 +1025,8 @@
                          anomalyArbitration: 'DEFAULT' })[mode] || 'DEFAULT';
       bc.custom_stats = [];
       bc.path_resonance_id = 0;
-      // 虚构是 4 轮（原网站 PF 固定 4），其余按关卡回合数
-      bc.cycle_count = mode === 'pureFiction' ? 4 : ((cycle && f.cycle) ? f.cycle : 30);
+      // 回合数：虚构是 4 轮（catalog 里已按 neonteam 数据填好），其余按关卡回合数
+      bc.cycle_count = Number(f.cycle) || (mode === 'pureFiction' ? 4 : 30);
       {
         const ids = [];
         const add = (id) => {
