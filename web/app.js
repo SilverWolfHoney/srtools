@@ -1025,8 +1025,13 @@
           const v = Number(id);
           if (v && !ids.includes(v)) ids.push(v);   // 去重，顺序即预览显示顺序
         };
+        // 虚构的「关卡 Buff」是显示用的附加 buff（获得笑点/战熄潮平/战意汹涌），
+        // 真正的机制由关卡基础 ability buff 驱动（原网站下发的是它而不是这三个），
+        // 直接下发这三个会导致战斗卡住，所以虚构跳过它们
+        if (mode !== 'pureFiction') {
+          for (const b of f.stage_buffs || []) add(b.id);  // 关卡 Buff
+        }
         for (const b of f.tag_buffs || []) add(b.id);      // 敌人词条
-        for (const b of f.stage_buffs || []) add(b.id);    // 关卡 Buff（预览里「关卡 Buff」那一组）
         for (const id of f.buff_ids || []) add(id);        // 混沌关卡 Buff（记忆紊流等）
         if (useInvasion && curInv.buff) add(curInv.buff);  // 贪饕污染
         if (f.turbulence) add(f.turbulence);

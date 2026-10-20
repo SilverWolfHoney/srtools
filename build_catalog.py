@@ -615,7 +615,7 @@ class Builder:
                     },
                     "floors": floors_of(data.get("level") or [], season, stage_extra,
                                         season_groups=season_groups,
-                                        use_infinite=(dname == "story")),
+                                        use_infinite=False),   # 波次用关卡 event 的 monster_list 原样（infinite_list 是刷怪池，会带出花萼加载不了的怪）
                 })
 
         # 异相仲裁（peak：pre_level + boss_level + boss_config）
