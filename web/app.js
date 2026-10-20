@@ -795,7 +795,7 @@
       t.classList.toggle('active', t.dataset.mode === mode);
     }
     const custom = mode === 'custom';
-    $('ep-side-row').hidden = custom;
+    $('ep-side-row').hidden = custom || mode === 'anomalyArbitration';
     $('ep-custom-row').hidden = !custom;
     $('ep-period').disabled = custom;
     $('ep-floor').disabled = custom;
