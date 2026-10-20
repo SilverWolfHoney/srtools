@@ -25,27 +25,6 @@ start.bat             :: 或 python serve.py
 | **工具** | 批量满级、补光锥、补遗器、存档信息 |
 | **顶栏** | 上传/下载 `freesr-data.json`；「同步到私服」推送到 `http://127.0.0.1:21000` |
 
-## 数据源
-
-| 内容 | 来源 |
-|---|---|
-| 角色/行迹/遗器/光锥/词条/怪物/祝福 | 客户端 `BakedConfig/ExcelOutput*/*.bytes` + `SilverWolfHoney/resources` + `dump_4.6.53/TextMap.json`（中名） |
-| EX 星魂 | 客户端 `AvatarSkillConfig.RelatedExRankIDList` |
-| 挑战数据（波次/stage/星启/入侵/赛季效果） | `static.nanoka.cc/hsr/4.6.53/zh/{maze,story,boss,peak}/<期>.json` → `data/site/nanoka/` |
-| 关卡等级/回合数/关卡基础机制 buff | `cdn.neonteam.dev/neonteam/<版本>/{moc,pure-fictions,ap-shadows,challenge-peak}.json` → `data/site/neonteam/`（nanoka 没有这几项，缺了虚构会卡加载） |
-
-重建：
-
-```bat
-python fetch_battle_presets.py     :: 下载 nanoka + neonteam 数据
-python build_catalog.py            :: 生成 data/catalog.json
-python fetch_avatars.py            :: 角色头像（游戏版权资源不入库）
-python fetch_trace_assets.py       :: 行迹底图/图标
-```
-
-客户端换版本或目录：`python build_catalog.py --client D:\StarRail_x.yy --swh E:\HSRBetaPS\SilverWolfHoney`
-（依赖 `SilverWolfHoney/tools/hsr_design.py` 与对应版本的 `dump_*/data.json`）。
-
 ## 目录
 
 ```
