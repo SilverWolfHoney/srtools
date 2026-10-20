@@ -690,7 +690,7 @@ class Builder:
                     "floor": int(lv.get("id") or 0),
                     "name": _clean_text(str(lv.get("name") or "")),
                     "level": _int(ev.get("level")) or 80,
-                    "cycle": 30,
+                    "cycle": 6,   # 异相仲裁固定 6 回合（原网站导出配置 cycle_count=6）
                     "waves": wave_list(ev.get("monster_list")),
                     "tag_buffs": [
                         {"id": int(t.get("id") or 0),
