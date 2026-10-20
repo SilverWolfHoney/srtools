@@ -895,9 +895,11 @@
       seasonList = f.season_groups[sideIdx] || seasonList;
     }
     if (seasonList.length) {
+      const opts = seasonList.map((b, i) =>
+        `<option value="${b.id || ''}" ${i === 0 ? 'selected' : ''}>${escapeHtml(b.name)}</option>`).join('');
       groups.push(group('赛季效果（三选一）：',
-        seasonList.map((b, i) =>
-          `<label class="ep-option"><input type="radio" name="ep-season" value="${b.id || ''}" ${i === 0 ? 'checked' : ''}> <span title="${escapeHtml(b.desc || '')}">${escapeHtml(b.name)}</span></label>`).join('')));
+        `<select id="ep-season">${opts}</select>` +
+        `<span class="ep-desc" id="ep-season-desc">${escapeHtml(seasonList[0].desc || '')}</span>`));
     }
     if ((f.stage_buffs || []).length) {
       groups.push(group('Stage Buff：',
@@ -916,6 +918,17 @@
     }
     const body = `<div class="ep-waves">${wavesHtml}</div>` + groups.join('');
     box.innerHTML = body || '<div class="side-hint">这一层没有怪物数据。</div>';
+    const seasonSel = $('ep-season');
+    if (seasonSel) {
+      const descOf = (id) => {
+        const b = (seasonList.find((x) => String(x.id) === String(id)) || seasonList[0] || {});
+        return b.desc || '';
+      };
+      seasonSel.addEventListener('change', () => {
+        const el = $('ep-season-desc');
+        if (el) el.textContent = descOf(seasonSel.value);
+      });
+    }
   }
 
   /** 显示当前 battle_config（波次 / 祝福 / 回合）。 */
@@ -987,7 +1000,7 @@
         for (const id of f.buff_ids || []) bl.push({ id, level: 1 });
         if (f.invasion && f.invasion.buff) bl.push({ id: f.invasion.buff, level: 1 });
         if (f.turbulence) bl.push({ id: f.turbulence, level: 1 });
-        const seasonSel = document.querySelector('input[name="ep-season"]:checked');
+        const seasonSel = $('ep-season');
         if (seasonSel && seasonSel.value) bl.push({ id: Number(seasonSel.value), level: 1 });
         bc.blessings = bl;
       }

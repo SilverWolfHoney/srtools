@@ -127,9 +127,10 @@ def _fixed(value) -> float:
 
 
 def _clean_text(text: str) -> str:
-    """去掉客户端富文本标签（<unbreak>、<color=...> 等）。"""
+    """去掉客户端富文本标签（<unbreak>、<color=...> 等），并把 \\n 转成真换行。"""
     import re as _re
-    return _re.sub(r"<[^>]+>", "", text or "")
+    out = _re.sub(r"<[^>]+>", "", text or "")
+    return out.replace("\\n", "\n")
 
 
 def _int(value, default=0) -> int:
@@ -164,12 +165,12 @@ class Builder:
 
     # ---------------------------------------------------------------- 工具
     def text(self, value) -> str:
-        """TextID -> 本地化文本。"""
+        """TextID -> 本地化文本（去富文本标签）。"""
         if isinstance(value, dict):
             for key in ("Hash64", "Hash"):
                 h = value.get(key)
                 if h is not None and int(h) in self.text_map:
-                    return self.text_map[int(h)]
+                    return _clean_text(self.text_map[int(h)])
             return ""
         if isinstance(value, int) and value in self.text_map:
             return _clean_text(self.text_map[value])
@@ -381,6 +382,8 @@ class Builder:
                     maze_buffs[bid] = {
                         "name": self.text(r.get("BuffName")),
                         "desc": self.text(r.get("BuffDesc")) or self.text(r.get("BuffDescBattle")),
+                        "param": [_fixed(x.get("Value")) for x in (r.get("ParamList") or [])
+                                  if isinstance(x, dict)],
                     }
         except (OSError, KeyError, ValueError):
             maze_buffs = {}
@@ -389,6 +392,18 @@ class Builder:
         for _bid, _info in maze_buffs.items():
             if _info.get("name"):
                 buff_id_by_name.setdefault(_info["name"], _bid)
+
+        def fmt_desc(text, params) -> str:
+            """把 #1[i]% / #1[i] 占位替换成实际数值。"""
+            out = str(text or "")
+            for i, v in enumerate(params or [], 1):
+                try:
+                    num = _fixed(v)
+                except (TypeError, ValueError):
+                    num = 0.0
+                out = out.replace(f"#{i}[i]%", f"{num * 100:g}%")
+                out = out.replace(f"#{i}[i]", f"{num:g}")
+            return out
 
         def stage_buffs_of(ev) -> list:
             """从 stage_config_data 里取 _BindingMazeBuff（关卡效果）。"""
@@ -403,7 +418,8 @@ class Builder:
                 bid = _int(vals[i + 1])
                 if bid and bid in maze_buffs:
                     item_out = {"id": bid, "name": maze_buffs[bid]["name"],
-                                "desc": maze_buffs[bid]["desc"]}
+                                "desc": fmt_desc(maze_buffs[bid]["desc"],
+                                                 maze_buffs[bid].get("param"))}
                     if item_out not in out:
                         out.append(item_out)
             return out
@@ -528,7 +544,8 @@ class Builder:
                             nm = _clean_text(str(b["name"]))
                             out.append({"id": buff_id_by_name.get(nm, 0),
                                         "name": nm,
-                                        "desc": _clean_text(str(b.get("desc") or "")),
+                                        "desc": fmt_desc(_clean_text(str(b.get("desc") or "")),
+                                                         b.get("param")),
                                         "param": b.get("param") or []})
                     return out
 
@@ -567,7 +584,7 @@ class Builder:
                 boss_buffs = [
                     {"id": int(b.get("id") or 0),
                      "name": _clean_text(str(b.get("name") or "")),
-                     "desc": _clean_text(str(b.get("desc") or "")),
+                     "desc": fmt_desc(_clean_text(str(b.get("desc") or "")), b.get("param")),
                      "param": b.get("param") or []}
                     for b in (data["boss_config"].get("buff_list") or []) if b.get("name")
                 ]
@@ -591,7 +608,7 @@ class Builder:
                     "tag_buffs": [
                         {"id": int(t.get("id") or 0),
                          "name": _clean_text(str(t.get("name") or "")),
-                         "desc": _clean_text(str(t.get("desc") or "")),
+                         "desc": fmt_desc(_clean_text(str(t.get("desc") or "")), t.get("param")),
                          "param": t.get("param") or []}
                         for t in (lv.get("tag_list") or []) if t.get("id")
                     ],

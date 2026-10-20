@@ -394,3 +394,5 @@ input:focus, select:focus { outline: none; border-color: var(--accent); }
 .ep-current-title { font-weight: 600; margin-bottom: 2px; }
 .ep-wave { font-size: 13px; color: var(--text); display: flex; gap: 8px; flex-wrap: wrap; }
 .ep-wave b { color: var(--accent2); font-weight: 500; }
+
+.ep-desc { color: var(--muted); font-size: 12px; line-height: 1.5; flex-basis: 100%; }
