@@ -384,6 +384,10 @@ class Builder:
                         "desc": self.text(r.get("BuffDesc")) or self.text(r.get("BuffDescBattle")),
                         "param": [_fixed(x.get("Value")) for x in (r.get("ParamList") or [])
                                   if isinstance(x, dict)],
+                        # 战斗内挂载方式：StageAbilityBeforeCharacterBorn 类需要关卡 ability，
+                        # 花萼那种普通战斗里下发会卡（客户端挂不上）；无绑定 / AfterCharacterBorn 可安全下发
+                        "bind_type": str(r.get("InBattleBindingType") or ""),
+                        "bind_key": self.text(r.get("InBattleBindingKey")),
                     }
         except (OSError, KeyError, ValueError):
             maze_buffs = {}
@@ -662,6 +666,12 @@ class Builder:
             periods.append({"period": int(f.stem), "name": _clean_text(str(data.get("name") or "")),
                             "floors": floors})
         out["anomalyArbitration"] = {"name": "异相仲裁", "periods": periods}
+        # 每个 buff 在战斗内的挂载方式：StageAbilityBeforeCharacterBorn 需要关卡 ability，
+        # 普通战斗（花萼/大世界）里下发会卡，前端应用时据此过滤
+        out["buff_bind"] = {
+            str(k): {"type": v.get("bind_type") or "", "key": v.get("bind_key") or ""}
+            for k, v in maze_buffs.items() if v.get("bind_type")
+        }
         return out
 
     def monsters(self) -> list:
