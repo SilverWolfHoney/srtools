@@ -796,6 +796,7 @@
     }
     const custom = mode === 'custom';
     $('ep-side-row').hidden = custom || mode === 'anomalyArbitration';
+    $('ep-turbulence-row').hidden = mode !== 'moC';   // 湍流是混沌专有
     $('ep-custom-row').hidden = !custom;
     $('ep-period').disabled = custom;
     $('ep-floor').disabled = custom;
@@ -881,7 +882,7 @@
       html += '<div class="ep-tierce">敌人词条：</div>' +
         f.tag_buffs.map((b) => `<span class="ep-chip ep-chip-tierce">${escapeHtml(b.name || ('#' + b.id))}</span>`).join('');
     }
-    if ((f.buff_ids || []).length) {
+    if (mode === 'moC' && (f.buff_ids || []).length) {
       html += '<div class="ep-tierce">关卡湍流：</div>' +
         f.buff_ids.map((id) => `<span class="ep-chip ep-chip-tierce">#${id}</span>`).join('');
     }

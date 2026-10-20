@@ -426,7 +426,7 @@ class Builder:
                              if m.get("monster_id")],
             }
 
-        def floor_of(lv, mode: str, season=None, stage_extra=None) -> dict:
+        def floor_of(lv, mode: str, season=None, stage_extra=None, use_twist=False) -> dict:
             ev1 = event_of(lv.get("event_id_list1"))
             ev2 = event_of(lv.get("event_id_list2"))
             ev3 = event_of(lv.get("event_id_list"))
@@ -434,7 +434,7 @@ class Builder:
                    or ev2.get("invasion") or None)
             lid = int(lv.get("id") or 0)
             buff_ids = []
-            if twist.get(lid):
+            if use_twist and twist.get(lid):   # 关卡湍流仅混沌专有
                 buff_ids.append(twist[lid])
             stage_buffs = []
             for ev in (ev1, ev2):
@@ -461,7 +461,7 @@ class Builder:
                 "cycle": int(lv.get("countdown") or 0) or 30,
             }
 
-        def floors_of(levels, season=None, stage_extra=None) -> list:
+        def floors_of(levels, season=None, stage_extra=None, use_twist=False) -> list:
             """把 pre_id 节点3 层（如 5613=其十二的节点3）合并进前置层的 tierce/invasion。"""
             extra: dict[int, dict] = {}
             ordered = []
@@ -473,7 +473,7 @@ class Builder:
                     ordered.append(lv)
             out = []
             for lv in ordered:
-                f = floor_of(lv, "maze", season, stage_extra)
+                f = floor_of(lv, "maze", season, stage_extra, use_twist)
                 node3 = extra.get(f["floor"])
                 if node3:
                     ev3 = event_of(node3.get("event_id_list"))
@@ -502,7 +502,7 @@ class Builder:
                 if not pname:
                     pname = _clean_text(str(lv.get("group_name") or ""))
             moc["periods"].append({"period": int(f.stem), "name": pname,
-                                   "floors": floors_of(data)})
+                                   "floors": floors_of(data, use_twist=True)})
 
         # 虚构（story）/ 末日（boss）：dict.level
         for key, label, dname in (("pureFiction", "虚构叙事", "story"),
