@@ -1,4 +1,4 @@
-# SRTools 4.6.53（本地版）
+# SRTools
 
 改自[srtools.neonteam.dev](https://srtools.neonteam.dev/) 用于在浏览器里编辑《崩坏：星穹铁道》私服的
 `freesr-data.json`（角色 / 光锥 / 遗器 / 战斗配置）。
@@ -29,7 +29,7 @@ start.bat             :: 或 python serve.py
 
 ```
 srtools/
-├─ serve.py              # 本地 Web 服务（标准库）
+├─ serve.py              #  Web 服务（标准库）
 ├─ build_catalog.py      # 构建 data/catalog.json
 ├─ fetch_battle_presets.py / fetch_avatars.py / fetch_trace_assets.py
 ├─ start.bat
