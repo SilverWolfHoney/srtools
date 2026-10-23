@@ -186,6 +186,28 @@ class Builder:
         data = json.loads((self.swh / "resources" / name).read_text(encoding="utf-8"))
         return data[key]
 
+    def _excel_paths(self) -> dict:
+        """dump 出的「类型名 -> 物理表路径」映射（excel_paths.json）。"""
+        if not hasattr(self, "_paths_cache"):
+            p = self.swh / "dump_4.6.53" / "excel_paths.json"
+            try:
+                self._paths_cache = json.loads(p.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                self._paths_cache = {}
+        return self._paths_cache
+
+    def table_by_type(self, type_name: str) -> list:
+        """按 dump 类型名读表（路径由 excel_paths.json 决定，避免硬编码表名）。"""
+        paths = self._excel_paths().get(type_name) or []
+        last: Exception | None = None
+        for raw in paths:
+            rel = raw[len("BakedConfig/"):] if raw.startswith("BakedConfig/") else raw
+            try:
+                return self.table(rel, type_name)
+            except Exception as exc:  # noqa: BLE001
+                last = exc
+        raise KeyError(f"读不到表 {type_name}: {last}")
+
     # ---------------------------------------------------------------- 各段
     def avatars(self) -> list:
         avatars = self.load_res("AvatarConfig.json", "avatar_config")
@@ -609,6 +631,20 @@ class Builder:
             """虚构：额外补关卡基础机制 buff（每期不同，缺了会卡加载）。"""
             return _attach_nt(floors, nf_period, with_buff=True)
 
+        # 客户端里的虚构叙事配置：分组三选一 buff / 关卡 buff / 每层回合上限
+        story_group_buffs: dict[int, list[int]] = {}
+        story_group_sub: dict[int, list[int]] = {}
+        story_turn: dict[int, int] = {}
+        try:
+            for r in self.table_by_type("RPG.GameCore.ChallengeStoryGroupExtraConfigRow"):
+                gid = _int(r.get("GroupID"))
+                story_group_buffs[gid] = [_int(x) for x in (r.get("BuffList") or []) if _int(x)]
+                story_group_sub[gid] = [_int(x) for x in (r.get("SubMazeBuffList") or []) if _int(x)]
+            for r in self.table_by_type("RPG.GameCore.ChallengeStoryMazeExtraConfigRow"):
+                story_turn[_int(r.get("ID"))] = _int(r.get("TurnLimit"))
+        except Exception as exc:  # noqa: BLE001
+            print(f"客户端虚构配置表读取失败（回退到 nanoka/neonteam）: {exc}")
+
         # 虚构（story）/ 末日（boss）：dict.level
         for key, label, dname in (("pureFiction", "虚构叙事", "story"),
                                   ("apocalypticShadow", "末日幻影", "boss")):
@@ -634,7 +670,37 @@ class Builder:
                     # 虚构：option = 玩家可选 Buff，sub_option = 固定关卡效果
                     season = norm(data.get("option"))
                     stage_extra = norm(data.get("sub_option"))
+                    # nanoka 缺 option 时用客户端「挑战分组」表的三选一 buff（按 GroupID=期号）
+                    if not season:
+                        gid = int(f.stem)
+                        season = [{"id": bid,
+                                   "name": (maze_buffs.get(bid) or {}).get("name", ""),
+                                   "desc": fmt_desc(str((maze_buffs.get(bid) or {}).get("desc", "")),
+                                                    (maze_buffs.get(bid) or {}).get("param")),
+                                   "param": (maze_buffs.get(bid) or {}).get("param") or []}
+                                  for bid in story_group_buffs.get(gid, [])]
                     season_groups = []
+                    story_floors = _attach_pf_meta(
+                        floors_of(data.get("level") or [], season, stage_extra,
+                                  season_groups=season_groups,
+                                  use_infinite=False),   # 波次用关卡 event 的 monster_list 原样
+                        nf_all.get(str(int(f.stem))))
+                    # 每层回合上限用客户端 ChallengeStoryMazeExtra.TurnLimit
+                    for fl in story_floors:
+                        lim = story_turn.get(int(fl.get("floor") or 0))
+                        if lim:
+                            fl["cycle"] = lim
+                    item["periods"].append({
+                        "period": int(f.stem),
+                        "name": _clean_text(str(data.get("name") or "")),
+                        "buff": {
+                            "name": _clean_text(str(buff.get("name") or "")),
+                            "desc": _clean_text(str(buff.get("desc") or "")),
+                            "param": buff.get("param") or [],
+                        },
+                        "floors": story_floors,
+                    })
+                    continue
                 else:
                     # 末日：buff_list1/2/3 = 三路（节点1/2/3）各自的三选一；buff = 关卡效果
                     season_groups = [norm(data.get("buff_list1")),
