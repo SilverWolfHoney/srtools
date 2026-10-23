@@ -76,7 +76,7 @@
           "ability": "",
           "param_list": [],
           "clear_previous_ability": true,
-          "elite_group": 360
+          "elite_group": 367
         },
         "305110112": {
           "infinite_wave_id": 305110112,
@@ -579,7 +579,7 @@
         "ability": "",
         "param_list": [],
         "clear_previous_ability": true,
-        "elite_group": 164
+        "elite_group": 169
       }
     }
   }

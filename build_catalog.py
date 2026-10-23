@@ -719,18 +719,38 @@ class Builder:
     def monsters(self) -> list:
         rows = self.table(GAMECORE + "MonsterConfig.bytes",
                           "RPG.GameCore.MonsterRow")
-        out = []
+        client: dict[int, dict] = {}
         for row in rows:
             monster_id = _int(row.get("MonsterID"))
             if not monster_id:
                 continue
-            out.append({
+            client[monster_id] = {
                 "id": monster_id,
                 "name": self.text(row.get("MonsterName")),
                 "template": _int(row.get("MonsterTemplateID")),
                 "elite_group": _int(row.get("EliteGroup")),
+            }
+        # nanoka 的怪物表比客户端表新（小版本新增/改名的怪以它为准），
+        # 客户端表只补 template / elite_group 这类 nanoka 没有的字段
+        nanoka: dict[int, dict] = {}
+        p = ROOT / "data" / "site" / "nanoka" / "monster.json"
+        if p.is_file():
+            try:
+                raw = json.loads(p.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                raw = {}
+            if isinstance(raw, dict):
+                nanoka = {_int(k): v for k, v in raw.items() if _int(k)}
+        out = []
+        for monster_id in sorted(set(client) | set(nanoka)):
+            c = client.get(monster_id) or {}
+            n = nanoka.get(monster_id) or {}
+            out.append({
+                "id": monster_id,
+                "name": str(n.get("zh") or "") or c.get("name", ""),
+                "template": c.get("template", 0),
+                "elite_group": c.get("elite_group", 0),
             })
-        out.sort(key=lambda x: x["id"])
         return out
 
     def rogue_buffs(self) -> list:
@@ -803,7 +823,7 @@ def main() -> int:
     print("解析资源表 ...")
     catalog = {
         "meta": {
-            "version": "4.6.53",
+            "version": "4.6.54",
             "generated_at": datetime.now().isoformat(timespec="seconds"),
             "client": str(args.client),
             "swh": str(args.swh),

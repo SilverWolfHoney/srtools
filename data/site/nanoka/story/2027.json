@@ -1420,7 +1420,7 @@
             2032020,
             3002030
           ],
-          "max_monster_count": 45,
+          "max_monster_count": 100,
           "max_teammate_count": 5,
           "ability": "FantasticStory_Wave_Ability_0001",
           "param_list": [
@@ -1922,7 +1922,7 @@
             2002010,
             8022010
           ],
-          "max_monster_count": 45,
+          "max_monster_count": 100,
           "max_teammate_count": 5,
           "ability": "FantasticStory_Wave_Ability_0001",
           "param_list": [
